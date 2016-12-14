@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering
+END
+MarkerBaseRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/MarkerBaseRender.cs
+END
+LabelRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/LabelRender.cs
+END
+ComplexLineRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/ComplexLineRender.cs
+END
+Render.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/51644/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/Render.cs
+END
+TableRowRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/TableRowRender.cs
+END
+ControlRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/51644/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/ControlRender.cs
+END
+MarkerRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/MarkerRender.cs
+END
+ImageRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/ImageRender.cs
+END
+PortRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/PortRender.cs
+END
+TableRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/TableRender.cs
+END
+ComplexShapeRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/ComplexShapeRender.cs
+END
+ElementRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/ElementRender.cs
+END
+ConnectorRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/51229/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/ConnectorRender.cs
+END
+GroupRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/GroupRender.cs
+END
+LinkRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/LinkRender.cs
+END
+PaletteRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/51678/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/PaletteRender.cs
+END
+ShapeRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/51678/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/ShapeRender.cs
+END
+BlockLineRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/BlockLineRender.cs
+END
+(Interfaces).cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/51678/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/(Interfaces).cs
+END
+TableGroupRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/TableGroupRender.cs
+END
+OverviewRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/OverviewRender.cs
+END
+TableItemRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/50865/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/TableItemRender.cs
+END
+TreeLineRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/TreeLineRender.cs
+END
+SolidRender.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/51216/Crainiate.Diagramming.Forms/Crainiate.Diagramming.Forms.Rendering/SolidRender.cs
+END

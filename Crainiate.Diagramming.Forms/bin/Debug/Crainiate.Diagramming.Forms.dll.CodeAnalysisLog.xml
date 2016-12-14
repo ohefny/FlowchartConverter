@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.Forms.dll">
+   <Modules>
+    <Module Name="crainiate.diagramming.forms.dll">
+     <Namespaces>
+      <Namespace Name="Crainiate.Diagramming.Forms">
+       <Types>
+        <Type Name="Diagram" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ProcessCmdKey(System.Windows.Forms.Message&amp;,System.Windows.Forms.Keys)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Diagram.cs" Line="1224">'Diagram.ProcessCmdKey(ref Message, Keys)' calls into 'ContainerControl.ProcessCmdKey(ref Message, Keys)' which has a LinkDemand. By making this call, 'ContainerControl.ProcessCmdKey(ref Message, Keys)' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'Diagram.ProcessCmdKey(ref Message, Keys)'&#xD;&#xA;   -&gt;'Diagram.ProcessCmdKey(ref Message, Keys)'</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Diagram.cs" Line="1224">'Diagram.ProcessCmdKey(ref Message, Keys)' calls into 'Message.Msg.get()' which has a LinkDemand. By making this call, 'Message.Msg.get()' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'Diagram.ProcessCmdKey(ref Message, Keys)'&#xD;&#xA;   -&gt;'Diagram.ProcessCmdKey(ref Message, Keys)'</Issue>
+            </Message>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Diagram.cs" Line="1224">Add the following security attribute to 'Diagram.ProcessCmdKey(ref Message, Keys)' in order to match a LinkDemand on base method 'ContainerControl.ProcessCmdKey(ref Message, Keys)':  [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)].</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="FormsDocument" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Export(System.String,Crainiate.Diagramming.ExportFormat)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="FormsDocument.cs" Line="53">Object 'stream' can be disposed more than once in method 'FormsDocument.Export(string, ExportFormat)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 53</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="LabelEdit" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="_renderBitmap" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="LabelEdit.cs" Line="629">'LabelEdit' contains field 'LabelEdit._renderBitmap' that is of IDisposable type: 'Bitmap'. Change the Dispose method on 'LabelEdit' to call Dispose or Close on this field.</Issue>
+            </Message>
+            <Message Id="_stringFormat" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="LabelEdit.cs" Line="629">'LabelEdit' contains field 'LabelEdit._stringFormat' that is of IDisposable type: 'StringFormat'. Change the Dispose method on 'LabelEdit' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ProcessCmdKey(System.Windows.Forms.Message&amp;,System.Windows.Forms.Keys)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="LabelEdit.cs" Line="465">'LabelEdit.ProcessCmdKey(ref Message, Keys)' calls into 'Control.ProcessCmdKey(ref Message, Keys)' which has a LinkDemand. By making this call, 'Control.ProcessCmdKey(ref Message, Keys)' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'LabelEdit.ProcessCmdKey(ref Message, Keys)'&#xD;&#xA;   -&gt;'LabelEdit.ProcessCmdKey(ref Message, Keys)'</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="LabelEdit.cs" Line="465">'LabelEdit.ProcessCmdKey(ref Message, Keys)' calls into 'Message.Msg.get()' which has a LinkDemand. By making this call, 'Message.Msg.get()' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'LabelEdit.ProcessCmdKey(ref Message, Keys)'&#xD;&#xA;   -&gt;'LabelEdit.ProcessCmdKey(ref Message, Keys)'</Issue>
+            </Message>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="LabelEdit.cs" Line="465">Add the following security attribute to 'LabelEdit.ProcessCmdKey(ref Message, Keys)' in order to match a LinkDemand on base method 'Control.ProcessCmdKey(ref Message, Keys)':  [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)].</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Margin" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ToString()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="DependsOnFix">
+             <Issue Name="UnexpectedFormatStringCharacter" Certainty="75" Level="Warning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Margin.cs" Line="95">Method 'Margin.ToString()' calls 'string.Format(string, params object[])' with a format string that contains an unexpected character '"L"' at index '1'. The provided format string is: '"{Left={0},Top={1},Right={2},Bottom={3}}"'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Paging" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Paging.cs" Line="26">'Paging.Paging()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Paging..ctor()&#xD;&#xA;Paging.set_Enabled(Boolean):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Paging.cs" Line="26">'Paging.Paging()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Paging..ctor()&#xD;&#xA;Paging.set_Margin(Margin):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Paging.cs" Line="26">'Paging.Paging()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Paging..ctor()&#xD;&#xA;Paging.set_Padding(SizeF):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Paging.cs" Line="26">'Paging.Paging()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Paging..ctor()&#xD;&#xA;Paging.set_Page(Int32):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Paging.cs" Line="26">'Paging.Paging()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Paging..ctor()&#xD;&#xA;Paging.set_WorkspaceColor(Color):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RenderException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Add [Serializable] to 'RenderException' as this type implements ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Ruler" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="_font" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Ruler.cs" Line="357">'Ruler' contains field 'Ruler._font' that is of IDisposable type: 'Font'. Change the Dispose method on 'Ruler' to call Dispose or Close on this field.</Issue>
+            </Message>
+            <Message Id="_renderBitmap" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Ruler.cs" Line="357">'Ruler' contains field 'Ruler._renderBitmap' that is of IDisposable type: 'Bitmap'. Change the Dispose method on 'Ruler' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PreFilterMessage(System.Windows.Forms.Message&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Ruler.cs" Line="511">'Ruler.PreFilterMessage(ref Message)' calls into 'Message.Msg.get()' which has a LinkDemand. By making this call, 'Message.Msg.get()' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'Ruler.PreFilterMessage(ref Message)'&#xD;&#xA;   -&gt;'Ruler.PreFilterMessage(ref Message)'</Issue>
+            </Message>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Ruler.cs" Line="511">Add the following security attribute to 'Ruler.PreFilterMessage(ref Message)' in order to match a LinkDemand on base method 'IMessageFilter.PreFilterMessage(ref Message)':  [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)].</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Tabs" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(Crainiate.Diagramming.Model)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Tabs.cs" Line="28">'Tabs.Tabs(Model)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Tabs..ctor(Model)&#xD;&#xA;Layers.set_CurrentLayer(Layer):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Tabs.cs" Line="28">'Tabs.Tabs(Model)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Tabs..ctor(Model)&#xD;&#xA;Layers.set_CurrentLayer(Layer):Void&#xD;&#xA;Layers.SetModel(Model):Void&#xD;&#xA;Tabs.set_BackColor(Color):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Tabs.cs" Line="28">'Tabs.Tabs(Model)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Tabs..ctor(Model)&#xD;&#xA;Layers.set_CurrentLayer(Layer):Void&#xD;&#xA;Layers.SetModel(Model):Void&#xD;&#xA;Tabs.set_ForeColor(Color):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Tabs.cs" Line="28">'Tabs.Tabs(Model)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Tabs..ctor(Model)&#xD;&#xA;Layers.set_CurrentLayer(Layer):Void&#xD;&#xA;Layers.SetModel(Model):Void&#xD;&#xA;Tabs.set_GradientColor(Color):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Tabs.cs" Line="28">'Tabs.Tabs(Model)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Tabs..ctor(Model)&#xD;&#xA;Layers.set_CurrentLayer(Layer):Void&#xD;&#xA;Layers.SetModel(Model):Void&#xD;&#xA;Tabs.set_GradientColor(Color):Void&#xD;&#xA;Tabs.OnTabsInvalid():Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="Tabs.cs" Line="28">'Tabs.Tabs(Model)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Tabs..ctor(Model)&#xD;&#xA;Layers.set_CurrentLayer(Layer):Void&#xD;&#xA;Layers.SetModel(Model):Void&#xD;&#xA;Tabs.set_TabHeight(Single):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TabsException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Add [Serializable] to 'TabsException' as this type implements ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="UndoPointException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Add [Serializable] to 'UndoPointException' as this type implements ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="View" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DrawDiagram(System.Drawing.Rectangle)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="View.cs" Line="1000">Object 'graphics' can be disposed more than once in method 'View.DrawDiagram(Rectangle)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1000</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#WndProc(System.Windows.Forms.Message&amp;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="View.cs" Line="907">'View.WndProc(ref Message)' calls into 'Message.Msg.get()' which has a LinkDemand. By making this call, 'Message.Msg.get()' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'View.WndProc(ref Message)'&#xD;&#xA;   -&gt;'View.WndProc(ref Message)'</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="View.cs" Line="907">'View.WndProc(ref Message)' calls into 'Message.WParam.get()' which has a LinkDemand. By making this call, 'Message.WParam.get()' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'View.WndProc(ref Message)'&#xD;&#xA;   -&gt;'View.WndProc(ref Message)'</Issue>
+             <Issue Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="View.cs" Line="907">'View.WndProc(ref Message)' calls into 'UserControl.WndProc(ref Message)' which has a LinkDemand. By making this call, 'UserControl.WndProc(ref Message)' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'View.WndProc(ref Message)'&#xD;&#xA;   -&gt;'View.WndProc(ref Message)'</Issue>
+            </Message>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms" File="View.cs" Line="907">Add the following security attribute to 'View.WndProc(ref Message)' in order to match a LinkDemand on base method 'UserControl.WndProc(ref Message)':  [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)].</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Crainiate.Diagramming.Forms.Rendering">
+       <Types>
+        <Type Name="OverviewRender" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.Rendering" File="OverviewRender.cs" Line="17">'OverviewRender.OverviewRender()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;OverviewRender..ctor()&#xD;&#xA;Render.set_Summary(Boolean):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PaletteRender" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(Crainiate.Diagramming.Forms.Palette)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.Rendering" File="PaletteRender.cs" Line="24">'PaletteRender.PaletteRender(Palette)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PaletteRender..ctor(Palette)&#xD;&#xA;PaletteRender.set_DecorationBrush(Brush):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.Rendering" File="PaletteRender.cs" Line="24">'PaletteRender.PaletteRender(Palette)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PaletteRender..ctor(Palette)&#xD;&#xA;PaletteRender.set_DecorationPen(Pen):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.Rendering" File="PaletteRender.cs" Line="24">'PaletteRender.PaletteRender(Palette)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PaletteRender..ctor(Palette)&#xD;&#xA;PaletteRender.set_Palette(Palette):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Render" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Render' because it creates members of the following IDisposable types: 'Bitmap', 'Matrix'. If 'Render' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.Rendering" File="Render.cs" Line="18">'Render.Render()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Render..ctor()&#xD;&#xA;Render.AddDefaultRenderers():Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.Rendering" File="Render.cs" Line="18">'Render.Render()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Render..ctor()&#xD;&#xA;Render.AddDefaultRenderers():Void&#xD;&#xA;Render.AddRenderer(Type, IFormsRenderer):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Forms.Rendering" File="Render.cs" Line="18">'Render.Render()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Render..ctor()&#xD;&#xA;Render.set_ActionStyle(ActionStyle):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Crainiate.Diagramming.Printing">
+       <Types>
+        <Type Name="PrintDocument" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(Crainiate.Diagramming.Forms.View)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Printing" File="PrintDocument.cs" Line="33">'PrintDocument.PrintDocument(View)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PrintDocument..ctor(View)&#xD;&#xA;PrintDocument.add_PrintPage(PrintPageEventHandler):Void&#xD;&#xA;PrintDocument.set_BorderStyle(BorderStyle):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Printing" File="PrintDocument.cs" Line="33">'PrintDocument.PrintDocument(View)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PrintDocument..ctor(View)&#xD;&#xA;PrintDocument.add_PrintPage(PrintPageEventHandler):Void&#xD;&#xA;PrintDocument.set_PageNumberStyle(PageNumberStyle):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Printing" File="PrintDocument.cs" Line="33">'PrintDocument.PrintDocument(View)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PrintDocument..ctor(View)&#xD;&#xA;PrintDocument.add_PrintPage(PrintPageEventHandler):Void&#xD;&#xA;PrintDocument.set_Render(PrintRender):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Printing" File="PrintDocument.cs" Line="33">'PrintDocument.PrintDocument(View)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PrintDocument..ctor(View)&#xD;&#xA;PrintDocument.add_PrintPage(PrintPageEventHandler):Void&#xD;&#xA;PrintDocument.set_Render(PrintRender):Void&#xD;&#xA;PrintDocument.SetRenderLists():Void&#xD;&#xA;PrintDocument.get_Render():PrintRender</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Printing" File="PrintDocument.cs" Line="33">'PrintDocument.PrintDocument(View)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PrintDocument..ctor(View)&#xD;&#xA;PrintDocument.add_PrintPage(PrintPageEventHandler):Void&#xD;&#xA;PrintDocument.set_Render(PrintRender):Void&#xD;&#xA;PrintDocument.SetRenderLists():Void&#xD;&#xA;PrintDocument.get_View():View</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Printing" File="PrintDocument.cs" Line="33">'PrintDocument.PrintDocument(View)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PrintDocument..ctor(View)&#xD;&#xA;PrintDocument.add_PrintPage(PrintPageEventHandler):Void&#xD;&#xA;PrintDocument.set_Scale(Single):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PrintDocumentException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Add [Serializable] to 'PrintDocumentException' as this type implements ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="PrintRenderException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Add [Serializable] to 'PrintRenderException' as this type implements ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="Crainiate.Diagramming.Serialization">
+       <Types>
+        <Type Name="ViewSerialize" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetObjectData(System.Object,System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Serialization" File="ViewSerialize.cs" Line="56">Add the following security attribute to 'ViewSerialize.GetObjectData(object, SerializationInfo, StreamingContext)' in order to match a LinkDemand on base method 'ISerializationSurrogate.GetObjectData(object, SerializationInfo, StreamingContext)':  [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)].</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetObjectData(System.Object,System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext,System.Runtime.Serialization.ISurrogateSelector)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2016-12-09 20:17:54Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming.Forms\Crainiate.Diagramming.Serialization" File="ViewSerialize.cs" Line="70">Add the following security attribute to 'ViewSerialize.SetObjectData(object, SerializationInfo, StreamingContext, ISurrogateSelector)' in order to match a LinkDemand on base method 'ISerializationSurrogate.SetObjectData(object, SerializationInfo, StreamingContext, ISurrogateSelector)':  [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)].</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213">
+   <Name>Disposable fields should be disposed</Name>
+   <Description>If a type that implements IDisposable owns fields that also implement IDisposable, the encapsulating type's Dispose() implementation should call Dispose() on each disposable field.</Description>
+   <Resolution Name="Default">{0} contains field {1} that is of IDisposable type: {2}. Change the Dispose method on {0} to call Dispose or Close on this field.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182328.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1000</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+   <Name>Do not call overridable methods in constructors</Name>
+   <Description>Virtual methods defined on the class should not be called from constructors. If a derived class has overridden the method, the derived class version will be called (before the derived class constructor is called).</Description>
+   <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122">
+   <Name>Do not indirectly expose methods with link demands</Name>
+   <Description>Do not wrap a method protected by a LinkDemand with a method that does not perform a security check. A LinkDemand checks the permissions of the immediate caller rather than checking the permissions of all callers in the call stack. In this case, the permissions of the wrapper method will be checked. If the wrapper method does not, itself, check the permissions of callers higher in the call stack, malicious code might be able to execute the wrapped function even though it lacks permission to do so.</Description>
+   <Resolution Name="Default">{0} calls into {1} which has a LinkDemand. By making this call, {1} is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: {2}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182303.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securityrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237">
+   <Name>Mark ISerializable types with SerializableAttribute</Name>
+   <Description>The System.Runtime.Serialization.ISerializable interface allows the type to customize its serialization, while the Serializable attribute enables the runtime to recognize the type as being serializable.</Description>
+   <Resolution Name="Default">Add [Serializable] to {0} as this type implements ISerializable.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182350.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123">
+   <Name>Override link demands should be identical to base</Name>
+   <Description>If a virtual method has a LinkDemand, in many cases, so should any override of it, and if an override has a LinkDemand, so should the overridden virtual method. Because it is possible to call any of the overrides of a virtual method explicitly, they should all have the same LinkDemand status or, if not, should be reviewed. This also applies to LinkDemand security checks for methods that part of an interface implementation, because the caller might use an interface-typed reference to access the method.</Description>
+   <Resolution Name="BaseOnly">Add the following security attribute to {0} in order to match a LinkDemand on base method {1}:  {2}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182305(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+  <Rule TypeName="Provide correct arguments to formatting methods" Category="Microsoft.Usage" CheckId="CA2241">
+   <Name>Provide correct arguments to formatting methods</Name>
+   <Description>Provide the correct number of arguments to String.Format calls.</Description>
+   <Resolution Name="UnexpectedFormatStringCharacter">Method {0} calls {1} with a format string that contains an unexpected character '{2}' at index '{3}'. The provided format string is: '{4}'</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182361.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+   <Name>Types that own disposable fields should be disposable</Name>
+   <Description>Types that declare disposable members should also implement IDisposable. If the type does not own any unmanaged resources, do not implement a finalizer on it.</Description>
+   <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

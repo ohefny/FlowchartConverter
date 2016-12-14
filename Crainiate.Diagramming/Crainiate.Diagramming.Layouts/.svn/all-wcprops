@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/50865/Crainiate.Diagramming/Crainiate.Diagramming.Layouts
+END
+Route.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/51598/Crainiate.Diagramming/Crainiate.Diagramming.Layouts/Route.cs
+END
+TerrainPoint.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/50865/Crainiate.Diagramming/Crainiate.Diagramming.Layouts/TerrainPoint.cs
+END
+TotalCostQueue.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/50865/Crainiate.Diagramming/Crainiate.Diagramming.Layouts/TotalCostQueue.cs
+END
+(Exceptions).cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/50865/Crainiate.Diagramming/Crainiate.Diagramming.Layouts/(Exceptions).cs
+END
+RouteNode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/51598/Crainiate.Diagramming/Crainiate.Diagramming.Layouts/RouteNode.cs
+END
+MovementCostQueue.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/50865/Crainiate.Diagramming/Crainiate.Diagramming.Layouts/MovementCostQueue.cs
+END
+BinaryGrid.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/50865/Crainiate.Diagramming/Crainiate.Diagramming.Layouts/BinaryGrid.cs
+END

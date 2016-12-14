@@ -1,0 +1,467 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/50865/Crainiate.Diagramming
+END
+LabelList.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/50865/Crainiate.Diagramming/LabelList.cs
+END
+Layer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/50865/Crainiate.Diagramming/Layer.cs
+END
+Handles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/51229/Crainiate.Diagramming/Handles.cs
+END
+ComplexLine.cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/50865/Crainiate.Diagramming/ComplexLine.cs
+END
+StencilItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/50865/Crainiate.Diagramming/StencilItem.cs
+END
+Controller.cs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/51216/Crainiate.Diagramming/Controller.cs
+END
+MouseElements.cs
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/50865/Crainiate.Diagramming/MouseElements.cs
+END
+Segments.cs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/50865/Crainiate.Diagramming/Segments.cs
+END
+ScaleCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/50865/Crainiate.Diagramming/ScaleCommand.cs
+END
+ComplexShape.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/50865/Crainiate.Diagramming/ComplexShape.cs
+END
+Element.cs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/51216/Crainiate.Diagramming/Element.cs
+END
+Connector.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/51229/Crainiate.Diagramming/Connector.cs
+END
+Geometry.cs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/50865/Crainiate.Diagramming/Geometry.cs
+END
+(Licence).txt
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/50866/Crainiate.Diagramming/(Licence).txt
+END
+Segment.cs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/50865/Crainiate.Diagramming/Segment.cs
+END
+BlockLine.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/50865/Crainiate.Diagramming/BlockLine.cs
+END
+AbstractCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/50865/Crainiate.Diagramming/AbstractCommand.cs
+END
+(Exceptions).cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/50865/Crainiate.Diagramming/(Exceptions).cs
+END
+Ports.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51616/Crainiate.Diagramming/Ports.cs
+END
+TreeLine.cs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/51616/Crainiate.Diagramming/TreeLine.cs
+END
+Crainiate.Diagramming.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/51638/Crainiate.Diagramming/Crainiate.Diagramming.csproj
+END
+(Delegates).cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/50865/Crainiate.Diagramming/(Delegates).cs
+END
+(EventArgs).cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/50865/Crainiate.Diagramming/(EventArgs).cs
+END
+Shapes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/51616/Crainiate.Diagramming/Shapes.cs
+END
+PropertyCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/51644/Crainiate.Diagramming/PropertyCommand.cs
+END
+Table.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51602/Crainiate.Diagramming/Table.cs
+END
+Arrow.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/50865/Crainiate.Diagramming/Arrow.cs
+END
+TablePort.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/50865/Crainiate.Diagramming/TablePort.cs
+END
+Solids.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/51616/Crainiate.Diagramming/Solids.cs
+END
+Link.cs
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/50865/Crainiate.Diagramming/Link.cs
+END
+Views.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/50865/Crainiate.Diagramming/Views.cs
+END
+ClipboardCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/51638/Crainiate.Diagramming/ClipboardCommand.cs
+END
+Layers.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/50865/Crainiate.Diagramming/Layers.cs
+END
+Singleton.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/51678/Crainiate.Diagramming/Singleton.cs
+END
+TableGroup.cs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/50865/Crainiate.Diagramming/TableGroup.cs
+END
+Solid.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51216/Crainiate.Diagramming/Solid.cs
+END
+ArrowStencil.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/50865/Crainiate.Diagramming/ArrowStencil.cs
+END
+MarkerBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/50865/Crainiate.Diagramming/MarkerBase.cs
+END
+Document.cs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/51616/Crainiate.Diagramming/Document.cs
+END
+Command.cs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/51638/Crainiate.Diagramming/Command.cs
+END
+LabelMomento.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/51616/Crainiate.Diagramming/LabelMomento.cs
+END
+TableRow.cs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/50865/Crainiate.Diagramming/TableRow.cs
+END
+Label.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51216/Crainiate.Diagramming/Label.cs
+END
+Marker.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/50865/Crainiate.Diagramming/Marker.cs
+END
+Container.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/50865/Crainiate.Diagramming/Container.cs
+END
+ElementList.cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/50865/Crainiate.Diagramming/ElementList.cs
+END
+MouseCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/50865/Crainiate.Diagramming/MouseCommand.cs
+END
+ElementMomento.cs
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/51616/Crainiate.Diagramming/ElementMomento.cs
+END
+TableItems.cs
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/50865/Crainiate.Diagramming/TableItems.cs
+END
+Clipboard.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/50865/Crainiate.Diagramming/Clipboard.cs
+END
+ModelMomento.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/51638/Crainiate.Diagramming/ModelMomento.cs
+END
+Stencil.cs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/50865/Crainiate.Diagramming/Stencil.cs
+END
+Theme.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/50865/Crainiate.Diagramming/Theme.cs
+END
+TableRows.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/50865/Crainiate.Diagramming/TableRows.cs
+END
+TableItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/51216/Crainiate.Diagramming/TableItem.cs
+END
+CommandFactory.cs
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/51644/Crainiate.Diagramming/CommandFactory.cs
+END
+Factory.cs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/50865/Crainiate.Diagramming/Factory.cs
+END
+Elements.cs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/51616/Crainiate.Diagramming/Elements.cs
+END
+Momento.cs
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/51638/Crainiate.Diagramming/Momento.cs
+END
+Image.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51216/Crainiate.Diagramming/Image.cs
+END
+TextCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/51638/Crainiate.Diagramming/TextCommand.cs
+END
+Curve.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/50865/Crainiate.Diagramming/Curve.cs
+END
+Port.cs
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/50865/Crainiate.Diagramming/Port.cs
+END
+Origin.cs
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/50865/Crainiate.Diagramming/Origin.cs
+END
+Line.cs
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/51616/Crainiate.Diagramming/Line.cs
+END
+TableGroups.cs
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/50865/Crainiate.Diagramming/TableGroups.cs
+END
+(Enumerations).cs
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/50865/Crainiate.Diagramming/(Enumerations).cs
+END
+Group.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/50865/Crainiate.Diagramming/Group.cs
+END
+TranslateCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/51638/Crainiate.Diagramming/TranslateCommand.cs
+END
+RotateCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/50865/Crainiate.Diagramming/RotateCommand.cs
+END
+Shape.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51678/Crainiate.Diagramming/Shape.cs
+END
+Model.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51638/Crainiate.Diagramming/Model.cs
+END
+BasicStencil.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/50865/Crainiate.Diagramming/BasicStencil.cs
+END
+(Interfaces).cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/51638/Crainiate.Diagramming/(Interfaces).cs
+END
+CommandStack.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/50865/Crainiate.Diagramming/CommandStack.cs
+END
+Lines.cs
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/51616/Crainiate.Diagramming/Lines.cs
+END
+TransformCommand.cs
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/51678/Crainiate.Diagramming/TransformCommand.cs
+END

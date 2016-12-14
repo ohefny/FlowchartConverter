@@ -1,0 +1,336 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8FEEDDA0-185D-4F31-9920-503C014F5526}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Crainiate.Diagramming</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Crainiate.Diagramming</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>Crainiate.ERM4.%28None%29</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Security">
+      <Name>System.Security</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="%28Exceptions%29.cs" />
+    <Compile Include="AbstractCommand.cs" />
+    <Compile Include="Arrow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ArrowStencil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Command.cs" />
+    <Compile Include="%28Delegates%29.cs" />
+    <Compile Include="ModelCommand.cs" />
+    <Compile Include="TableGroups.cs" />
+    <Compile Include="TablePort.cs" />
+    <Compile Include="Line.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="ModelMomento.cs" />
+    <Compile Include="MouseCommand.cs" />
+    <Compile Include="Crainiate.Diagramming.Collections\%28Delegates%29.cs" />
+    <Compile Include="Crainiate.Diagramming.Collections\%28Exceptions%29.cs" />
+    <Compile Include="Crainiate.Diagramming.Layouts\%28Exceptions%29.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ResourceEntry.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ImageSerialize.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BasicStencil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BlockLine.cs" />
+    <Compile Include="Clipboard.cs" />
+    <Compile Include="ClipboardCommand.cs" />
+    <Compile Include="CommandStack.cs" />
+    <Compile Include="LabelList.cs" />
+    <Compile Include="LabelMomento.cs" />
+    <Compile Include="Momento.cs" />
+    <Compile Include="CommandFactory.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\LayerSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\LayersSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ElementListSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\LabelSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ModelSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\StencilItemSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ShapeSerialize.cs" />
+    <Compile Include="PropertyCommand.cs" />
+    <Compile Include="RotateCommand.cs" />
+    <Compile Include="ScaleCommand.cs" />
+    <Compile Include="TableRows.cs" />
+    <Compile Include="TranslateCommand.cs" />
+    <Compile Include="TransformCommand.cs" />
+    <Compile Include="ElementMomento.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\SolidSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ElementsSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\OriginSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\LineSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ElementSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\CustomBinder.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\XmlFormatter.cs" />
+    <Compile Include="TextCommand.cs" />
+    <Compile Include="Theme.cs" />
+    <Compile Include="Crainiate.Diagramming.Collections\Comparers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComplexLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComplexShape.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Container.cs" />
+    <Compile Include="Crainiate.Diagramming.Layouts\MovementCostQueue.cs" />
+    <Compile Include="Crainiate.Diagramming.Collections\ListFactory.cs" />
+    <Compile Include="Crainiate.Diagramming.Layouts\TotalCostQueue.cs" />
+    <Compile Include="TreeLine.cs" />
+    <Compile Include="Views.cs">
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Collections\Dictionary.cs" />
+    <Compile Include="Crainiate.Diagramming.Collections\Elements.cs" />
+    <Compile Include="Elements.cs" />
+    <Compile Include="Lines.cs" />
+    <Compile Include="Crainiate.Diagramming.Collections\List.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="MouseElements.cs" />
+    <Compile Include="Ports.cs" />
+    <Compile Include="Shapes.cs" />
+    <Compile Include="Singleton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Connector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Factory.cs" />
+    <Compile Include="Crainiate.Diagramming.Flowcharting\Decision.cs" />
+    <Compile Include="Crainiate.Diagramming.Flowcharting\Subchart.cs" />
+    <Compile Include="Crainiate.Diagramming.Flowcharting\Process.cs" />
+    <Compile Include="Crainiate.Diagramming.Layouts\BinaryGrid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Collections\PriorityQueue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Layouts\Route.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Layouts\RouteNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Layouts\TerrainPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Curve.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Solids.cs" />
+    <Compile Include="Element.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="%28Enumerations%29.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="%28EventArgs%29.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Flowcharting\FlowchartStencil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Geometry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Group.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Handles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Image.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="%28Interfaces%29.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Label.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Layers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Link.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Marker.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MarkerBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Origin.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Port.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ElementList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controller.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Segment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Segments.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Serialization\Serialize.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Shape.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Solid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Stencil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StencilItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Table.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TableGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TableItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TableItems.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TableRow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\rotate.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="%28Licence%29.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

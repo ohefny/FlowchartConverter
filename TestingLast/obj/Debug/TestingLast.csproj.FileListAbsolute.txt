@@ -1,0 +1,15 @@
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\bin\Debug\TestingLast.exe.config
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\bin\Debug\TestingLast.exe
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\bin\Debug\TestingLast.pdb
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.dll
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.dll
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.pdb
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.pdb
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.csprojResolveAssemblyReference.cache
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.PickDialog.resources
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.Form1.resources
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.Properties.Resources.resources
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.csproj.GenerateResource.Cache
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.exe
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.pdb
+C:\Users\BE\Documents\Visual Studio 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.TestForm.frmGroup.resources

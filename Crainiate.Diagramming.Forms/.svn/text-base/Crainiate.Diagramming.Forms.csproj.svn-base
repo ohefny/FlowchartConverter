@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{86FBCBDA-52FD-4111-99F0-F6EBCC00AB06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Crainiate.Diagramming.Forms</RootNamespace>
+    <AssemblyName>Crainiate.Diagramming.Forms</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="%28EventArgs%29.cs" />
+    <Compile Include="%28Delegates%29.cs" />
+    <Compile Include="FormsDocument.cs" />
+    <Compile Include="Margin.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\%28Interfaces%29.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\ComplexShapeRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\ConnectorRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\ControlRender.cs" />
+    <Compile Include="Diagram.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="%28Exceptions%29.cs" />
+    <Compile Include="%28Interfaces%29.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\ComplexLineRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\BlockLineRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\TreeLineRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\LabelRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\ImageRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\TableRowRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\TableGroupRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\TableItemRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\PortRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\MarkerRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\MarkerBaseRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\GroupRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\TableRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\ElementRender.cs" />
+    <Compile Include="LabelEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Flowcharting\Flowchart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\LinkRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\ShapeRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Printing\%28Exceptions%29.cs" />
+    <Compile Include="Crainiate.Diagramming.Printing\PrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Printing\PrintRender.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\DiagramSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\FlowchartSerialize.cs" />
+    <Compile Include="Crainiate.Diagramming.Serialization\ViewSerialize.cs" />
+    <Compile Include="Overview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\OverviewRender.cs" />
+    <Compile Include="Paging.cs" />
+    <Compile Include="Palette.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\PaletteRender.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\Render.cs" />
+    <Compile Include="Ruler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crainiate.Diagramming.Forms.Rendering\SolidRender.cs" />
+    <Compile Include="Tab.cs" />
+    <Compile Include="Tabs.cs" />
+    <Compile Include="View.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View.Designer.cs">
+      <DependentUpon>View.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Diagram.resx">
+      <DependentUpon>Diagram.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabelEdit.resx">
+      <DependentUpon>LabelEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crainiate.Diagramming.Flowcharting\Flowchart.resx">
+      <DependentUpon>Flowchart.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crainiate.Diagramming.Printing\PrintDocument.resx">
+      <DependentUpon>PrintDocument.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Overview.resx">
+      <DependentUpon>Overview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ruler.resx">
+      <DependentUpon>Ruler.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\diagram.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\flowchart.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\overview.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\palette.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\ruler.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Palette.resx">
+      <DependentUpon>Palette.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\view.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="%28Licence%29.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crainiate.Diagramming\Crainiate.Diagramming.csproj">
+      <Project>{8FEEDDA0-185D-4F31-9920-503C014F5526}</Project>
+      <Name>Crainiate.Diagramming</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
