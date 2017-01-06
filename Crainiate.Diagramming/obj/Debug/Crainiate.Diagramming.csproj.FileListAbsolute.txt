@@ -19,3 +19,8 @@ E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagra
 E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.pdb
 E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming\bin\Crainiate.Diagramming.dll.CodeAnalysisLog.xml
 E:\Fci 2016\First Term\GraduationProject\Flowchat\After Edit\CrainiateOpenDiagram 5.0\CrainiateOpenDiagram 5.0\Crainiate Open Diagram 5.0\Crainiate.Diagramming\bin\Crainiate.Diagramming.dll.lastcodeanalysissucceeded
+G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\bin\Crainiate.Diagramming.dll
+G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\bin\Crainiate.Diagramming.pdb
+G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.csprojResolveAssemblyReference.cache
+G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.dll
+G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.pdb

@@ -67,6 +67,9 @@
     <Compile Include="Dialogs\PickDialog.Designer.cs">
       <DependentUpon>PickDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DoWhileBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\WhileBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +102,12 @@
     <Compile Include="TestForm\frmGroup.Designer.cs" />
     <EmbeddedResource Include="Dialogs\PickDialog.resx">
       <DependentUpon>PickDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DoWhileBox.resx">
+      <DependentUpon>DoWhileBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WhileBox.resx">
+      <DependentUpon>WhileBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

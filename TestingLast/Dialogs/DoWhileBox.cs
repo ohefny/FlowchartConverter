@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace DrawShapes.Dialogs
 {
-    class WhileBox : Form
+    class DoWhileBox : Form
     {
-        public WhileBox()
+        public DoWhileBox()
         {
             InitializeComponent();
         }
@@ -82,20 +82,20 @@ namespace DrawShapes.Dialogs
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(126, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(249, 13);
+            this.label2.Size = new System.Drawing.Size(265, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "A While Loop evaluates a Boolean expression and,";
+            this.label2.Text = "A Do While Loop evaluates a Boolean expression and,";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(43, 29);
+            this.label1.Location = new System.Drawing.Point(37, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "While";
+            this.label1.Text = "Do While";
             // 
             // pictureBox1
             // 
@@ -106,6 +106,7 @@ namespace DrawShapes.Dialogs
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label4
             // 
@@ -154,7 +155,7 @@ namespace DrawShapes.Dialogs
             this.conditionLabel.TabIndex = 6;
             this.conditionLabel.Text = "Enter Conditional Expression :";
             // 
-            // WhileBox
+            // DoWhileBox
             // 
             this.AcceptButton = this.ok;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,7 +167,7 @@ namespace DrawShapes.Dialogs
             this.Controls.Add(this.ok);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.panel1);
-            this.Name = "WhileBox";
+            this.Name = "DoWhileBox";
             this.Text = "While Properities";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -189,5 +190,9 @@ namespace DrawShapes.Dialogs
         private System.Windows.Forms.TextBox conditionBox;
         private System.Windows.Forms.Label conditionLabel;
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

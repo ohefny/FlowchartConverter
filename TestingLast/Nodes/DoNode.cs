@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Crainiate.Diagramming;
+using DrawShapes.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -14,7 +15,8 @@ namespace TestingLast.Nodes
         HolderNode startNode;
         public override void onShapeClicked()
         {
-            throw new NotImplementedException();
+            DoWhileBox doWhileBox = new DoWhileBox();
+            doWhileBox.ShowDialog();
         }
         public DoNode() {
           //  startNode = new HolderNode(this);
