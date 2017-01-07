@@ -11,15 +11,16 @@ using System.Windows.Forms;
 
 namespace TestingLast.Nodes
 {
-    abstract class LoopNode :BaseNode
+    abstract class DecisionNode :BaseNode
     {
-        protected HolderNode trueNode;
-        protected HolderNode backNode;
+        private HolderNode trueNode;
+        private HolderNode backNode;
         protected ConnectorNode trueConnector;
         // ConnectorNode backConnector;
         readonly private string holderTag;
         readonly private string backConnectorTag;
         readonly private string trueConnectorTag;
+        
         public bool shifted = false;
         public override PointF NodeLocation
         {
@@ -38,14 +39,38 @@ namespace TestingLast.Nodes
             }
         }
 
+        public HolderNode TrueNode
+        {
+            get
+            {
+                return trueNode;
+            }
 
+            set
+            {
+                trueNode = value;
+            }
+        }
+
+        public HolderNode BackNode
+        {
+            get
+            {
+                return backNode;
+            }
+
+            set
+            {
+                backNode = value;
+            }
+        }
 
         public override void onShapeClicked()
         {
             WhileBox od = new WhileBox();
             DialogResult dr = od.ShowDialog();
         }
-        public LoopNode()
+        public DecisionNode()
         {
 
             Shape.StencilItem = Stencil[FlowchartStencilType.Preparation];
@@ -56,8 +81,8 @@ namespace TestingLast.Nodes
             holderTag = shapeTag + " holder";
             backConnectorTag = shapeTag + " backConnector";
             trueConnectorTag = shapeTag + " trueConnector";
-          
-                       
+            
+
             makeConnections();
 
         }
@@ -70,8 +95,8 @@ namespace TestingLast.Nodes
         {
             base.addToModel();
             Model.Lines.Add(trueConnectorTag, trueConnector.Connector);
-            trueNode.addToModel();
-            backNode.addToModel();
+            TrueNode.addToModel();
+            BackNode.addToModel();
             //  Model.Shapes.Add(holderTag,holderNode.Shape);
             //  Model.Lines.Add(backConnectorTag, backConnector.Connector);
         }
@@ -80,7 +105,7 @@ namespace TestingLast.Nodes
             if (addToEnd) //this means that the clicked link is between holder and loop
             {
                 //add this node to last node in true link
-                BaseNode lastNode = trueNode;
+                BaseNode lastNode = TrueNode;
                 while (!(lastNode.OutConnector.EndNode is HolderNode))
                 {
                     lastNode = lastNode.OutConnector.EndNode;
@@ -89,7 +114,7 @@ namespace TestingLast.Nodes
                 lastNode.attachNode(newNode);
             }
             else
-                trueNode.attachNode(newNode);
+                TrueNode.attachNode(newNode);
 
 
         }
@@ -109,7 +134,7 @@ namespace TestingLast.Nodes
         {
            
             clickedConnector.StartNode.attachNode(newNode);
-            if (OutConnector.EndNode.NodeLocation.Y < backNode.NodeLocation.Y)
+            if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y)
                 shiftMainTrack(); //this causes a problem when 
                               //backNode shifts dirctely after being attached to another while node
 

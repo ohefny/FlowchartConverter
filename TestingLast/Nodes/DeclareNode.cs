@@ -27,6 +27,7 @@ namespace TestingLast.Nodes
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#e3810c");
             Shape.GradientColor = Color.White;
             Shape.Label = new Crainiate.Diagramming.Label("Declare");
+            Statement = "int x";
 
         }
     }

@@ -44,11 +44,11 @@ namespace TestingLast.Nodes
             else
             {
                 NodeLocation = new PointF(NodeLocation.X, NodeLocation.Y + shiftY+ moreShift);
-                if (parentNode is LoopNode) {
+                if (parentNode is DecisionNode) {
 
                     if (parentNode.OutConnector.EndNode.NodeLocation.Y < NodeLocation.Y)
                         //{ 
-                        ((LoopNode)parentNode).shiftMainTrack();
+                        ((DecisionNode)parentNode).shiftMainTrack();
                     //    moreShift = 0;
                   //  }
                 //this shifts down main track even if it will be shifted

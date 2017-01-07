@@ -29,7 +29,7 @@ namespace TestingLast.Nodes
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#0040a0");
             Shape.GradientColor = Color.Black;
             Shape.Label = new Crainiate.Diagramming.Label("Input");
-            
+            Statement = "cin>>x";
             
         }
     }

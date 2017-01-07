@@ -11,16 +11,16 @@ using System.Windows.Forms;
 
 namespace TestingLast.Nodes
 {
-    class WhileNode : LoopNode
+    class WhileNode : DecisionNode
     {
         
         public WhileNode()
         {
 
             
-            Shape.Label = new Crainiate.Diagramming.Label("While");
-            //setText("true tur true tur true tur true tur");
-           
+            //Shape.Label = new Crainiate.Diagramming.Label("While");
+            setText("While");
+            Statement = "while(x!=0)";
 
         }
 
@@ -31,40 +31,41 @@ namespace TestingLast.Nodes
 
         protected override void makeConnections()
         {
-            trueNode = new HolderNode(this);
+            TrueNode = new HolderNode(this);
             trueConnector = new ConnectorNode(this);
             trueConnector.Connector.Opacity = 50;
             // trueConnector.Connector.Forward
             trueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("False");
-            backNode = new HolderNode(this);
-            backNode.OutConnector.EndNode = this;
-            backNode.OutConnector.Connector.Opacity = 50;
-            trueNode.OutConnector.EndNode = backNode;
+            BackNode = new HolderNode(this);
+            BackNode.OutConnector.EndNode = this;
+            BackNode.OutConnector.Connector.Opacity = 50;
+            TrueNode.OutConnector.EndNode = BackNode;
             trueConnector.Selectable = false;
-            backNode.OutConnector.Selectable = false;
-
+            BackNode.OutConnector.Selectable = false;
+            BackNode.Shape.Label = new Crainiate.Diagramming.Label("B");
+            
         }
 
         protected override void moveConnections()
         {
-            PointF point = new PointF(Shape.Width + Shape.Location.X + 100, Shape.Center.Y - trueNode.Shape.Size.Height / 2);
-            trueNode.NodeLocation = point;
+            PointF point = new PointF(Shape.Width + Shape.Location.X + 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (trueConnector.EndNode == null)
             {
-                trueConnector.EndNode = trueNode;
+                trueConnector.EndNode = TrueNode;
                 //this.OutConnector.EndNode.shiftDown();
-                trueNode.attachNode(backNode);
+                TrueNode.attachNode(BackNode);
                 return;
                 //      holderNode.attachNode(this, backConnector);
             }
-            if (trueNode.OutConnector.EndNode is HolderNode)
+            if (TrueNode.OutConnector.EndNode is HolderNode)
             {
-                backNode.NodeLocation = new PointF(point.X, point.Y + 100);
+                BackNode.NodeLocation = new PointF(point.X, point.Y + 100);
             }
             else
-                trueNode.OutConnector.EndNode.shiftDown(moreShift);
+                TrueNode.OutConnector.EndNode.shiftDown(moreShift);
             // trueNode.NodeLocation = point;
         }
     }

@@ -31,6 +31,7 @@
             Crainiate.Diagramming.Forms.Paging paging1 = new Crainiate.Diagramming.Forms.Paging();
             Crainiate.Diagramming.Forms.Margin margin1 = new Crainiate.Diagramming.Forms.Margin();
             this.diagram1 = new Crainiate.Diagramming.Forms.Diagram();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // diagram1
@@ -59,6 +60,16 @@
             this.diagram1.TabIndex = 0;
             this.diagram1.Zoom = 100F;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(601, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Generate";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -66,6 +77,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(851, 546);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.diagram1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -77,6 +89,7 @@
         #endregion
 
         private Crainiate.Diagramming.Forms.Diagram diagram1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

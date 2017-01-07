@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TestingLast.Nodes
 {
-    class IfNode : LoopNode
+    class IfNode : DecisionNode
     {
         protected HolderNode falseNode;
         protected HolderNode backfalseNode;
@@ -20,11 +20,28 @@ namespace TestingLast.Nodes
         {
             if (Shape.Selected)
             {
-                AssignmentDialog db = new AssignmentDialog();
-                IfBox od = new IfBox();
-                DialogResult dr = od.ShowDialog();
+                //AssignmentDialog db = new AssignmentDialog();
+                IfBox ifBox = new IfBox();
+                if (!String.IsNullOrEmpty(Statement)) {
+                    ifBox.setExpression(Statement.ToString()); 
+                    
+                }
+                DialogResult dr = ifBox.ShowDialog();
+                if (dr == DialogResult.OK) {
+                    Statement = ifBox.getExpression();
+                    setText(Statement);       
+                    //Shape.Label = new Crainiate.Diagramming.Label(Statement);
+                }
+                MessageBox.Show(surrondExpression(Statement));
                 Shape.Selected = false;
             }
+        }
+
+        private String surrondExpression(String str)
+        {
+            return "if ( " + str + ") { }";
+           
+            
         }
 
         protected override void makeConnections()
@@ -32,20 +49,20 @@ namespace TestingLast.Nodes
             middleNode = new HolderNode(this);
             middleNode.Shape.Label = new Crainiate.Diagramming.Label("Done");
             ///////////////////truepart
-            trueNode = new HolderNode(this);
-            trueNode.Shape.Label = new Crainiate.Diagramming.Label("Start IF");
+            TrueNode = new HolderNode(this);
+            TrueNode.Shape.Label = new Crainiate.Diagramming.Label("Start IF");
             trueConnector = new ConnectorNode(this);
             trueConnector.Connector.Opacity = 50;
             trueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
-            backNode = new HolderNode(this);
-            backNode.Shape.Label = new Crainiate.Diagramming.Label("End IF");
-            backNode.OutConnector.EndNode = this;
-            backNode.OutConnector.Connector.End.Shape = middleNode.Shape;
-            backNode.OutConnector.Connector.Opacity = 50;        
-            trueNode.OutConnector.EndNode = backNode;
+            BackNode = new HolderNode(this);
+            BackNode.Shape.Label = new Crainiate.Diagramming.Label("End IF");
+            BackNode.OutConnector.EndNode = this;
+            BackNode.OutConnector.Connector.End.Shape = middleNode.Shape;
+            BackNode.OutConnector.Connector.Opacity = 50;        
+            TrueNode.OutConnector.EndNode = BackNode;
             trueConnector.Selectable = false;
-            backNode.OutConnector.Selectable = false;
-            backNode.OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
+            BackNode.OutConnector.Selectable = false;
+            BackNode.OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
             /////////////////////////////false part
             falseNode = new HolderNode(this);
             falseNode.Shape.Label = new Crainiate.Diagramming.Label("Start Else");
@@ -70,25 +87,25 @@ namespace TestingLast.Nodes
             middleNode.shiftDown(moreShift);
             shiftMainTrack();
             /////////////// move true part
-            PointF point = new PointF(Shape.Width+Shape.Location.X + 100, Shape.Center.Y - trueNode.Shape.Size.Height / 2);
-            trueNode.NodeLocation = point;
+            PointF point = new PointF(Shape.Width+Shape.Location.X + 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            TrueNode.NodeLocation = point;
            
             if (trueConnector.EndNode == null)
             {
-                trueConnector.EndNode = trueNode;
+                trueConnector.EndNode = TrueNode;
                 //this.OutConnector.EndNode.shiftDown();
-                trueNode.attachNode(backNode);
+                TrueNode.attachNode(BackNode);
                
                 //      holderNode.attachNode(this, backConnector);
             }
-           else if (trueNode.OutConnector.EndNode is HolderNode)
+           else if (TrueNode.OutConnector.EndNode is HolderNode)
             {
-                backNode.NodeLocation = new PointF(point.X, point.Y + 100);
+                BackNode.NodeLocation = new PointF(point.X, point.Y + 100);
             }
             else
-                trueNode.OutConnector.EndNode.shiftDown(moreShift);
+                TrueNode.OutConnector.EndNode.shiftDown(moreShift);
             ///////////////////////////////False Part
-            PointF point2 = new PointF(Shape.Location.X - 100, Shape.Center.Y - trueNode.Shape.Size.Height / 2);
+            PointF point2 = new PointF(Shape.Location.X - 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             falseNode.NodeLocation = point2;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (falseConnector.EndNode == null)
@@ -117,7 +134,7 @@ namespace TestingLast.Nodes
         public override void attachNode(BaseNode newNode, ConnectorNode clickedConnector)
         {
             clickedConnector.StartNode.attachNode(newNode);
-            if (OutConnector.EndNode.NodeLocation.Y < backNode.NodeLocation.Y||
+            if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y||
                 OutConnector.EndNode.NodeLocation.Y < backfalseNode.NodeLocation.Y)
             {
                 
@@ -130,9 +147,9 @@ namespace TestingLast.Nodes
 
         private void balanceMiddleNode()
         {
-            if (middleNode.NodeLocation.Y < backNode.NodeLocation.Y)
+            if (middleNode.NodeLocation.Y < BackNode.NodeLocation.Y)
             {
-                middleNode.NodeLocation = new PointF(middleNode.NodeLocation.X, backNode.NodeLocation.Y);
+                middleNode.NodeLocation = new PointF(middleNode.NodeLocation.X, BackNode.NodeLocation.Y);
 
             }
             else if (middleNode.NodeLocation.Y < backfalseNode.NodeLocation.Y)
@@ -147,7 +164,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem = Stencil[FlowchartStencilType.Decision];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#c04040");
             Shape.GradientColor = Color.Black;
-            Shape.Label = new Crainiate.Diagramming.Label("IF");
+            setText("IF");
             Shape.Invalidate();
         }
         public override void addToModel()

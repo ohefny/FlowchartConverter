@@ -17,9 +17,11 @@ namespace TestingLast.Nodes
         public ForNode()
         {
             //base();
-            Shape.Label = new Crainiate.Diagramming.Label("For");
+            // Shape.Label = new Crainiate.Diagramming.Label("For");
+            setText("For");
             trueConnector.Connector.Label = new Crainiate.Diagramming.Label("Next");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
+            Statement=("for(int i=0;i<x;i++)");
         }
     }
 }

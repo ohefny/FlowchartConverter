@@ -19,12 +19,14 @@ namespace TestingLast.Nodes
             Shape.BackColor =Color.Magenta;
             Shape.StencilItem.GradientColor = Color.Black;
             if (termType == TerminalType.Start) {
-                Shape.Label = new Crainiate.Diagramming.Label("Start");
+                setText("Start");
+               // Shape.Label = new Crainiate.Diagramming.Label("Start");
                 NodeLocation = new PointF(300, 10);
                 
             }
             else {
-                Shape.Label = new Crainiate.Diagramming.Label("End");
+                setText("End");
+              //  Shape.Label = new Crainiate.Diagramming.Label("End");
             }
 
         }

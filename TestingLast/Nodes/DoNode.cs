@@ -10,7 +10,7 @@ using DrawShapes.Dialogs;
 
 namespace TestingLast.Nodes
 {
-    class DoNode : LoopNode
+    class DoNode : DecisionNode
     {
         HolderNode startNode;
         public override void onShapeClicked()
@@ -19,29 +19,29 @@ namespace TestingLast.Nodes
             doWhileBox.ShowDialog();
         }
         public DoNode() {
-          //  startNode = new HolderNode(this);
-            Shape.Label = new Crainiate.Diagramming.Label("Do");
-            
-            
-        }
-        protected override void makeConnections()
+            //  startNode = new HolderNode(this);
+            //Shape.Label = new Crainiate.Diagramming.Label("Do");
+            setText("Do While");
+            Statement = "do{ \n }while(x>5)";
+        }        protected override void makeConnections()
         {
             startNode = new HolderNode(this);
             trueConnector = new ConnectorNode(this);
             trueConnector.Connector.Opacity = 50;
-            trueNode = new HolderNode(this);
+            TrueNode = new HolderNode(this);
             trueConnector.EndNode = startNode;
-            startNode.OutConnector.EndNode = trueNode;
+            startNode.OutConnector.EndNode = TrueNode;
             trueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("False");
-            backNode = new HolderNode(this);
-            backNode.OutConnector.Connector.End.Shape = Shape;
-            trueNode.attachNode(backNode);
-            backNode.OutConnector.setEndNode(this);
-            backNode.OutConnector.Selectable = false;
+            BackNode = new HolderNode(this);
+            BackNode.OutConnector.Connector.End.Shape = Shape;
+            BackNode.Shape.Label = new Crainiate.Diagramming.Label("B");
+            TrueNode.attachNode(BackNode);
+            BackNode.OutConnector.setEndNode(this);
+            BackNode.OutConnector.Selectable = false;
             trueConnector.Selectable = false;
             startNode.OutConnector.Selectable = false;
-            backNode.OutConnector.Connector.Opacity = 50;
+            BackNode.OutConnector.Connector.Opacity = 50;
             startNode.OutConnector.Connector.Opacity = 50;
             trueConnector.Connector.Opacity = 50;   
         }
@@ -50,26 +50,26 @@ namespace TestingLast.Nodes
            
             
             Shape.Location = new PointF(nodeLocation.X, nodeLocation.Y + shiftY);
-            PointF point = new PointF(Shape.Width + Shape.Location.X + 100, startNode.Shape.Center.Y - trueNode.Shape.Size.Height / 2);
-            trueNode.NodeLocation = point;
+            PointF point = new PointF(Shape.Width + Shape.Location.X + 100, startNode.Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (trueConnector.EndNode == null)
             {
-                trueConnector.EndNode = trueNode;
+                trueConnector.EndNode = TrueNode;
                 //this.OutConnector.EndNode.shiftDown();
-                trueNode.attachNode(backNode);
+                TrueNode.attachNode(BackNode);
                 return;
                 //      holderNode.attachNode(this, backConnector);
             }
-            if (trueNode.OutConnector.EndNode is HolderNode)
+            if (TrueNode.OutConnector.EndNode is HolderNode)
             {
-                backNode.NodeLocation = new PointF(point.X, point.Y + 100);
+                BackNode.NodeLocation = new PointF(point.X, point.Y + 100);
                 shiftMainTrack();
             }
 
             else
             {
-                trueNode.OutConnector.EndNode.shiftDown(moreShift);
+                TrueNode.OutConnector.EndNode.shiftDown(moreShift);
                 
             }
         }
@@ -82,7 +82,7 @@ namespace TestingLast.Nodes
             Model.Shapes.Add(Shape);
            
             Model.Shapes.Add(startNode.Shape);
-           Model.Lines.Add(backNode.OutConnector.Connector);
+           Model.Lines.Add(BackNode.OutConnector.Connector);
             Model.Lines.Add(startNode.OutConnector.Connector);
             base.addToModel();
             
@@ -90,7 +90,7 @@ namespace TestingLast.Nodes
         }
         public override void shiftMainTrack()
         {
-            Shape.Location = new PointF(Shape.Location.X ,backNode.Shape.Center.Y- Shape.Size.Height / 2);
+            Shape.Location = new PointF(Shape.Location.X ,BackNode.Shape.Center.Y- Shape.Size.Height / 2);
             OutConnector.EndNode.shiftDown(moreShift);
         }
         public override void attachNode(BaseNode newNode, ConnectorNode clickedConnector) {
@@ -99,7 +99,7 @@ namespace TestingLast.Nodes
             {
                 base.attachNode(newNode, clickedConnector);
             }
-            else if (clickedConnector.StartNode == backNode)
+            else if (clickedConnector.StartNode == BackNode)
             {
                 attachToTrue(newNode, true);
             }

@@ -11,6 +11,9 @@ namespace DrawShapes.Dialogs
 {
     class DoWhileBox : Form
     {
+        public String getExpression() {
+            return conditionBox.Text.Trim();
+        }
         public DoWhileBox()
         {
             InitializeComponent();

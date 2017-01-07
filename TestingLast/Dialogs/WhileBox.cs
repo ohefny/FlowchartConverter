@@ -11,6 +11,10 @@ namespace DrawShapes.Dialogs
 {
     class WhileBox : Form
     {
+        public String getExpression()
+        {
+            return conditionBox.Text.Trim();
+        }
         public WhileBox()
         {
             InitializeComponent();

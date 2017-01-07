@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeGeneration\FlowChartCodeGenerator.cs" />
     <Compile Include="Dialogs\AssignmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,7 +90,7 @@
     <Compile Include="Nodes\HolderNode.cs" />
     <Compile Include="Nodes\IfNode.cs" />
     <Compile Include="Nodes\InputNode.cs" />
-    <Compile Include="Nodes\LoopNode.cs" />
+    <Compile Include="Nodes\DecisionNode.cs" />
     <Compile Include="Nodes\OutputNode.cs" />
     <Compile Include="Nodes\TerminalNode.cs" />
     <Compile Include="Nodes\WhileNode.cs" />

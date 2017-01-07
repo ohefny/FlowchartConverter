@@ -28,6 +28,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem.BackColor =System.Drawing.ColorTranslator.FromHtml("#00a040");
             Shape.StencilItem.GradientColor = Color.Black;
             Shape.Label = new Crainiate.Diagramming.Label("Output");
+            Statement = "cout<<x";
         }
     }
 }

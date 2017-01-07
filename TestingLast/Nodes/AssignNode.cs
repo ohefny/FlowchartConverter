@@ -28,7 +28,7 @@ namespace TestingLast.Nodes
             Shape.GradientColor = Color.Black;
             Shape.Label = new Crainiate.Diagramming.Label("Assing");
             Shape.Label.Color = Color.White;
-            
+            Statement = " x = 15 ";
         }
     }
 }

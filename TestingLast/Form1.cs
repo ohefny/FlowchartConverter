@@ -10,12 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.CodeGeneration;
 using TestingLast.Nodes;
 
 namespace TestingLast
 {
     public partial class Form1 : Form
     {
+        TerminalNode terminalS;
+        TerminalNode terminalE;
         public Form1()
         {
             InitializeComponent();
@@ -23,8 +26,8 @@ namespace TestingLast
             Model model = diagram1.Model;
            // this.Controls.Add(model);
            
-            TerminalNode terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
-            TerminalNode terminalE= new TerminalNode(TerminalNode.TerminalType.End);
+             terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
+             terminalE= new TerminalNode(TerminalNode.TerminalType.End);
             BaseNode.Model = model;
             terminalS.attachNode(terminalE);
             Connector connector = new Connector();
@@ -37,13 +40,12 @@ namespace TestingLast
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            foreach (BaseNode b in BaseNode.nodes) {
-                if(!(b is HolderNode))
-                    b.setText("sflsfaklf lkaslksfalkasf laflsafklf");
-            }
-           
+            String str = FlowChartCodeGenerator.getCppCode(terminalS, terminalE);
+            MessageBox.Show(str);
+
         }
     }
 }

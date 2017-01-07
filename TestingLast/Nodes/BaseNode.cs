@@ -12,11 +12,11 @@ using System.Windows.Forms;
 namespace TestingLast.Nodes
 {
 
-    abstract class BaseNode : Crainiate.Diagramming.OnShapeClickListener
+    public abstract class BaseNode : Crainiate.Diagramming.OnShapeClickListener
     {
         public static List<BaseNode> nodes = new List<BaseNode>();      
         static Model model;
-        ConnectorNode outConnector;
+        private ConnectorNode outConnector;
         Form dialog;
         String statement;
         Shape shape;
@@ -135,6 +135,7 @@ namespace TestingLast.Nodes
             Shape.Size = new SizeF(80, 50);
             Shape.KeepAspect = false;
             Stencil = (FlowchartStencil)Singleton.Instance.GetStencil(typeof(FlowchartStencil));
+            Shape.Label.Color = Color.White;
             OutConnector = new ConnectorNode(this);
             counter++;
             shapeTag = "Shape_" + counter.ToString();
@@ -151,7 +152,7 @@ namespace TestingLast.Nodes
             }
             // SizeF size =TextRenderer.MeasureText("Input SAFSAF ASFSAFS ASSAFFS ", Singleton.Instance.DefaultFont);
             Shape.Size = new SizeF(size.Width + 70, Shape.Size.Height);
-
+            Shape.Label.Color = Color.White;
         }
         virtual public void addToModel()
         {
@@ -198,7 +199,7 @@ namespace TestingLast.Nodes
             {
               
                 newNode.NodeLocation = oldOutNode.NodeLocation;
-                if (newNode is LoopNode)
+                if (newNode is DecisionNode)
                     oldOutNode.shiftDown(0);
                 else
                     oldOutNode.shiftDown(0);

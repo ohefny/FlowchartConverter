@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace TestingLast.Nodes
 {
-    class ConnectorNode : Crainiate.Diagramming.OnShapeClickListener
+    public class ConnectorNode : Crainiate.Diagramming.OnShapeClickListener
     {
         BaseNode startNode;
         BaseNode endNode;

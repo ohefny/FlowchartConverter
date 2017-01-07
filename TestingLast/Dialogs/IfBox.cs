@@ -11,7 +11,14 @@ namespace DrawShapes.Dialogs
 {
     class IfBox :Form
     {
-            public IfBox() {
+        public String getExpression()
+        {
+            return conditionBox.Text.Trim();
+        }
+        public void setExpression(string str) {
+            conditionBox.Text = str;
+        }
+        public IfBox() {
                 InitializeComponent();
             }
             /// <summary>
