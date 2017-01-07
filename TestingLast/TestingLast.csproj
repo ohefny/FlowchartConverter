@@ -53,6 +53,12 @@
     <Compile Include="Dialogs\DeclareBox.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dialogs\ForBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ForBox.designer.cs">
+      <DependentUpon>ForBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\IfBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TestForm\frmGroup.Designer.cs" />
+    <EmbeddedResource Include="Dialogs\ForBox.resx">
+      <DependentUpon>ForBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PickDialog.resx">
       <DependentUpon>PickDialog.cs</DependentUpon>
     </EmbeddedResource>

@@ -30,3 +30,4 @@ G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLas
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.csproj.GenerateResource.Cache
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.DoWhileBox.resources
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.WhileBox.resources
+G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.ForBox.resources

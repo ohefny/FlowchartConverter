@@ -191,6 +191,7 @@
             // 
             // okBtn
             // 
+            this.okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.okBtn.Location = new System.Drawing.Point(231, 258);
             this.okBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.okBtn.Name = "okBtn";
@@ -198,6 +199,7 @@
             this.okBtn.TabIndex = 11;
             this.okBtn.Text = "OK";
             this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // cancelBtn
             // 
@@ -209,6 +211,7 @@
             this.cancelBtn.TabIndex = 12;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // ForBox
             // 
@@ -233,6 +236,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ForBox";
             this.Text = "ForBox";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForBox_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
