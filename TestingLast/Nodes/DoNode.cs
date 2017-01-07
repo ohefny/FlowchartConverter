@@ -57,7 +57,7 @@ namespace TestingLast.Nodes
             //  startNode = new HolderNode(this);
             //Shape.Label = new Crainiate.Diagramming.Label("Do");
             setText("Do While");
-
+            Statement = "while(false);";
           
         }
     

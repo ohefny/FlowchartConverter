@@ -71,7 +71,7 @@ namespace TestingLast.Nodes
             setText("For");
             trueConnector.Connector.Label = new Crainiate.Diagramming.Label("Next");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
-            Statement=("for(int i=0;i<x;i++)");
+            Statement=("for(int i=0 ;i<0;i++)");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace TestingLast.Nodes
             
             //Shape.Label = new Crainiate.Diagramming.Label("While");
             setText("While");
-            Statement = "while(x!=0)";
+            Statement = "while(false)";
 
         }
 

@@ -202,7 +202,8 @@ namespace TestingLast.Nodes
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#c04040");
             Shape.GradientColor = Color.Black;
             setText("IF");
-            Shape.Invalidate();
+            Statement = "if(false)";
+           
         }
         public override void addToModel()
         {
