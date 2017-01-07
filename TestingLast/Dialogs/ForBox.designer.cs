@@ -38,13 +38,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.directionBox = new System.Windows.Forms.ComboBox();
+            this.varBox = new System.Windows.Forms.TextBox();
+            this.startValBox = new System.Windows.Forms.TextBox();
+            this.endValBox = new System.Windows.Forms.TextBox();
+            this.stepByBox = new System.Windows.Forms.TextBox();
+            this.okBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -145,82 +145,85 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "Step By :";
             // 
-            // comboBox1
+            // directionBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.directionBox.FormattingEnabled = true;
+            this.directionBox.Items.AddRange(new object[] {
             "Increasing",
             "Decreasing"});
-            this.comboBox1.Location = new System.Drawing.Point(14, 225);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(159, 21);
-            this.comboBox1.TabIndex = 6;
+            this.directionBox.Location = new System.Drawing.Point(14, 225);
+            this.directionBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.directionBox.Name = "directionBox";
+            this.directionBox.Size = new System.Drawing.Size(159, 21);
+            this.directionBox.TabIndex = 6;
             // 
-            // textBox1
+            // varBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(14, 114);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 7;
+            this.varBox.Location = new System.Drawing.Point(14, 114);
+            this.varBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.varBox.Name = "varBox";
+            this.varBox.Size = new System.Drawing.Size(159, 20);
+            this.varBox.TabIndex = 7;
             // 
-            // textBox2
+            // startValBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(14, 171);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 20);
-            this.textBox2.TabIndex = 8;
+            this.startValBox.Location = new System.Drawing.Point(14, 171);
+            this.startValBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.startValBox.Name = "startValBox";
+            this.startValBox.Size = new System.Drawing.Size(159, 20);
+            this.startValBox.TabIndex = 8;
             // 
-            // textBox3
+            // endValBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(231, 171);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(168, 20);
-            this.textBox3.TabIndex = 9;
+            this.endValBox.Location = new System.Drawing.Point(231, 171);
+            this.endValBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.endValBox.Name = "endValBox";
+            this.endValBox.Size = new System.Drawing.Size(168, 20);
+            this.endValBox.TabIndex = 9;
             // 
-            // textBox4
+            // stepByBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(231, 225);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(168, 20);
-            this.textBox4.TabIndex = 10;
+            this.stepByBox.Location = new System.Drawing.Point(231, 225);
+            this.stepByBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.stepByBox.Name = "stepByBox";
+            this.stepByBox.Size = new System.Drawing.Size(168, 20);
+            this.stepByBox.TabIndex = 10;
             // 
-            // button1
+            // okBtn
             // 
-            this.button1.Location = new System.Drawing.Point(231, 258);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 29);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.okBtn.Location = new System.Drawing.Point(231, 258);
+            this.okBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(64, 29);
+            this.okBtn.TabIndex = 11;
+            this.okBtn.Text = "OK";
+            this.okBtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // cancelBtn
             // 
-            this.button2.Location = new System.Drawing.Point(333, 258);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(64, 29);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelBtn.Location = new System.Drawing.Point(333, 258);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(64, 29);
+            this.cancelBtn.TabIndex = 12;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
             // 
             // ForBox
             // 
+            this.AcceptButton = this.okBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancelBtn;
             this.ClientSize = new System.Drawing.Size(438, 297);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.okBtn);
+            this.Controls.Add(this.stepByBox);
+            this.Controls.Add(this.endValBox);
+            this.Controls.Add(this.startValBox);
+            this.Controls.Add(this.varBox);
+            this.Controls.Add(this.directionBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -250,12 +253,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox directionBox;
+        private System.Windows.Forms.TextBox varBox;
+        private System.Windows.Forms.TextBox startValBox;
+        private System.Windows.Forms.TextBox endValBox;
+        private System.Windows.Forms.TextBox stepByBox;
+        private System.Windows.Forms.Button okBtn;
+        private System.Windows.Forms.Button cancelBtn;
     }
 }
