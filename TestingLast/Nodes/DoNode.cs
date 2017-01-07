@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Crainiate.Diagramming;
 using DrawShapes.Dialogs;
+using System.Windows.Forms;
 
 namespace TestingLast.Nodes
 {
@@ -15,15 +16,52 @@ namespace TestingLast.Nodes
         HolderNode startNode;
         public override void onShapeClicked()
         {
-            DoWhileBox doWhileBox = new DoWhileBox();
-            doWhileBox.ShowDialog();
+            if (Shape.Selected)
+            {
+                //AssignmentDialog db = new AssignmentDialog();
+                DoWhileBox doWhileBox = new DoWhileBox();
+
+                doWhileBox.setExpression(extractExpression(Statement));
+                DialogResult dr = doWhileBox.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    Statement = doWhileBox.getExpression();
+                    Statement = surrondExpression(Statement);
+                    //setText(Statement);       
+                    //Shape.Label = new Crainiate.Diagramming.Label(Statement);
+                }
+                //MessageBox.Show();
+                Shape.Selected = false;
+            }
+        
+        
+            
         }
+
+        private string surrondExpression(string str)
+        {
+            return "while ( " + str + " );";
+        }
+
+        private string extractExpression(string str)
+        {
+            if (String.IsNullOrEmpty(str))
+                return str;
+            
+            string res = str.Remove(0, 8);
+            res = res.Remove(res.Count() - 2);
+            return res;
+        }
+
         public DoNode() {
             //  startNode = new HolderNode(this);
             //Shape.Label = new Crainiate.Diagramming.Label("Do");
             setText("Do While");
-            Statement = "do{ \n }while(x>5)";
-        }        protected override void makeConnections()
+
+          
+        }
+    
+        protected override void makeConnections()
         {
             startNode = new HolderNode(this);
             trueConnector = new ConnectorNode(this);
@@ -109,5 +147,8 @@ namespace TestingLast.Nodes
                 clickedConnector.StartNode.attachNode(newNode);
             shiftMainTrack();
         }
+      
+            
     }
+
 }

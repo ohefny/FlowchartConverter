@@ -23,6 +23,12 @@ namespace DrawShapes.Dialogs
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        public void setExpression(string str)
+        {
+            if(!String.IsNullOrEmpty(str))
+                conditionBox.Text = str;
+        }
+      
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>

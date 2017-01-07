@@ -16,6 +16,8 @@ namespace DrawShapes.Dialogs
             return conditionBox.Text.Trim();
         }
         public void setExpression(string str) {
+            if (String.IsNullOrEmpty(str))
+                return;
             conditionBox.Text = str;
         }
         public IfBox() {

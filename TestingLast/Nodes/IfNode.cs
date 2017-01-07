@@ -12,10 +12,37 @@ namespace TestingLast.Nodes
 {
     class IfNode : DecisionNode
     {
-        protected HolderNode falseNode;
-        protected HolderNode backfalseNode;
+        private HolderNode falseNode;
+        private HolderNode backfalseNode;
         protected HolderNode middleNode;
         protected ConnectorNode falseConnector;
+
+        public HolderNode FalseNode
+        {
+            get
+            {
+                return falseNode;
+            }
+
+            set
+            {
+                falseNode = value;
+            }
+        }
+
+        public HolderNode BackfalseNode
+        {
+            get
+            {
+                return backfalseNode;
+            }
+
+            set
+            {
+                backfalseNode = value;
+            }
+        }
+
         public override void onShapeClicked()
         {
             if (Shape.Selected)
@@ -23,27 +50,37 @@ namespace TestingLast.Nodes
                 //AssignmentDialog db = new AssignmentDialog();
                 IfBox ifBox = new IfBox();
                 if (!String.IsNullOrEmpty(Statement)) {
-                    ifBox.setExpression(Statement.ToString()); 
+                   ifBox.setExpression(extractExpression(Statement)); 
                     
                 }
                 DialogResult dr = ifBox.ShowDialog();
                 if (dr == DialogResult.OK) {
                     Statement = ifBox.getExpression();
-                    setText(Statement);       
+                    Statement = surrondExpression(Statement);
+                    //setText(Statement);       
                     //Shape.Label = new Crainiate.Diagramming.Label(Statement);
                 }
-                MessageBox.Show(surrondExpression(Statement));
+                //MessageBox.Show();
                 Shape.Selected = false;
             }
         }
 
         private String surrondExpression(String str)
         {
-            return "if ( " + str + ") { }";
+            return "if ( " + str + " )";
            
             
         }
-
+        private String extractExpression(String str) {
+            if (String.IsNullOrEmpty(str))
+                return str;
+            String res=str.Remove(0,5);
+            res = res.Remove(res.Count() - 1);
+            return res;
+        }
+        public bool isEmptyElse() {
+            return FalseNode.OutConnector.EndNode == BackfalseNode;
+        }
         protected override void makeConnections()
         {
             middleNode = new HolderNode(this);
@@ -64,20 +101,20 @@ namespace TestingLast.Nodes
             BackNode.OutConnector.Selectable = false;
             BackNode.OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
             /////////////////////////////false part
-            falseNode = new HolderNode(this);
-            falseNode.Shape.Label = new Crainiate.Diagramming.Label("Start Else");
+            FalseNode = new HolderNode(this);
+            FalseNode.Shape.Label = new Crainiate.Diagramming.Label("Start Else");
             falseConnector = new ConnectorNode(this);
             falseConnector.Connector.Opacity = 50;
             falseConnector.Connector.Label = new Crainiate.Diagramming.Label("False");
-            backfalseNode = new HolderNode(this);
-            backfalseNode.Shape.Label = new Crainiate.Diagramming.Label("End Else");
-            backfalseNode.OutConnector.EndNode = this;
-            backfalseNode.OutConnector.Connector.End.Shape = middleNode.Shape;
-            backfalseNode.OutConnector.Connector.Opacity = 50;
-            falseNode.OutConnector.EndNode = backfalseNode;
+            BackfalseNode = new HolderNode(this);
+            BackfalseNode.Shape.Label = new Crainiate.Diagramming.Label("End Else");
+            BackfalseNode.OutConnector.EndNode = this;
+            BackfalseNode.OutConnector.Connector.End.Shape = middleNode.Shape;
+            BackfalseNode.OutConnector.Connector.Opacity = 50;
+            FalseNode.OutConnector.EndNode = BackfalseNode;
             falseConnector.Selectable = false;
-            backfalseNode.OutConnector.Selectable = false;
-            backfalseNode.OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
+            BackfalseNode.OutConnector.Selectable = false;
+            BackfalseNode.OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
         }
 
         protected override void moveConnections()
@@ -106,22 +143,22 @@ namespace TestingLast.Nodes
                 TrueNode.OutConnector.EndNode.shiftDown(moreShift);
             ///////////////////////////////False Part
             PointF point2 = new PointF(Shape.Location.X - 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
-            falseNode.NodeLocation = point2;
+            FalseNode.NodeLocation = point2;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (falseConnector.EndNode == null)
             {
-                falseConnector.EndNode = falseNode;
+                falseConnector.EndNode = FalseNode;
                 //this.OutConnector.EndNode.shiftDown();
-                falseNode.attachNode(backfalseNode);
+                FalseNode.attachNode(BackfalseNode);
                
                 //      holderNode.attachNode(this, backConnector);
             }
-           else if (falseNode.OutConnector.EndNode is HolderNode)
+           else if (FalseNode.OutConnector.EndNode is HolderNode)
             {
-                backfalseNode.NodeLocation = new PointF(point2.X, point2.Y + 100);
+                BackfalseNode.NodeLocation = new PointF(point2.X, point2.Y + 100);
             }
             else
-                falseNode.OutConnector.EndNode.shiftDown(moreShift);
+                FalseNode.OutConnector.EndNode.shiftDown(moreShift);
 
             
         }
@@ -135,7 +172,7 @@ namespace TestingLast.Nodes
         {
             clickedConnector.StartNode.attachNode(newNode);
             if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y||
-                OutConnector.EndNode.NodeLocation.Y < backfalseNode.NodeLocation.Y)
+                OutConnector.EndNode.NodeLocation.Y < BackfalseNode.NodeLocation.Y)
             {
                 
                 shiftMainTrack();
@@ -152,9 +189,9 @@ namespace TestingLast.Nodes
                 middleNode.NodeLocation = new PointF(middleNode.NodeLocation.X, BackNode.NodeLocation.Y);
 
             }
-            else if (middleNode.NodeLocation.Y < backfalseNode.NodeLocation.Y)
+            else if (middleNode.NodeLocation.Y < BackfalseNode.NodeLocation.Y)
             {
-                middleNode.NodeLocation = new PointF(middleNode.NodeLocation.X, backfalseNode.NodeLocation.Y);
+                middleNode.NodeLocation = new PointF(middleNode.NodeLocation.X, BackfalseNode.NodeLocation.Y);
             }
         }
 
@@ -170,8 +207,8 @@ namespace TestingLast.Nodes
         public override void addToModel()
         {
             base.addToModel();
-            falseNode.addToModel();
-            backfalseNode.addToModel();
+            FalseNode.addToModel();
+            BackfalseNode.addToModel();
             middleNode.addToModel();
             Model.Lines.Add(falseConnector.Connector);
         }

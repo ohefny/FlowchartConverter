@@ -20,15 +20,30 @@ namespace TestingLast.CodeGeneration
         private static string getBlockCode(BaseNode startBlockNode, BaseNode endBlockNode)
         {
             BaseNode node = startBlockNode;
-            StringBuilder sb = new StringBuilder("{ \n");
+            StringBuilder sb = new StringBuilder(" { \n");
             while (node != endBlockNode) {
                 if (node is HolderNode || node is TerminalNode);
                 else if (node is DecisionNode) {
                     if (node is IfNode)
                     {
-                        sb.Append("if(x>2){ \n }");
+                        IfNode ifNode = (IfNode)node;
+                        sb.Append(ifNode.Statement);
+                        sb.Append(getBlockCode(ifNode.TrueNode,ifNode.BackNode));
+                        if (!ifNode.isEmptyElse()) {
+                           // sb.Append("\n");
+                            sb.Append("else");
+                            sb.Append(getBlockCode(ifNode.FalseNode, ifNode.BackfalseNode));
+                        }
                     }
-                    else {
+                    else if (node is DoNode) {
+                        DecisionNode loopNode = (DecisionNode)node;
+                        sb.Append("Do");
+                        sb.Append(getBlockCode(loopNode.TrueNode, loopNode.BackNode));
+                        sb.Append(node.Statement);
+                        sb.Append(Environment.NewLine);
+                    }
+                    else
+                    {
                         DecisionNode loopNode = (DecisionNode)node;
                         sb.Append(loopNode.Statement);
                         sb.Append(getBlockCode(loopNode.TrueNode, loopNode.BackNode));
@@ -39,9 +54,11 @@ namespace TestingLast.CodeGeneration
                     sb.Append(node.Statement);
                     sb.Append(Environment.NewLine);
                 }
+                
                 node = node.OutConnector.EndNode;
             }
-            sb.Append("}");
+            sb.Append("}\n");
+           
             return sb.ToString();
                 
             

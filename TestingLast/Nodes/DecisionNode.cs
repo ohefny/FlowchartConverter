@@ -65,11 +65,7 @@ namespace TestingLast.Nodes
             }
         }
 
-        public override void onShapeClicked()
-        {
-            WhileBox od = new WhileBox();
-            DialogResult dr = od.ShowDialog();
-        }
+       
         public DecisionNode()
         {
 

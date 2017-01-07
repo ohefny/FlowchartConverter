@@ -180,6 +180,12 @@ namespace DrawShapes.Dialogs
 
         }
 
+        public void setExpression(string str)
+        {
+            if (!String.IsNullOrEmpty(str))
+                conditionBox.Text = str;
+        }
+
         #endregion
 
         private System.Windows.Forms.Panel panel1;

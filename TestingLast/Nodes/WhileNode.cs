@@ -68,6 +68,42 @@ namespace TestingLast.Nodes
                 TrueNode.OutConnector.EndNode.shiftDown(moreShift);
             // trueNode.NodeLocation = point;
         }
+        public override void onShapeClicked()
+        {
+           
+           // DialogResult dr = whileBox.ShowDialog();
+            if (Shape.Selected)
+            {
+                //AssignmentDialog db = new AssignmentDialog();
+                WhileBox whileBox = new WhileBox();
+
+                whileBox.setExpression(extractExpression(Statement));
+
+                
+                DialogResult dr = whileBox.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    Statement = whileBox.getExpression();
+                    Statement = surrondExpression(Statement);
+                    //setText(Statement);       
+                    //Shape.Label = new Crainiate.Diagramming.Label(Statement);
+                }
+                //MessageBox.Show();
+                Shape.Selected = false;
+            }
+        }
+
+        private string surrondExpression(string str)
+        {
+            return "while ( " + str + " )";
+        }
+        private string extractExpression(string str) {
+            if (String.IsNullOrEmpty(str))
+                return str;
+            string res = str.Remove(0,8);
+            res = res.Remove(res.Count() - 1);
+            return res;
+        }
     }
 }
 
