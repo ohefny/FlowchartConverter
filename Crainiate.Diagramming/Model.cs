@@ -190,7 +190,8 @@ namespace Crainiate.Diagramming
             _selectedLines = null;
         }
 
-        protected internal virtual void SetShapes(Shapes shapes)
+        //protected internal virtual void SetShapes(Shapes shapes)
+        public virtual void SetShapes(Shapes shapes)
         {
             _shapes = shapes;
 

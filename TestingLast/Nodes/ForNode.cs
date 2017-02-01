@@ -16,7 +16,16 @@ namespace TestingLast.Nodes
         ForBox.Direction direction;
         public override void onShapeClicked()
         {
-            if (Shape.Selected)
+            if (Shape.Selected && Form1.deleteChoosed)
+            {
+                while (!(TrueNode.OutConnector.EndNode is HolderNode))
+                {
+                    TrueNode.OutConnector.EndNode.removeFromModel();
+                }
+                removeFromModel();
+                Form1.deleteChoosed = false;
+            }
+            else if(Shape.Selected)
             {
                 ForBox forBox = new ForBox();
                 if (forBox.ShowDialog() == DialogResult.OK)
@@ -24,9 +33,13 @@ namespace TestingLast.Nodes
 
                     setExpVariables(forBox);
                     Statement = surrondExpression(generateEx());
-                    MessageBox.Show(Statement);
+
+                    setText(Statement);
+                    
+                    //MessageBox.Show(Statement);
                 }
             }
+            Shape.Selected = false;
         }
 
         private string generateEx()

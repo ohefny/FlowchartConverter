@@ -15,13 +15,37 @@ namespace TestingLast.Nodes
     {
         public override void onShapeClicked()
         {
-            if (Shape.Selected)
+            if (Shape.Selected && Form1.deleteChoosed)
             {
+                removeFromModel();
+                Form1.deleteChoosed = false;
+
+            }
+            else if(Shape.Selected)
+            {
+
                 InputBox db = new InputBox();
                 DialogResult dr = db.ShowDialog();
-            
-                Shape.Selected = false;
+                
+                if (dr == DialogResult.OK)
+                {
+
+                    Statement = db.getExpression();
+                    setText("Read "+Statement);
+                    Statement = surrondExpression(Statement);
+
+                    
+                    
+                }
+                
             }
+            Shape.Selected = false;
+        }
+        private String surrondExpression(String str)
+        {
+            return "cin>> " + str + " ;";
+
+
         }
         public InputNode()
         {
@@ -29,7 +53,7 @@ namespace TestingLast.Nodes
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#0040a0");
             Shape.GradientColor = Color.Black;
             Shape.Label = new Crainiate.Diagramming.Label("Input");
-            Statement = "cin>>x";
+
             
         }
     }

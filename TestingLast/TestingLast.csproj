@@ -94,6 +94,7 @@
     <Compile Include="Nodes\DoNode.cs" />
     <Compile Include="Nodes\ForNode.cs" />
     <Compile Include="Nodes\HolderNode.cs" />
+    <Compile Include="Nodes\IfElseNode.cs" />
     <Compile Include="Nodes\IfNode.cs" />
     <Compile Include="Nodes\InputNode.cs" />
     <Compile Include="Nodes\DecisionNode.cs" />
@@ -107,8 +108,20 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TestForm\frmGroup.Designer.cs" />
+    <EmbeddedResource Include="Dialogs\AssignmentDialog.resx">
+      <DependentUpon>AssignmentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DeclareBox.resx">
+      <DependentUpon>DeclareBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ForBox.resx">
       <DependentUpon>ForBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\OutputBox.resx">
+      <DependentUpon>OutputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PickDialog.resx">
       <DependentUpon>PickDialog.cs</DependentUpon>

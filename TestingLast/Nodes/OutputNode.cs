@@ -14,13 +14,32 @@ namespace TestingLast.Nodes
     {
         public override void onShapeClicked()
         {
-            if (Shape.Selected)
+            if (Shape.Selected && Form1.deleteChoosed)
             {
-                AssignmentDialog db = new AssignmentDialog();
+                removeFromModel();
+                Form1.deleteChoosed = false;
+
+            }
+            else if(Shape.Selected)
+            {
                 OutputBox od = new OutputBox();
                 DialogResult dr = od.ShowDialog();
+
+                if (dr == DialogResult.OK)
+                {
+                    Statement = od.getExpression();
+                    setText("Print " + Statement);
+                    Statement = surrondExpression(Statement);
+                }
                 Shape.Selected = false;
             }
+            Shape.Selected = false;
+        }
+        private String surrondExpression(String str)
+        {
+            return "cout<< " + str + " ;";
+
+
         }
         public OutputNode()
         {
@@ -28,7 +47,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem.BackColor =System.Drawing.ColorTranslator.FromHtml("#00a040");
             Shape.StencilItem.GradientColor = Color.Black;
             Shape.Label = new Crainiate.Diagramming.Label("Output");
-            Statement = "cout<<x";
+
         }
     }
 }

@@ -26,6 +26,7 @@ namespace TestingLast.Nodes
 
         public override void shiftMainTrack()
         {
+            
             OutConnector.EndNode.shiftDown(moreShift);
         }
 
@@ -65,14 +66,30 @@ namespace TestingLast.Nodes
                 BackNode.NodeLocation = new PointF(point.X, point.Y + 100);
             }
             else
-                TrueNode.OutConnector.EndNode.shiftDown(moreShift);
+            {
+                if(moveDirection==MOVE_DOWN)
+                    TrueNode.OutConnector.EndNode.shiftDown(moreShift);
+                else
+                {
+                    TrueNode.OutConnector.EndNode.shiftUp();
+                 //   OutConnector.EndNode.shiftUp(); //shift main track
+                }
+            }
             // trueNode.NodeLocation = point;
         }
         public override void onShapeClicked()
         {
-           
-           // DialogResult dr = whileBox.ShowDialog();
-            if (Shape.Selected)
+            if (Shape.Selected && Form1.deleteChoosed)
+            {
+                while (!(TrueNode.OutConnector.EndNode is HolderNode)) {
+                    TrueNode.OutConnector.EndNode.removeFromModel();
+                }
+                removeFromModel();
+                Form1.deleteChoosed = false;
+            }
+
+            // DialogResult dr = whileBox.ShowDialog();
+            else if (Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
                 WhileBox whileBox = new WhileBox();
@@ -84,13 +101,15 @@ namespace TestingLast.Nodes
                 if (dr == DialogResult.OK)
                 {
                     Statement = whileBox.getExpression();
+                    setText(Statement);
                     Statement = surrondExpression(Statement);
                     //setText(Statement);       
                     //Shape.Label = new Crainiate.Diagramming.Label(Statement);
                 }
                 //MessageBox.Show();
-                Shape.Selected = false;
+                
             }
+            Shape.Selected = false;
         }
 
         private string surrondExpression(string str)

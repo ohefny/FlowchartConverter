@@ -148,6 +148,8 @@ namespace TestingLast.Nodes
                 toAttachNode = new InputNode();
             else if (selectedShape == 7)// "outputImg"
                 toAttachNode = new OutputNode();
+            else if (selectedShape == 8)
+                toAttachNode = new IfElseNode();
             return toAttachNode;
         }
     }

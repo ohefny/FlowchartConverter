@@ -28,7 +28,7 @@ namespace DrawShapes.Dialogs
             if (prePB == null)
                 prePB = pb;
             prePB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            if (pb.Name == "declareImg") 
+            if (pb.Name == "declareImg")
                 selectedShape = 0;
             else if (pb.Name == "assignImg")
                 selectedShape = 1;
@@ -44,6 +44,8 @@ namespace DrawShapes.Dialogs
                 selectedShape = 6;
             else if (pb.Name == "outputImg")
                 selectedShape = 7;
+            else if (pb.Name == "pictureBox1")
+                selectedShape = 8;
             else
                 selectedShape = -1;
             pb.BackColor = Color.Black;

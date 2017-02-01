@@ -5,18 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Crainiate.Diagramming;
+using Crainiate.Diagramming.Flowcharting;
+using System.Drawing;
 
 namespace DrawShapes.Dialogs
 {
      class DeclareBox : Form
     {
+        private string _declareVariable;
+        private string _declareDataType;
+        private string _declareVariableType;
+        private string _declareArraySize;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         public DeclareBox() {
             InitializeComponent();
+            InitializeDialog();
         }
         /// <summary>
         /// Clean up any resources being used.
@@ -39,216 +47,209 @@ namespace DrawShapes.Dialogs
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cancel = new System.Windows.Forms.Button();
-            this.ok = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.remove = new System.Windows.Forms.Button();
-            this.variableLabel = new System.Windows.Forms.Label();
-            this.variableTB = new System.Windows.Forms.TextBox();
-            this.typeLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.arraySizeLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.arraybox = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            Crainiate.Diagramming.Forms.Paging paging2 = new Crainiate.Diagramming.Forms.Paging();
+            Crainiate.Diagramming.Forms.Margin margin2 = new Crainiate.Diagramming.Forms.Margin();
+            this.ok_button = new System.Windows.Forms.Button();
+            this.cancel_button = new System.Windows.Forms.Button();
+            this.diagram1 = new Crainiate.Diagramming.Forms.Diagram();
+            this.description_label = new System.Windows.Forms.Label();
+            this.name_text = new System.Windows.Forms.TextBox();
+            this.name_label = new System.Windows.Forms.Label();
+            this.data_label = new System.Windows.Forms.Label();
+            this.type_label = new System.Windows.Forms.Label();
+            this.data_box = new System.Windows.Forms.ComboBox();
+            this.type_box = new System.Windows.Forms.ComboBox();
+            this.size_label = new System.Windows.Forms.Label();
+            this.size_text = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // panel1
+            // ok_button
             // 
-            this.panel1.BackColor = System.Drawing.Color.DimGray;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(573, 72);
-            this.panel1.TabIndex = 0;
+            this.ok_button.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.ok_button.Location = new System.Drawing.Point(126, 304);
+            this.ok_button.Name = "ok_button";
+            this.ok_button.Size = new System.Drawing.Size(109, 37);
+            this.ok_button.TabIndex = 1;
+            this.ok_button.Text = "Ok";
+            this.ok_button.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // cancel_button
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(126, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(260, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "These are used to store data while the program runs";
+            this.cancel_button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancel_button.Location = new System.Drawing.Point(241, 304);
+            this.cancel_button.Name = "cancel_button";
+            this.cancel_button.Size = new System.Drawing.Size(109, 37);
+            this.cancel_button.TabIndex = 2;
+            this.cancel_button.Text = "Cancel";
+            this.cancel_button.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // diagram1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(126, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(286, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "A Declare Statement is used to create variables , an array";
+            this.diagram1.AllowDrop = true;
+            this.diagram1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.diagram1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.diagram1.DragElement = null;
+            this.diagram1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.diagram1.GridSize = new System.Drawing.Size(15, 15);
+            this.diagram1.GridStyle = Crainiate.Diagramming.GridStyle.Pixel;
+            this.diagram1.Location = new System.Drawing.Point(0, 0);
+            this.diagram1.Name = "diagram1";
+            paging2.Enabled = true;
+            margin2.Bottom = 0F;
+            margin2.Left = 0F;
+            margin2.Right = 0F;
+            margin2.Top = 0F;
+            paging2.Margin = margin2;
+            paging2.Padding = new System.Drawing.SizeF(40F, 40F);
+            paging2.Page = 1;
+            paging2.PageSize = new System.Drawing.SizeF(793.7008F, 1122.52F);
+            paging2.WorkspaceColor = System.Drawing.SystemColors.AppWorkspace;
+            this.diagram1.Paging = paging2;
+            this.diagram1.Size = new System.Drawing.Size(512, 291);
+            this.diagram1.TabIndex = 1;
+            this.diagram1.Zoom = 100F;
             // 
-            // label1
+            // description_label
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(38, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Declare";
+            this.description_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.description_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.description_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.description_label.Location = new System.Drawing.Point(125, 28);
+            this.description_label.Name = "description_label";
+            this.description_label.Padding = new System.Windows.Forms.Padding(2);
+            this.description_label.Size = new System.Drawing.Size(377, 53);
+            this.description_label.TabIndex = 3;
+            this.description_label.Text = "A declare statement is used to create single variables and arrays. These variable" +
+    " are used to store data.";
             // 
-            // pictureBox1
+            // name_text
             // 
-            this.pictureBox1.BackgroundImage = Resources.assign;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.name_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.name_text.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name_text.Location = new System.Drawing.Point(15, 160);
+            this.name_text.Name = "name_text";
+            this.name_text.Size = new System.Drawing.Size(487, 28);
+            this.name_text.TabIndex = 4;
+            this.name_text.TextChanged += new System.EventHandler(this.name_text_TextChanged);
             // 
-            // cancel
+            // name_label
             // 
-            this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel.Location = new System.Drawing.Point(350, 250);
-            this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(89, 32);
-            this.cancel.TabIndex = 2;
-            this.cancel.Text = "Cancel";
-            this.cancel.UseVisualStyleBackColor = true;
+            this.name_label.AutoSize = true;
+            this.name_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.name_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.name_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.name_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name_label.Location = new System.Drawing.Point(15, 130);
+            this.name_label.Name = "name_label";
+            this.name_label.Size = new System.Drawing.Size(207, 19);
+            this.name_label.TabIndex = 5;
+            this.name_label.Text = "Enter a variable name below:";
             // 
-            // ok
+            // data_label
             // 
-            this.ok.Location = new System.Drawing.Point(252, 250);
-            this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok.Name = "ok";
-            this.ok.Size = new System.Drawing.Size(89, 32);
-            this.ok.TabIndex = 3;
-            this.ok.Text = "OK";
-            this.ok.UseVisualStyleBackColor = true;
+            this.data_label.AutoSize = true;
+            this.data_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.data_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.data_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.data_label.Location = new System.Drawing.Point(15, 220);
+            this.data_label.Name = "data_label";
+            this.data_label.Size = new System.Drawing.Size(82, 19);
+            this.data_label.TabIndex = 6;
+            this.data_label.Text = "Data Type:";
             // 
-            // listBox1
+            // type_label
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(2, 80);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(339, 95);
-            this.listBox1.TabIndex = 4;
+            this.type_label.AutoSize = true;
+            this.type_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.type_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.type_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.type_label.Location = new System.Drawing.Point(175, 220);
+            this.type_label.Name = "type_label";
+            this.type_label.Size = new System.Drawing.Size(107, 19);
+            this.type_label.TabIndex = 7;
+            this.type_label.Text = "Variable Type:";
             // 
-            // remove
+            // data_box
             // 
-            this.remove.Location = new System.Drawing.Point(369, 151);
-            this.remove.Name = "remove";
-            this.remove.Size = new System.Drawing.Size(70, 24);
-            this.remove.TabIndex = 5;
-            this.remove.Text = "Remove";
-            this.remove.UseVisualStyleBackColor = true;
+            this.data_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.data_box.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.data_box.FormattingEnabled = true;
+            this.data_box.Items.AddRange(new object[] {
+            "Integer",
+            "Float",
+            "String",
+            "Bool"});
+            this.data_box.Location = new System.Drawing.Point(15, 250);
+            this.data_box.Name = "data_box";
+            this.data_box.Size = new System.Drawing.Size(82, 24);
+            this.data_box.TabIndex = 8;
+            this.data_box.SelectedIndexChanged += new System.EventHandler(this.data_box_SelectedIndexChanged);
             // 
-            // variableLabel
+            // type_box
             // 
-            this.variableLabel.AutoSize = true;
-            this.variableLabel.BackColor = System.Drawing.Color.Transparent;
-            this.variableLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.variableLabel.Location = new System.Drawing.Point(9, 188);
-            this.variableLabel.Name = "variableLabel";
-            this.variableLabel.Size = new System.Drawing.Size(52, 13);
-            this.variableLabel.TabIndex = 6;
-            this.variableLabel.Text = "Variable :";
+            this.type_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.type_box.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.type_box.FormattingEnabled = true;
+            this.type_box.Items.AddRange(new object[] {
+            "Single",
+            "Array"});
+            this.type_box.Location = new System.Drawing.Point(175, 250);
+            this.type_box.Name = "type_box";
+            this.type_box.Size = new System.Drawing.Size(107, 24);
+            this.type_box.TabIndex = 9;
+            this.type_box.SelectedIndexChanged += new System.EventHandler(this.variable_box_SelectedIndexChanged);
             // 
-            // variableTB
+            // size_label
             // 
-            this.variableTB.Location = new System.Drawing.Point(12, 205);
-            this.variableTB.Name = "variableTB";
-            this.variableTB.Size = new System.Drawing.Size(70, 20);
-            this.variableTB.TabIndex = 7;
+            this.size_label.AutoSize = true;
+            this.size_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.size_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.size_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.size_label.Location = new System.Drawing.Point(355, 220);
+            this.size_label.Name = "size_label";
+            this.size_label.Size = new System.Drawing.Size(83, 19);
+            this.size_label.TabIndex = 10;
+            this.size_label.Text = "Array Size:";
             // 
-            // typeLabel
+            // size_text
             // 
-            this.typeLabel.AutoSize = true;
-            this.typeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.typeLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.typeLabel.Location = new System.Drawing.Point(105, 188);
-            this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(41, 13);
-            this.typeLabel.TabIndex = 8;
-            this.typeLabel.Text = "Type : ";
+            this.size_text.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.size_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.size_text.Enabled = false;
+            this.size_text.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.size_text.Location = new System.Drawing.Point(355, 250);
+            this.size_text.Name = "size_text";
+            this.size_text.Size = new System.Drawing.Size(83, 28);
+            this.size_text.TabIndex = 11;
+            this.size_text.TextChanged += new System.EventHandler(this.size_text_TextChanged);
             // 
-            // comboBox1
+            // DeclareBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(108, 205);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(90, 21);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // arraySizeLabel
-            // 
-            this.arraySizeLabel.AutoSize = true;
-            this.arraySizeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.arraySizeLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.arraySizeLabel.Location = new System.Drawing.Point(278, 188);
-            this.arraySizeLabel.Name = "arraySizeLabel";
-            this.arraySizeLabel.Size = new System.Drawing.Size(63, 13);
-            this.arraySizeLabel.TabIndex = 10;
-            this.arraySizeLabel.Text = "Array Size :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(281, 206);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(60, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // arraybox
-            // 
-            this.arraybox.AutoSize = true;
-            this.arraybox.Location = new System.Drawing.Point(204, 208);
-            this.arraybox.Name = "arraybox";
-            this.arraybox.Size = new System.Drawing.Size(61, 17);
-            this.arraybox.TabIndex = 12;
-            this.arraybox.Text = "Array ?";
-            this.arraybox.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(369, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 24);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // OutputForm
-            // 
-            this.AcceptButton = this.ok;
+            this.AcceptButton = this.ok_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.cancel;
-            this.ClientSize = new System.Drawing.Size(457, 294);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.arraybox);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.arraySizeLabel);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.typeLabel);
-            this.Controls.Add(this.variableTB);
-            this.Controls.Add(this.variableLabel);
-            this.Controls.Add(this.remove);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.ok);
-            this.Controls.Add(this.cancel);
-            this.Controls.Add(this.panel1);
-            this.Name = "DeclareForm";
-            this.Text = "Declare Properities";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CancelButton = this.cancel_button;
+            this.ClientSize = new System.Drawing.Size(512, 353);
+            this.Controls.Add(this.size_text);
+            this.Controls.Add(this.size_label);
+            this.Controls.Add(this.type_box);
+            this.Controls.Add(this.data_box);
+            this.Controls.Add(this.type_label);
+            this.Controls.Add(this.data_label);
+            this.Controls.Add(this.name_label);
+            this.Controls.Add(this.name_text);
+            this.Controls.Add(this.description_label);
+            this.Controls.Add(this.cancel_button);
+            this.Controls.Add(this.ok_button);
+            this.Controls.Add(this.diagram1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DeclareBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Declare Properties";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,22 +257,112 @@ namespace DrawShapes.Dialogs
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.Button ok;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button remove;
-        private System.Windows.Forms.Label variableLabel;
-        private System.Windows.Forms.TextBox variableTB;
-        private System.Windows.Forms.Label typeLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label arraySizeLabel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox arraybox;
-        private System.Windows.Forms.Button button1;
+        private void InitializeDialog()
+        {
+            Model model = diagram1.Model;
+            diagram1.Model.SetSize(new Size(1000, 1000));
+
+            FlowchartStencil stencil = (FlowchartStencil)Singleton.Instance.GetStencil(typeof(FlowchartStencil));
+
+            //Declare
+            Shape shape = new Shape();
+            shape.Location = new PointF(10, 20);
+            shape.Size = new SizeF(100, 100);
+            shape.AllowScale = false;
+            shape.AllowMove = false;
+            shape.StencilItem = stencil[FlowchartStencilType.InternalStorage];
+            shape.Label = new Crainiate.Diagramming.Label("Declare");
+            shape.GradientColor = System.Drawing.Color.Black;
+            shape.BackColor = System.Drawing.Color.LightGray;
+            model.Shapes.Add("declare", shape);
+
+            this.type_box.SelectedItem = "Single";
+            this.data_box.SelectedItem = "Integer";
+        }
+
+
+        private void variable_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            if (comboBox.SelectedItem.Equals("Single"))
+            {
+                this.size_text.Enabled = false;
+                this.size_text.BackColor = Color.LightGray;
+                this.size_text.Text = null;
+                this._declareVariableType = "Single";
+            }
+
+            else
+            {
+                this.size_text.Enabled = true;
+                this.size_text.BackColor = Color.White;
+                this._declareVariableType = "Array";
+            }
+
+        }
+
+        private void name_text_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            this._declareVariable = textBox.Text;
+        }
+
+        private void size_text_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            this._declareArraySize = textBox.Text;
+        }
+
+        private void data_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            this._declareDataType = (string)comboBox.SelectedItem;
+        }
+
+        public string DeclareVariable
+        {
+            get
+            {
+                return _declareVariable;
+            }
+        }
+
+        public string DeclareDataType
+        {
+            get
+            {
+                return _declareDataType;
+            }
+        }
+
+        public string DeclareVariableType
+        {
+            get
+            {
+                return _declareVariableType;
+            }
+        }
+
+        public string DeclareArraySize
+        {
+            get
+            {
+                return _declareArraySize;
+            }
+        }
+
+
+        private Crainiate.Diagramming.Forms.Diagram diagram1;
+        private System.Windows.Forms.Button ok_button;
+        private System.Windows.Forms.Button cancel_button;
+        private System.Windows.Forms.Label description_label;
+        private System.Windows.Forms.TextBox name_text;
+        private System.Windows.Forms.Label name_label;
+        private System.Windows.Forms.Label data_label;
+        private System.Windows.Forms.Label type_label;
+        private System.Windows.Forms.ComboBox data_box;
+        private System.Windows.Forms.ComboBox type_box;
+        private System.Windows.Forms.Label size_label;
+        private System.Windows.Forms.TextBox size_text;
     }
 }

@@ -14,6 +14,7 @@ namespace TestingLast.Nodes
 
     public abstract class BaseNode : Crainiate.Diagramming.OnShapeClickListener
     {
+        static Form1 form;
         public static List<BaseNode> nodes = new List<BaseNode>();      
         static Model model;
         private ConnectorNode outConnector;
@@ -124,6 +125,19 @@ namespace TestingLast.Nodes
             }
         }
 
+        public static Form1 Form
+        {
+            get
+            {
+                return form;
+            }
+
+            set
+            {
+                form = value;
+            }
+        }
+
         public BaseNode()
         {
             shape = new Shape();
@@ -160,38 +174,73 @@ namespace TestingLast.Nodes
             {
                 throw new Exception("Model should be set before calling addToModel");
             }
-            if (Shape != null)
-                model.Shapes.Add(shapeTag, shape);
             if (OutConnector.EndNode != null)
                 model.Lines.Add(connectorTag, OutConnector.Connector);
-         //   nodes.Add(this);
+            if (Shape != null)
+                model.Shapes.Add(shapeTag, shape);
+            
+            if(!nodes.Contains(this))
+                nodes.Add(this);
         }
-        public void removeFromModel(Model model)
+        virtual public void removeFromModel()
         {
-            model.Shapes.Remove(shapeTag);
-            model.Lines.Remove(connectorTag);
+            if (model == null)
+            {
+                throw new Exception("Model should be set before calling addToModel");
+            }
+            Shapes tempShapes = model.Shapes;
+            Lines tempLines = model.Lines;
+            foreach (BaseNode node in nodes)
+            {
+                if (node.outConnector.EndNode == this)
+                {
+                    node.outConnector.EndNode = outConnector.EndNode;
+                    node.outConnector.EndNode.shiftUp(this.NodeLocation);
+                }
+            }
+            nodes.Remove(this);
+
+            //model.Shapes.Remove(shapeTag);
+            // model.Elements.Remove(this.shape);
+            //  model.Elements.Remove(this.outConnector.Connector);
+            //model.Lines.Remove(connectorTag);
+            model.Clear();
+            //model.SetLines(tempLines);
+            //model.SetShapes(tempShapes);
+                      
+            foreach (BaseNode node in nodes)
+            {
+                if (node is HolderNode) continue;
+                node.addToModel();
+                
+            }
+
         }
+
+      
+
         public abstract void onShapeClicked();
         public void attachNode(BaseNode newNode)
         {
 
-            if (this is TerminalNode && newNode is TerminalNode ||
-                this is HolderNode && newNode is HolderNode)
-            {
-                if (newNode.connectedShape() == null)
-                {
-                    //do nothing
-                }
-                if (this.connectedShape() == null)
-                {
-                    //donothing
-                }
-                OutConnector.EndNode = newNode;
-                newNode.NodeLocation = this.NodeLocation;
-                newNode.shiftDown(0);
-                return;
+              if (this is TerminalNode && newNode is TerminalNode ||
+                  this is HolderNode && newNode is HolderNode)
+              {
+                  if (newNode.connectedShape() == null)
+                  {
+                      //do nothing
+                  }
+                  if (this.connectedShape() == null)
+                  {
+                      //donothing
+                  }
+                  OutConnector.EndNode = newNode;
+                  newNode.NodeLocation = this.NodeLocation;
+                  newNode.shiftDown(0);
+                  return;
 
-            }
+              }
+           
             BaseNode oldOutNode = OutConnector.EndNode;
             OutConnector.EndNode = newNode;
             newNode.OutConnector.EndNode = oldOutNode;
@@ -234,13 +283,23 @@ namespace TestingLast.Nodes
             if (connectedShape() != null)
                 NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y + shiftY+moreShift);
             
-            if (OutConnector.EndNode != null)
+            if (!(this is HolderNode) && OutConnector.EndNode != null)
                 OutConnector.EndNode.shiftDown(moreShift);
         }
         public void shiftUp()
         {
-
+            if(connectedShape()!=null)
+                NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y - shiftY + moreShift);
+            if (!(this is HolderNode) && OutConnector.EndNode != null)
+                OutConnector.EndNode.shiftUp();
         }
-
+        private void shiftUp(PointF nodeLocation)
+        {
+            //PointF tempLocation = NodeLocation;
+            if (connectedShape() != null)
+                NodeLocation = nodeLocation;
+            if (!(this is HolderNode) && OutConnector.EndNode != null)
+                OutConnector.EndNode.shiftUp();
+        }
     }
 }

@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace TestingLast.Nodes
 {
-    class IfNode : DecisionNode
+    class IfElseNode : DecisionNode
     {
         private HolderNode falseNode;
         private HolderNode backfalseNode;
@@ -51,19 +50,25 @@ namespace TestingLast.Nodes
                 {
                     TrueNode.OutConnector.EndNode.removeFromModel();
                 }
+                while (!(FalseNode.OutConnector.EndNode is HolderNode))
+                {
+                    FalseNode.OutConnector.EndNode.removeFromModel();
+                }
                 removeFromModel();
                 Form1.deleteChoosed = false;
             }
-            else if(Shape.Selected)
+            if (Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
                 IfBox ifBox = new IfBox();
-                if (!String.IsNullOrEmpty(Statement)) {
-                   ifBox.setExpression(extractExpression(Statement)); 
-                    
+                if (!String.IsNullOrEmpty(Statement))
+                {
+                    ifBox.setExpression(extractExpression(Statement));
+
                 }
                 DialogResult dr = ifBox.ShowDialog();
-                if (dr == DialogResult.OK) {
+                if (dr == DialogResult.OK)
+                {
                     Statement = ifBox.getExpression();
                     Statement = surrondExpression(Statement);
                     setText(Statement);       
@@ -78,17 +83,19 @@ namespace TestingLast.Nodes
         private String surrondExpression(String str)
         {
             return "if ( " + str + " )";
-           
-            
+
+
         }
-        private String extractExpression(String str) {
+        private String extractExpression(String str)
+        {
             if (String.IsNullOrEmpty(str))
                 return str;
-            String res=str.Remove(0,5);
+            String res = str.Remove(0, 5);
             res = res.Remove(res.Count() - 1);
             return res;
         }
-        public bool isEmptyElse() {
+        public bool isEmptyElse()
+        {
             return FalseNode.OutConnector.EndNode == BackfalseNode;
         }
         protected override void makeConnections()
@@ -105,7 +112,7 @@ namespace TestingLast.Nodes
             BackNode.Shape.Label = new Crainiate.Diagramming.Label("End IF");
             BackNode.OutConnector.EndNode = this;
             BackNode.OutConnector.Connector.End.Shape = middleNode.Shape;
-            BackNode.OutConnector.Connector.Opacity = 50;        
+            BackNode.OutConnector.Connector.Opacity = 50;
             TrueNode.OutConnector.EndNode = BackNode;
             trueConnector.Selectable = false;
             BackNode.OutConnector.Selectable = false;
@@ -134,18 +141,18 @@ namespace TestingLast.Nodes
             middleNode.shiftDown(moreShift);
             shiftMainTrack();
             /////////////// move true part
-            PointF point = new PointF(Shape.Width+Shape.Location.X + 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point = new PointF(Shape.Width + Shape.Location.X + 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;
-           
+
             if (trueConnector.EndNode == null)
             {
                 trueConnector.EndNode = TrueNode;
                 //this.OutConnector.EndNode.shiftDown();
                 TrueNode.attachNode(BackNode);
-               
+
                 //      holderNode.attachNode(this, backConnector);
             }
-           else if (TrueNode.OutConnector.EndNode is HolderNode)
+            else if (TrueNode.OutConnector.EndNode is HolderNode)
             {
                 BackNode.NodeLocation = new PointF(point.X, point.Y + 100);
             }
@@ -160,33 +167,33 @@ namespace TestingLast.Nodes
                 falseConnector.EndNode = FalseNode;
                 //this.OutConnector.EndNode.shiftDown();
                 FalseNode.attachNode(BackfalseNode);
-               
+
                 //      holderNode.attachNode(this, backConnector);
             }
-           else if (FalseNode.OutConnector.EndNode is HolderNode)
+            else if (FalseNode.OutConnector.EndNode is HolderNode)
             {
                 BackfalseNode.NodeLocation = new PointF(point2.X, point2.Y + 100);
             }
             else
                 FalseNode.OutConnector.EndNode.shiftDown(moreShift);
 
-            
+
         }
 
         public override void shiftMainTrack()
         {
-                OutConnector.EndNode.shiftDown(moreShift);
-           
+            OutConnector.EndNode.shiftDown(moreShift);
+
         }
         public override void attachNode(BaseNode newNode, ConnectorNode clickedConnector)
         {
             clickedConnector.StartNode.attachNode(newNode);
-            if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y||
+            if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y ||
                 OutConnector.EndNode.NodeLocation.Y < BackfalseNode.NodeLocation.Y)
             {
-                
+
                 shiftMainTrack();
-                
+
             }
 
             balanceMiddleNode();
@@ -205,15 +212,15 @@ namespace TestingLast.Nodes
             }
         }
 
-        public IfNode()
+        public IfElseNode()
         {
-            
+
             Shape.StencilItem = Stencil[FlowchartStencilType.Decision];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#c04040");
             Shape.GradientColor = Color.Black;
             setText("IF");
             Statement = "if( false )";
-           
+
         }
         public override void addToModel()
         {
@@ -223,6 +230,5 @@ namespace TestingLast.Nodes
             //middleNode.addToModel();
             //Model.Lines.Add(falseConnector.Connector);
         }
-
     }
 }

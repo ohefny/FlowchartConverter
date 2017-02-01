@@ -1,6 +1,9 @@
 ﻿
+using Crainiate.Diagramming;
+using Crainiate.Diagramming.Flowcharting;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,263 +12,265 @@ using TestingLast.Properties;
 
 namespace DrawShapes.Dialogs
 {
-        public class AssignmentDialog :Form
+    public class AssignmentDialog : Form
+    {
+        private string _assignmentVariable;
+        private string _assignmentExpression;
+
+        public AssignmentDialog()
         {
-        public AssignmentDialog() {
             InitializeComponent();
+            InitializeDialog();
         }
-            /// <summary>
-            /// Required designer variable.
-            /// </summary>
-            private System.ComponentModel.IContainer components = null;
+       
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-            /// <summary>
-            /// Clean up any resources being used.
-            /// </summary>
-            /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-            protected override void Dispose(bool disposing)
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
             {
-                if (disposing && (components != null))
-                {
-                    components.Dispose();
-                }
-                base.Dispose(disposing);
+                components.Dispose();
             }
-
-            #region Windows Form Designer generated code
-
-            /// <summary>
-            /// Required method for Designer support - do not modify
-            /// the contents of this method with the code editor.
-            /// </summary>
-            private void InitializeComponent()
-            {
-                this.panel1 = new System.Windows.Forms.Panel();
-                this.label3 = new System.Windows.Forms.Label();
-                this.label2 = new System.Windows.Forms.Label();
-                this.label1 = new System.Windows.Forms.Label();
-                this.pictureBox1 = new System.Windows.Forms.PictureBox();
-                this.cancel = new System.Windows.Forms.Button();
-                this.ok = new System.Windows.Forms.Button();
-                this.removeBtn = new System.Windows.Forms.Button();
-                this.variableLabel = new System.Windows.Forms.Label();
-                this.typeLabel = new System.Windows.Forms.Label();
-                this.variablesBox = new System.Windows.Forms.ComboBox();
-                this.arraySizeLabel = new System.Windows.Forms.Label();
-                this.expressionBox = new System.Windows.Forms.TextBox();
-                this.addBtn = new System.Windows.Forms.Button();
-                this.indexBox = new System.Windows.Forms.TextBox();
-                this.assignmentLB = new System.Windows.Forms.ListBox();
-                this.panel1.SuspendLayout();
-                ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-                this.SuspendLayout();
-                // 
-                // panel1
-                // 
-                this.panel1.BackColor = System.Drawing.Color.DimGray;
-                this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                this.panel1.Controls.Add(this.label3);
-                this.panel1.Controls.Add(this.label2);
-                this.panel1.Controls.Add(this.label1);
-                this.panel1.Controls.Add(this.pictureBox1);
-                this.panel1.Location = new System.Drawing.Point(2, 2);
-                this.panel1.Name = "panel1";
-                this.panel1.Size = new System.Drawing.Size(751, 72);
-                this.panel1.TabIndex = 0;
-                // 
-                // label3
-                // 
-                this.label3.AutoSize = true;
-                this.label3.Location = new System.Drawing.Point(126, 29);
-                this.label3.Name = "label3";
-                this.label3.Size = new System.Drawing.Size(193, 13);
-                this.label3.TabIndex = 5;
-                this.label3.Text = "and then stores the result in a variable";
-                // 
-                // label2
-                // 
-                this.label2.AutoSize = true;
-                this.label2.Location = new System.Drawing.Point(126, 9);
-                this.label2.Name = "label2";
-                this.label2.Size = new System.Drawing.Size(254, 13);
-                this.label2.TabIndex = 4;
-                this.label2.Text = "An Assignment Statment calcualates an expression ";
-                // 
-                // label1
-                // 
-                this.label1.AutoSize = true;
-                this.label1.BackColor = System.Drawing.Color.Transparent;
-                this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-                this.label1.Location = new System.Drawing.Point(30, 29);
-                this.label1.Name = "label1";
-                this.label1.Size = new System.Drawing.Size(41, 13);
-                this.label1.TabIndex = 4;
-                this.label1.Text = "Assignment";
-                // 
-                // pictureBox1
-                // 
-                this.pictureBox1.BackgroundImage = Resources.assign;
-                this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-                this.pictureBox1.Location = new System.Drawing.Point(9, 9);
-                this.pictureBox1.Name = "pictureBox1";
-                this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-                this.pictureBox1.TabIndex = 0;
-                this.pictureBox1.TabStop = false;
-                // 
-                // cancel
-                // 
-                this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-                this.cancel.Location = new System.Drawing.Point(651, 280);
-                this.cancel.Name = "cancel";
-                this.cancel.Size = new System.Drawing.Size(89, 32);
-                this.cancel.TabIndex = 2;
-                this.cancel.Text = "Cancel";
-                this.cancel.UseVisualStyleBackColor = true;
-                // 
-                // ok
-                // 
-                this.ok.Location = new System.Drawing.Point(529, 280);
-                this.ok.Name = "ok";
-                this.ok.Size = new System.Drawing.Size(89, 32);
-                this.ok.TabIndex = 3;
-                this.ok.Text = "OK";
-                this.ok.UseVisualStyleBackColor = true;
-                this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            // 
-            // removeBtn
-            // 
-            this.removeBtn.Location = new System.Drawing.Point(670, 120);
-                this.removeBtn.Name = "removeBtn";
-                this.removeBtn.Size = new System.Drawing.Size(70, 24);
-                this.removeBtn.TabIndex = 5;
-                this.removeBtn.Text = "Remove";
-                this.removeBtn.UseVisualStyleBackColor = true;
-                // 
-                // variableLabel
-                // 
-                this.variableLabel.AutoSize = true;
-                this.variableLabel.BackColor = System.Drawing.Color.Transparent;
-                this.variableLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-                this.variableLabel.Location = new System.Drawing.Point(9, 188);
-                this.variableLabel.Name = "variableLabel";
-                this.variableLabel.Size = new System.Drawing.Size(52, 13);
-                this.variableLabel.TabIndex = 6;
-                this.variableLabel.Text = "Variable :";
-                // 
-                // typeLabel
-                // 
-                this.typeLabel.AutoSize = true;
-                this.typeLabel.BackColor = System.Drawing.Color.Transparent;
-                this.typeLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-                this.typeLabel.Location = new System.Drawing.Point(114, 188);
-                this.typeLabel.Name = "typeLabel";
-                this.typeLabel.Size = new System.Drawing.Size(45, 13);
-                this.typeLabel.TabIndex = 8;
-                this.typeLabel.Text = "Index : ";
-                // 
-                // variablesBox
-                // 
-                this.variablesBox.FormattingEnabled = true;
-                this.variablesBox.Location = new System.Drawing.Point(12, 206);
-                this.variablesBox.Name = "variablesBox";
-                this.variablesBox.Size = new System.Drawing.Size(90, 21);
-                this.variablesBox.TabIndex = 9;
-                // 
-                // arraySizeLabel
-                // 
-                this.arraySizeLabel.AutoSize = true;
-                this.arraySizeLabel.BackColor = System.Drawing.Color.Transparent;
-                this.arraySizeLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-                this.arraySizeLabel.Location = new System.Drawing.Point(249, 186);
-                this.arraySizeLabel.Name = "arraySizeLabel";
-                this.arraySizeLabel.Size = new System.Drawing.Size(66, 13);
-                this.arraySizeLabel.TabIndex = 10;
-                this.arraySizeLabel.Text = "Expression :";
-                // 
-                // expressionBox
-                // 
-                this.expressionBox.Enabled = true;
-                this.expressionBox.Location = new System.Drawing.Point(252, 202);
-                this.expressionBox.Multiline = true;
-                this.expressionBox.Name = "expressionBox";
-                this.expressionBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-                this.expressionBox.Size = new System.Drawing.Size(392, 72);
-                this.expressionBox.TabIndex = 11;
-                // 
-                // addBtn
-                // 
-                this.addBtn.Location = new System.Drawing.Point(670, 199);
-                this.addBtn.Name = "addBtn";
-                this.addBtn.Size = new System.Drawing.Size(70, 24);
-                this.addBtn.TabIndex = 13;
-                this.addBtn.Text = "Add";
-                this.addBtn.UseVisualStyleBackColor = true;
-                // 
-                // indexBox
-                // 
-                this.indexBox.Enabled = false;
-                this.indexBox.Location = new System.Drawing.Point(117, 206);
-                this.indexBox.Name = "indexBox";
-                this.indexBox.Size = new System.Drawing.Size(60, 20);
-                this.indexBox.TabIndex = 14;
-                // 
-                // assignmentLB
-                // 
-                this.assignmentLB.FormattingEnabled = true;
-                this.assignmentLB.Location = new System.Drawing.Point(2, 80);
-                this.assignmentLB.Name = "assignmentLB";
-                this.assignmentLB.ScrollAlwaysVisible = true;
-                this.assignmentLB.Size = new System.Drawing.Size(642, 95);
-                this.assignmentLB.TabIndex = 4;
-                // 
-                // OutputForm
-                // 
-                this.AcceptButton = this.ok;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.CancelButton = this.cancel;
-                this.ClientSize = new System.Drawing.Size(752, 324);
-                this.Controls.Add(this.indexBox);
-                this.Controls.Add(this.addBtn);
-                this.Controls.Add(this.expressionBox);
-                this.Controls.Add(this.arraySizeLabel);
-                this.Controls.Add(this.variablesBox);
-                this.Controls.Add(this.typeLabel);
-                this.Controls.Add(this.variableLabel);
-                this.Controls.Add(this.removeBtn);
-                this.Controls.Add(this.assignmentLB);
-                this.Controls.Add(this.ok);
-                this.Controls.Add(this.cancel);
-                this.Controls.Add(this.panel1);
-                this.Name = "Assignment Form";
-                this.Text = "Assign Properities";
-                this.panel1.ResumeLayout(false);
-                this.panel1.PerformLayout();
-                ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-                this.ResumeLayout(false);
-                this.PerformLayout();
-
-            }
-
-            #endregion
-
-            private System.Windows.Forms.Panel panel1;
-            private System.Windows.Forms.Button cancel;
-            private System.Windows.Forms.Button ok;
-            private System.Windows.Forms.PictureBox pictureBox1;
-            private System.Windows.Forms.Label label3;
-            private System.Windows.Forms.Label label2;
-            private System.Windows.Forms.Label label1;
-            private System.Windows.Forms.Button removeBtn;
-            private System.Windows.Forms.Label variableLabel;
-            private System.Windows.Forms.Label typeLabel;
-            private System.Windows.Forms.ComboBox variablesBox;
-            private System.Windows.Forms.Label arraySizeLabel;
-            private System.Windows.Forms.TextBox expressionBox;
-            private System.Windows.Forms.Button addBtn;
-            private System.Windows.Forms.TextBox indexBox;
-            private System.Windows.Forms.ListBox assignmentLB;
+            base.Dispose(disposing);
         }
-    
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            Crainiate.Diagramming.Forms.Paging paging1 = new Crainiate.Diagramming.Forms.Paging();
+            Crainiate.Diagramming.Forms.Margin margin1 = new Crainiate.Diagramming.Forms.Margin();
+            this.ok_button = new System.Windows.Forms.Button();
+            this.cancel_btton = new System.Windows.Forms.Button();
+            this.diagram1 = new Crainiate.Diagramming.Forms.Diagram();
+            this.description_label = new System.Windows.Forms.Label();
+            this.name_text = new System.Windows.Forms.TextBox();
+            this.name_label = new System.Windows.Forms.Label();
+            this.expression_label = new System.Windows.Forms.Label();
+            this.expression_text = new System.Windows.Forms.TextBox();
+            this.equal_label = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // ok_button
+            // 
+            this.ok_button.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.ok_button.Location = new System.Drawing.Point(121, 307);
+            this.ok_button.Name = "ok_button";
+            this.ok_button.Size = new System.Drawing.Size(109, 37);
+            this.ok_button.TabIndex = 1;
+            this.ok_button.Text = "Ok";
+            this.ok_button.UseVisualStyleBackColor = true;
+            // 
+            // cancel_btton
+            // 
+            this.cancel_btton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancel_btton.Location = new System.Drawing.Point(236, 307);
+            this.cancel_btton.Name = "cancel_btton";
+            this.cancel_btton.Size = new System.Drawing.Size(109, 37);
+            this.cancel_btton.TabIndex = 2;
+            this.cancel_btton.Text = "Cancel";
+            this.cancel_btton.UseVisualStyleBackColor = true;
+            // 
+            // diagram1
+            // 
+            this.diagram1.AllowDrop = true;
+            this.diagram1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.diagram1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.diagram1.DragElement = null;
+            this.diagram1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.diagram1.GridSize = new System.Drawing.Size(15, 15);
+            this.diagram1.GridStyle = Crainiate.Diagramming.GridStyle.Pixel;
+            this.diagram1.Location = new System.Drawing.Point(0, 0);
+            this.diagram1.Name = "diagram1";
+            paging1.Enabled = true;
+            margin1.Bottom = 0F;
+            margin1.Left = 0F;
+            margin1.Right = 0F;
+            margin1.Top = 0F;
+            paging1.Margin = margin1;
+            paging1.Padding = new System.Drawing.SizeF(40F, 40F);
+            paging1.Page = 1;
+            paging1.PageSize = new System.Drawing.SizeF(793.7008F, 1122.52F);
+            paging1.WorkspaceColor = System.Drawing.SystemColors.AppWorkspace;
+            this.diagram1.Paging = paging1;
+            this.diagram1.Size = new System.Drawing.Size(490, 301);
+            this.diagram1.TabIndex = 1;
+            this.diagram1.Zoom = 100F;
+            // 
+            // description_label
+            // 
+            this.description_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.description_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.description_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.description_label.Location = new System.Drawing.Point(121, 27);
+            this.description_label.Name = "description_label";
+            this.description_label.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.description_label.Size = new System.Drawing.Size(351, 55);
+            this.description_label.TabIndex = 3;
+            this.description_label.Text = "An input statement reads a value from the keyboard and stores the result in a var" +
+    "iable.";
+            // 
+            // name_text
+            // 
+            this.name_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.name_text.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name_text.Location = new System.Drawing.Point(12, 200);
+            this.name_text.Name = "name_text";
+            this.name_text.Size = new System.Drawing.Size(115, 28);
+            this.name_text.TabIndex = 4;
+            this.name_text.TextChanged += new System.EventHandler(this.name_text_TextChanged);
+            // 
+            // name_label
+            // 
+            this.name_label.AutoSize = true;
+            this.name_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.name_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.name_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.name_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name_label.Location = new System.Drawing.Point(12, 170);
+            this.name_label.Name = "name_label";
+            this.name_label.Size = new System.Drawing.Size(112, 19);
+            this.name_label.TabIndex = 5;
+            this.name_label.Text = "Variable name:";
+            // 
+            // expression_label
+            // 
+            this.expression_label.AutoSize = true;
+            this.expression_label.BackColor = System.Drawing.SystemColors.Menu;
+            this.expression_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.expression_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.expression_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expression_label.Location = new System.Drawing.Point(237, 140);
+            this.expression_label.Name = "expression_label";
+            this.expression_label.Size = new System.Drawing.Size(132, 19);
+            this.expression_label.TabIndex = 6;
+            this.expression_label.Text = "Value expression:";
+            // 
+            // expression_text
+            // 
+            this.expression_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.expression_text.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expression_text.Location = new System.Drawing.Point(236, 170);
+            this.expression_text.Multiline = true;
+            this.expression_text.Name = "expression_text";
+            this.expression_text.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.expression_text.Size = new System.Drawing.Size(236, 116);
+            this.expression_text.TabIndex = 7;
+            this.expression_text.TextChanged += new System.EventHandler(this.expression_text_TextChanged);
+            // 
+            // equal_label
+            // 
+            this.equal_label.AutoSize = true;
+            this.equal_label.BackColor = System.Drawing.Color.Transparent;
+            this.equal_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.equal_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equal_label.Location = new System.Drawing.Point(140, 185);
+            this.equal_label.Name = "equal_label";
+            this.equal_label.Size = new System.Drawing.Size(67, 48);
+            this.equal_label.TabIndex = 8;
+            this.equal_label.Text = " =";
+            this.equal_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // AssignmentDialog
+            // 
+            this.AcceptButton = this.ok_button;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CancelButton = this.cancel_btton;
+            this.ClientSize = new System.Drawing.Size(490, 355);
+            this.Controls.Add(this.equal_label);
+            this.Controls.Add(this.expression_text);
+            this.Controls.Add(this.expression_label);
+            this.Controls.Add(this.name_label);
+            this.Controls.Add(this.name_text);
+            this.Controls.Add(this.description_label);
+            this.Controls.Add(this.cancel_btton);
+            this.Controls.Add(this.ok_button);
+            this.Controls.Add(this.diagram1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AssignmentDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Assign Properties";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private void InitializeDialog()
+        {
+            Model model = diagram1.Model;
+            diagram1.Model.SetSize(new Size(1000, 1000));
+
+            FlowchartStencil stencil = (FlowchartStencil)Singleton.Instance.GetStencil(typeof(FlowchartStencil));
+
+            //Assign
+            Shape shape = new Shape();
+            shape.Location = new PointF(10, 10);
+            shape.Size = new SizeF(100, 100);
+            shape.AllowScale = false;
+            shape.AllowMove = false;
+            shape.Selected = false;
+            shape.StencilItem = stencil[FlowchartStencilType.Process];
+            shape.Label = new Crainiate.Diagramming.Label("Assign");
+            shape.GradientColor = System.Drawing.Color.Black;
+            shape.BackColor = System.Drawing.Color.LightGreen;
+            model.Shapes.Add("assign", shape);
+        }
+
+        private void name_text_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            _assignmentVariable = textBox.Text;
+        }
+
+        private void expression_text_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            _assignmentExpression = textBox.Text;
+        }
+
+        public string AssignmentVariable
+        {
+            get
+            {
+                return _assignmentVariable;
+            }
+        }
+
+        public string AssignmentExpression
+        {
+            get
+            {
+                return _assignmentExpression;
+            }
+        }
+
+        private Crainiate.Diagramming.Forms.Diagram diagram1;
+        private System.Windows.Forms.Button ok_button;
+        private System.Windows.Forms.Button cancel_btton;
+        private System.Windows.Forms.Label description_label;
+        private System.Windows.Forms.TextBox name_text;
+        private System.Windows.Forms.Label name_label;
+        private System.Windows.Forms.Label expression_label;
+        private System.Windows.Forms.TextBox expression_text;
+        private System.Windows.Forms.Label equal_label;
+    }
+
 
 }

@@ -31,3 +31,7 @@ G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLas
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.DoWhileBox.resources
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.WhileBox.resources
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.ForBox.resources
+G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.InputBox.resources
+G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.OutputBox.resources
+G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.AssignmentDialog.resources
+G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.DeclareBox.resources

@@ -13,6 +13,9 @@ namespace TestingLast.Nodes
 {
     abstract class DecisionNode :BaseNode
     {
+        protected const int MOVE_UP = 1;
+        protected const int MOVE_DOWN = 2;
+        protected int moveDirection = MOVE_DOWN;
         private HolderNode trueNode;
         private HolderNode backNode;
         protected ConnectorNode trueConnector;
@@ -33,7 +36,15 @@ namespace TestingLast.Nodes
             {
                 if (value.X != NodeLocation.X || value.Y != NodeLocation.Y)
                 {
+                    if (value.Y > NodeLocation.Y)
+                    {
+                        moveDirection = MOVE_DOWN;
+                    }
+                    else {
+                        moveDirection = MOVE_UP;
+                    }
                     base.NodeLocation = value;
+                    
                     moveConnections();
                 }
             }
@@ -130,8 +141,8 @@ namespace TestingLast.Nodes
         {
            
             clickedConnector.StartNode.attachNode(newNode);
-            if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y)
-                shiftMainTrack(); //this causes a problem when 
+      //      if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y)
+        //        shiftMainTrack(); //this causes a problem when 
                               //backNode shifts dirctely after being attached to another while node
 
         }

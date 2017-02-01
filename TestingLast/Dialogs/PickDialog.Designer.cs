@@ -46,6 +46,7 @@ namespace DrawShapes.Dialogs
             this.ifImg = new System.Windows.Forms.PictureBox();
             this.whileImg = new System.Windows.Forms.PictureBox();
             this.declareImg = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.forImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doImg)).BeginInit();
@@ -54,6 +55,7 @@ namespace DrawShapes.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.ifImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whileImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.declareImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -115,7 +117,7 @@ namespace DrawShapes.Dialogs
             // forImg
             // 
             this.forImg.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.forImg.BackgroundImage = Resources._for;
+            this.forImg.BackgroundImage = global::TestingLast.Properties.Resources._for;
             this.forImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.forImg.Location = new System.Drawing.Point(284, 188);
             this.forImg.Name = "forImg";
@@ -126,7 +128,7 @@ namespace DrawShapes.Dialogs
             // 
             // outputImg
             // 
-            this.outputImg.BackgroundImage = Resources.outputD;
+            this.outputImg.BackgroundImage = global::TestingLast.Properties.Resources.outputD;
             this.outputImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.outputImg.Location = new System.Drawing.Point(3, 118);
             this.outputImg.Name = "outputImg";
@@ -137,7 +139,7 @@ namespace DrawShapes.Dialogs
             // 
             // doImg
             // 
-            this.doImg.BackgroundImage = Resources.DowhileD;
+            this.doImg.BackgroundImage = global::TestingLast.Properties.Resources.DowhileD;
             this.doImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.doImg.Location = new System.Drawing.Point(284, 118);
             this.doImg.Name = "doImg";
@@ -148,7 +150,7 @@ namespace DrawShapes.Dialogs
             // 
             // assignImg
             // 
-            this.assignImg.BackgroundImage = Resources.assignD;
+            this.assignImg.BackgroundImage = global::TestingLast.Properties.Resources.assignD;
             this.assignImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.assignImg.Location = new System.Drawing.Point(146, 188);
             this.assignImg.Name = "assignImg";
@@ -159,7 +161,7 @@ namespace DrawShapes.Dialogs
             // 
             // inputImg
             // 
-            this.inputImg.BackgroundImage = Resources.inputD;
+            this.inputImg.BackgroundImage = global::TestingLast.Properties.Resources.inputD;
             this.inputImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.inputImg.Location = new System.Drawing.Point(3, 51);
             this.inputImg.Name = "inputImg";
@@ -170,7 +172,7 @@ namespace DrawShapes.Dialogs
             // 
             // ifImg
             // 
-            this.ifImg.BackgroundImage = Resources.ifD;
+            this.ifImg.BackgroundImage = global::TestingLast.Properties.Resources.ifD;
             this.ifImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ifImg.Location = new System.Drawing.Point(3, 215);
             this.ifImg.Name = "ifImg";
@@ -181,7 +183,7 @@ namespace DrawShapes.Dialogs
             // 
             // whileImg
             // 
-            this.whileImg.BackgroundImage = Resources._while;
+            this.whileImg.BackgroundImage = global::TestingLast.Properties.Resources._while;
             this.whileImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.whileImg.Location = new System.Drawing.Point(284, 51);
             this.whileImg.Name = "whileImg";
@@ -192,7 +194,7 @@ namespace DrawShapes.Dialogs
             // 
             // declareImg
             // 
-            this.declareImg.BackgroundImage = Resources.declareD;
+            this.declareImg.BackgroundImage = global::TestingLast.Properties.Resources.declareD;
             this.declareImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.declareImg.Location = new System.Drawing.Point(146, 118);
             this.declareImg.Name = "declareImg";
@@ -200,6 +202,16 @@ namespace DrawShapes.Dialogs
             this.declareImg.TabIndex = 4;
             this.declareImg.TabStop = false;
             this.declareImg.Click += new System.EventHandler(this.onClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::TestingLast.Properties.Resources.ifD;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 287);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // PickDialog
             // 
@@ -209,6 +221,7 @@ namespace DrawShapes.Dialogs
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CancelButton = this.cancelBtn;
             this.ClientSize = new System.Drawing.Size(400, 343);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.forImg);
@@ -234,6 +247,7 @@ namespace DrawShapes.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.ifImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whileImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.declareImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +271,6 @@ namespace DrawShapes.Dialogs
         private System.Windows.Forms.PictureBox forImg;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button okBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

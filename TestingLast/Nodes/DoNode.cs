@@ -16,7 +16,16 @@ namespace TestingLast.Nodes
         HolderNode startNode;
         public override void onShapeClicked()
         {
-            if (Shape.Selected)
+            if (Shape.Selected && Form1.deleteChoosed)
+            {
+                while (!(TrueNode.OutConnector.EndNode is HolderNode))
+                {
+                    TrueNode.OutConnector.EndNode.removeFromModel();
+                }
+                removeFromModel();
+                Form1.deleteChoosed = false;
+            }
+            else if(Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
                 DoWhileBox doWhileBox = new DoWhileBox();
@@ -26,16 +35,20 @@ namespace TestingLast.Nodes
                 if (dr == DialogResult.OK)
                 {
                     Statement = doWhileBox.getExpression();
+
+                    setText(Statement);
+                    
                     Statement = surrondExpression(Statement);
                     //setText(Statement);       
                     //Shape.Label = new Crainiate.Diagramming.Label(Statement);
                 }
                 //MessageBox.Show();
-                Shape.Selected = false;
+                
             }
-        
-        
-            
+            Shape.Selected = false;
+
+
+
         }
 
         private string surrondExpression(string str)
@@ -84,9 +97,7 @@ namespace TestingLast.Nodes
             trueConnector.Connector.Opacity = 50;   
         }
         protected override void moveConnections()
-        {
-           
-            
+        {   
             Shape.Location = new PointF(nodeLocation.X, nodeLocation.Y + shiftY);
             PointF point = new PointF(Shape.Width + Shape.Location.X + 100, startNode.Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;

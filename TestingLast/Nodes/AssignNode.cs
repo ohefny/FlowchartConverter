@@ -14,12 +14,33 @@ namespace TestingLast.Nodes
     {
         public override void onShapeClicked()
         {
-            if (Shape.Selected)
+            if (Shape.Selected && Form1.deleteChoosed)
+            {
+
+                removeFromModel();
+                Form1.deleteChoosed = false;
+            }
+            else if (Shape.Selected)
             {
                 AssignmentDialog db = new AssignmentDialog();
                 DialogResult dr = db.ShowDialog();
-                Shape.Selected = false;
+
+                if (dr == DialogResult.OK)
+                {
+                    if (String.IsNullOrEmpty(db.AssignmentVariable) || String.IsNullOrEmpty(db.AssignmentExpression)
+                        || String.IsNullOrWhiteSpace(db.AssignmentVariable) || String.IsNullOrWhiteSpace(db.AssignmentExpression))
+                    {
+                        MessageBox.Show("You must enter a valid assignment expression");
+                        return;
+                    }
+                    Statement = db.AssignmentVariable + " = " + db.AssignmentExpression;
+                    setText(Statement);
+                    Statement += ";";
+                }
+                ///MessageBox.Show(Statement);
+                
             }
+            Shape.Selected = false;
         }
         public AssignNode()
         {
