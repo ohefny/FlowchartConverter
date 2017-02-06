@@ -20,13 +20,16 @@ namespace TestingLast.Nodes
             Shape.StencilItem.GradientColor = Color.Black;
             if (termType == TerminalType.Start) {
                 setText("Start");
+                Name = "Start";
                // Shape.Label = new Crainiate.Diagramming.Label("Start");
-                NodeLocation = new PointF(300, 10);
+                NodeLocation = new PointF(50, 10);
+                ParentNode = this;
                 
             }
             else {
                 setText("End");
-              //  Shape.Label = new Crainiate.Diagramming.Label("End");
+                Name = "End";
+                //  Shape.Label = new Crainiate.Diagramming.Label("End");
             }
 
         }

@@ -44,7 +44,7 @@ namespace DrawShapes.Dialogs
                 selectedShape = 6;
             else if (pb.Name == "outputImg")
                 selectedShape = 7;
-            else if (pb.Name == "pictureBox1")
+            else if (pb.Name == "ifelsePB")
                 selectedShape = 8;
             else
                 selectedShape = -1;

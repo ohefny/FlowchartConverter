@@ -35,7 +35,7 @@ namespace TestingLast.Nodes
                     }
                     Statement = db.AssignmentVariable + " = " + db.AssignmentExpression;
                     setText(Statement);
-                    Statement += ";";
+                    
                 }
                 ///MessageBox.Show(Statement);
                 
@@ -44,6 +44,7 @@ namespace TestingLast.Nodes
         }
         public AssignNode()
         {
+            Name = "Assign";
             Shape.StencilItem = Stencil[FlowchartStencilType.Default];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#fdfd80");
             Shape.GradientColor = Color.Black;

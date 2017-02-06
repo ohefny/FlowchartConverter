@@ -46,7 +46,7 @@ namespace DrawShapes.Dialogs
             this.ifImg = new System.Windows.Forms.PictureBox();
             this.whileImg = new System.Windows.Forms.PictureBox();
             this.declareImg = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ifelsePB = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.forImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doImg)).BeginInit();
@@ -55,7 +55,7 @@ namespace DrawShapes.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.ifImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whileImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.declareImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ifelsePB)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -203,15 +203,16 @@ namespace DrawShapes.Dialogs
             this.declareImg.TabStop = false;
             this.declareImg.Click += new System.EventHandler(this.onClick);
             // 
-            // pictureBox1
+            // ifelsePB
             // 
-            this.pictureBox1.BackgroundImage = global::TestingLast.Properties.Resources.ifD;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 287);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.ifelsePB.BackgroundImage = global::TestingLast.Properties.Resources.ifD;
+            this.ifelsePB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ifelsePB.Location = new System.Drawing.Point(3, 287);
+            this.ifelsePB.Name = "ifelsePB";
+            this.ifelsePB.Size = new System.Drawing.Size(100, 50);
+            this.ifelsePB.TabIndex = 15;
+            this.ifelsePB.TabStop = false;
+            this.ifelsePB.Click += new System.EventHandler(this.onClick);
             // 
             // PickDialog
             // 
@@ -221,7 +222,7 @@ namespace DrawShapes.Dialogs
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CancelButton = this.cancelBtn;
             this.ClientSize = new System.Drawing.Size(400, 343);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.ifelsePB);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.forImg);
@@ -247,7 +248,7 @@ namespace DrawShapes.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.ifImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whileImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.declareImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ifelsePB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,6 +272,6 @@ namespace DrawShapes.Dialogs
         private System.Windows.Forms.PictureBox forImg;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button okBtn;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox ifelsePB;
     }
 }

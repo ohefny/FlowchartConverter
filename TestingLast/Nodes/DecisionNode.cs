@@ -15,6 +15,7 @@ namespace TestingLast.Nodes
     {
         protected const int MOVE_UP = 1;
         protected const int MOVE_DOWN = 2;
+        protected const int MOVE_RIGHT = 3;
         protected int moveDirection = MOVE_DOWN;
         private HolderNode trueNode;
         private HolderNode backNode;
@@ -40,7 +41,11 @@ namespace TestingLast.Nodes
                     {
                         moveDirection = MOVE_DOWN;
                     }
-                    else {
+                    else if (value.X > NodeLocation.X) {
+                        moveDirection = MOVE_RIGHT;
+                    }
+                    else
+                    {
                         moveDirection = MOVE_UP;
                     }
                     base.NodeLocation = value;
@@ -84,7 +89,7 @@ namespace TestingLast.Nodes
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#e06000");
             Shape.GradientColor = Color.Black;
            
-
+                            
             holderTag = shapeTag + " holder";
             backConnectorTag = shapeTag + " backConnector";
             trueConnectorTag = shapeTag + " trueConnector";

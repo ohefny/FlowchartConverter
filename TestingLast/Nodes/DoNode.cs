@@ -38,7 +38,7 @@ namespace TestingLast.Nodes
 
                     setText(Statement);
                     
-                    Statement = surrondExpression(Statement);
+                   // Statement = surrondExpression(Statement);
                     //setText(Statement);       
                     //Shape.Label = new Crainiate.Diagramming.Label(Statement);
                 }
@@ -69,8 +69,9 @@ namespace TestingLast.Nodes
         public DoNode() {
             //  startNode = new HolderNode(this);
             //Shape.Label = new Crainiate.Diagramming.Label("Do");
+            Name = "DoWhile";
             setText("Do While");
-            Statement = "while(false);";
+            Statement = "false";
           
         }
     
@@ -140,7 +141,9 @@ namespace TestingLast.Nodes
         public override void shiftMainTrack()
         {
             Shape.Location = new PointF(Shape.Location.X ,BackNode.Shape.Center.Y- Shape.Size.Height / 2);
-            OutConnector.EndNode.shiftDown(moreShift);
+            if (OutConnector.EndNode != null)
+                OutConnector.EndNode.shiftDown(moreShift);
+            
         }
         public override void attachNode(BaseNode newNode, ConnectorNode clickedConnector) {
             

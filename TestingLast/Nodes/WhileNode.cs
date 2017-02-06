@@ -17,17 +17,17 @@ namespace TestingLast.Nodes
         public WhileNode()
         {
 
-            
+            Name = "While";
             //Shape.Label = new Crainiate.Diagramming.Label("While");
             setText("While");
-            Statement = "while(false)";
+            Statement = "false";
 
         }
 
         public override void shiftMainTrack()
         {
-            
-            OutConnector.EndNode.shiftDown(moreShift);
+            if(OutConnector.EndNode!=null)
+                OutConnector.EndNode.shiftDown(moreShift);
         }
 
         protected override void makeConnections()
@@ -67,9 +67,10 @@ namespace TestingLast.Nodes
             }
             else
             {
-                if(moveDirection==MOVE_DOWN)
+                BackNode.NodeLocation = new PointF(point.X, BackNode.NodeLocation.Y);
+                if (moveDirection==MOVE_DOWN)
                     TrueNode.OutConnector.EndNode.shiftDown(moreShift);
-                else
+                else if(moveDirection==MOVE_UP)
                 {
                     TrueNode.OutConnector.EndNode.shiftUp();
                  //   OutConnector.EndNode.shiftUp(); //shift main track
@@ -94,7 +95,7 @@ namespace TestingLast.Nodes
                 //AssignmentDialog db = new AssignmentDialog();
                 WhileBox whileBox = new WhileBox();
 
-                whileBox.setExpression(extractExpression(Statement));
+              //  whileBox.setExpression(extractExpression(Statement));
 
                 
                 DialogResult dr = whileBox.ShowDialog();
@@ -102,7 +103,7 @@ namespace TestingLast.Nodes
                 {
                     Statement = whileBox.getExpression();
                     setText(Statement);
-                    Statement = surrondExpression(Statement);
+                    //Statement = surrondExpression(Statement);
                     //setText(Statement);       
                     //Shape.Label = new Crainiate.Diagramming.Label(Statement);
                 }

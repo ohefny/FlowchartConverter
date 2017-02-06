@@ -25,15 +25,6 @@ namespace TestingLast.Nodes
                 TextBox textBox = new TextBox();
                 textBox.Location = new Point( (int) Shape.Location.X, (int) Shape.Location.Y);
                 textBox.Width = (int) Shape.Width;
-                
-
-
-
-
-
-
-
-
                 DeclareBox db = new DeclareBox();
                 DialogResult dr = db.ShowDialog();
                 if (dr == DialogResult.OK)
@@ -79,7 +70,7 @@ namespace TestingLast.Nodes
                     }
 
                     setText(Statement);
-                    Statement += " ;";
+                    //Statement += " ;";
                 }
                 // MessageBox.Show(Statement);
             
@@ -88,6 +79,7 @@ namespace TestingLast.Nodes
         }
         public DeclareNode()
         {
+            Name = "Declare";
             Shape.StencilItem = Stencil[FlowchartStencilType.InternalStorage];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#e3810c");
             Shape.GradientColor = Color.White;

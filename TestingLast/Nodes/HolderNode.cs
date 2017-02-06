@@ -11,9 +11,9 @@ namespace TestingLast.Nodes
     class HolderNode : BaseNode
     {
         static int hCounter=1;
-        BaseNode parentNode;
+        
         public HolderNode(BaseNode parentNode) {
-            this.parentNode = parentNode;
+            this.ParentNode = parentNode;
             Shape.StencilItem = Stencil[FlowchartStencilType.Connector];
             Shape.MinimumSize = new System.Drawing.SizeF(15, 15);
             
@@ -24,15 +24,7 @@ namespace TestingLast.Nodes
             hCounter++;
         }
 
-        public BaseNode ParentNode
-        {
-            get
-            {
-                return parentNode;
-            }
-
-           
-        }
+        
 
         public override void onShapeClicked()
         {
@@ -42,18 +34,16 @@ namespace TestingLast.Nodes
         public override void shiftDown(float moreShift)
         {
             this.moreShift = moreShift ;
-            if (OutConnector.EndNode != parentNode)
+            if (OutConnector.EndNode != ParentNode)
                 base.shiftDown(moreShift);
             else
             {
                 NodeLocation = new PointF(NodeLocation.X, NodeLocation.Y + shiftY+ moreShift);
-                if (parentNode is DecisionNode) {
+                if (ParentNode is DecisionNode) {
 
-                    if (parentNode.OutConnector.EndNode.NodeLocation.Y < NodeLocation.Y)
-                        //{ 
-                        ((DecisionNode)parentNode).shiftMainTrack();
-                    //    moreShift = 0;
-                  //  }
+                    if (ParentNode.OutConnector.EndNode!=null&& ParentNode.OutConnector.EndNode.NodeLocation.Y < NodeLocation.Y) 
+                        ((DecisionNode)ParentNode).shiftMainTrack();
+                
                 //this shifts down main track even if it will be shifted
                 }
             }

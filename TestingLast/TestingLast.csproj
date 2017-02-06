@@ -103,6 +103,8 @@
     <Compile Include="Nodes\WhileNode.cs" />
     <Compile Include="OnShapeClickListener.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Project Save\Project Loader.cs" />
+    <Compile Include="Project Save\Project Saver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestForm\frmGroup.cs">
       <SubType>Form</SubType>

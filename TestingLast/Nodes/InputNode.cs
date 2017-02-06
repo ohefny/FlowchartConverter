@@ -32,7 +32,7 @@ namespace TestingLast.Nodes
 
                     Statement = db.getExpression();
                     setText("Read "+Statement);
-                    Statement = surrondExpression(Statement);
+                 //   Statement = surrondExpression(Statement);
 
                     
                     
@@ -49,6 +49,7 @@ namespace TestingLast.Nodes
         }
         public InputNode()
         {
+            Name = "Input";
             Shape.StencilItem = Stencil[FlowchartStencilType.Data];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#0040a0");
             Shape.GradientColor = Color.Black;

@@ -218,7 +218,7 @@ namespace Crainiate.Diagramming
             if (ElementInvalid != null) ElementInvalid(this, new ElementEventArgs(element));
         }
 
-        protected virtual void OnModelInvalid()
+        public virtual void OnModelInvalid()
         {
             Route.Reform();
             if (ModelInvalid != null) ModelInvalid(this, EventArgs.Empty);

@@ -33,6 +33,9 @@
             this.diagram1 = new Crainiate.Diagramming.Forms.Diagram();
             this.button1 = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
+            this.xmlBtn = new System.Windows.Forms.Button();
+            this.loadBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // diagram1
@@ -60,7 +63,6 @@
             this.diagram1.Size = new System.Drawing.Size(763, 557);
             this.diagram1.TabIndex = 0;
             this.diagram1.Zoom = 100F;
-            
             this.diagram1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.diagram1_MouseClick_1);
             // 
             // button1
@@ -73,15 +75,45 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // delBtn
+            // deleteBtn
             // 
             this.deleteBtn.Location = new System.Drawing.Point(757, 56);
-            this.deleteBtn.Name = "delBtn";
+            this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 23);
             this.deleteBtn.TabIndex = 2;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // xmlBtn
+            // 
+            this.xmlBtn.Location = new System.Drawing.Point(758, 95);
+            this.xmlBtn.Name = "xmlBtn";
+            this.xmlBtn.Size = new System.Drawing.Size(74, 23);
+            this.xmlBtn.TabIndex = 3;
+            this.xmlBtn.Text = "Save Xml";
+            this.xmlBtn.UseVisualStyleBackColor = true;
+            this.xmlBtn.Click += new System.EventHandler(this.xmlBtn_Click);
+            // 
+            // loadBtn
+            // 
+            this.loadBtn.Location = new System.Drawing.Point(758, 139);
+            this.loadBtn.Name = "loadBtn";
+            this.loadBtn.Size = new System.Drawing.Size(74, 23);
+            this.loadBtn.TabIndex = 4;
+            this.loadBtn.Text = "Load_Btn";
+            this.loadBtn.UseVisualStyleBackColor = true;
+            this.loadBtn.Click += new System.EventHandler(this.onLoad_click);
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.Location = new System.Drawing.Point(758, 184);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(74, 23);
+            this.clearBtn.TabIndex = 5;
+            this.clearBtn.Text = "Clear";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // Form1
             // 
@@ -90,6 +122,9 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(851, 546);
+            this.Controls.Add(this.clearBtn);
+            this.Controls.Add(this.loadBtn);
+            this.Controls.Add(this.xmlBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.diagram1);
@@ -105,6 +140,9 @@
         public  Crainiate.Diagramming.Forms.Diagram diagram1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button xmlBtn;
+        private System.Windows.Forms.Button loadBtn;
+        private System.Windows.Forms.Button clearBtn;
     }
 }
 

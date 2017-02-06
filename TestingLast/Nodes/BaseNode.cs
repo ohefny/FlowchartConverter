@@ -21,12 +21,13 @@ namespace TestingLast.Nodes
         Form dialog;
         String statement;
         Shape shape;
+        BaseNode parentNode;
         FlowchartStencil stencil;
         protected String shapeTag;
         String connectorTag;
         static int counter;
         protected int shiftY = 90;
-        protected PointF nodeLocation;
+        protected PointF nodeLocation;//= new PointF(0, 0);
         protected float moreShift = 0;
         public Form Dialog
         {
@@ -138,6 +139,21 @@ namespace TestingLast.Nodes
             }
         }
 
+        public string Name { get; internal set; }
+
+        public BaseNode ParentNode
+        {
+            get
+            {
+                return parentNode;
+            }
+
+            set
+            {
+                parentNode = value;
+            }
+        }
+
         public BaseNode()
         {
             shape = new Shape();
@@ -178,9 +194,13 @@ namespace TestingLast.Nodes
                 model.Lines.Add(connectorTag, OutConnector.Connector);
             if (Shape != null)
                 model.Shapes.Add(shapeTag, shape);
-            
-            if(!nodes.Contains(this))
+
+            if (!nodes.Contains(this))
+            {
                 nodes.Add(this);
+                if (this is IfElseNode && NodeLocation.X < 100)
+                    shiftRight(100);
+            }
         }
         virtual public void removeFromModel()
         {
@@ -214,7 +234,8 @@ namespace TestingLast.Nodes
                 node.addToModel();
                 
             }
-
+            
+            
         }
 
       
@@ -246,30 +267,24 @@ namespace TestingLast.Nodes
             newNode.OutConnector.EndNode = oldOutNode;
             if (this.NodeLocation.X == oldOutNode.NodeLocation.X)
             {
-              
+               // if(newNode.NodeLocation ==null)
                 newNode.NodeLocation = oldOutNode.NodeLocation;
-                if (newNode is DecisionNode)
-                    oldOutNode.shiftDown(0);
-                else
-                    oldOutNode.shiftDown(0);
-             //   newNode.OutConnector.Connector.CalculateRoute();
-             //   oldOutNode.OutConnector.Connector.CalculateRoute();
-             //   this.OutConnector.Connector.CalculateRoute();
-               
-            }
-          /*  else
-            {
-                newNode.NodeLocation = this.NodeLocation;
+                oldOutNode.shiftDown(0);
                 
-                //MessageBox.Show(newNode.NodeLocation, this.NodeLocation);
-                newNode.shiftDown();
-                newNode.OutConnector.Connector.CalculateRoute();
-                newNode.OutConnector.Connector.Invalidate();
-                //    MessageBox.Show(newNode.NodeLocation.ToString()+" "+ this.NodeLocation.ToString());
-            }*/
-            //newNode.addToModel();
-
+            }
+            
         }
+
+        private void shiftRight(int distance)
+        {
+            foreach (BaseNode node in nodes)
+            {
+                
+                if(!(node is HolderNode))
+                    node.NodeLocation = new PointF(node.NodeLocation.X + distance, node.NodeLocation.Y);
+            }
+        }
+
         public virtual void attachNode(BaseNode newNode, ConnectorNode connectorNode)
         {
             attachNode(newNode);

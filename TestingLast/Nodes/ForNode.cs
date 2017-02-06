@@ -32,7 +32,7 @@ namespace TestingLast.Nodes
                 {
 
                     setExpVariables(forBox);
-                    Statement = surrondExpression(generateEx());
+                    Statement = generateEx();
 
                     setText(Statement);
                     
@@ -81,10 +81,11 @@ namespace TestingLast.Nodes
         {
             //base();
             // Shape.Label = new Crainiate.Diagramming.Label("For");
+            Name = "For";
             setText("For");
             trueConnector.Connector.Label = new Crainiate.Diagramming.Label("Next");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
-            Statement=("for(int i=0 ;i<0;i++)");
+            Statement=("false");
         }
     }
 }

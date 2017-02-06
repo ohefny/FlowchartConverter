@@ -29,7 +29,7 @@ namespace TestingLast.Nodes
                 {
                     Statement = od.getExpression();
                     setText("Print " + Statement);
-                    Statement = surrondExpression(Statement);
+                  //  Statement = surrondExpression(Statement);
                 }
                 Shape.Selected = false;
             }
@@ -43,8 +43,9 @@ namespace TestingLast.Nodes
         }
         public OutputNode()
         {
+            Name = "Output";
             Shape.StencilItem = Stencil[FlowchartStencilType.Data];
-            Shape.StencilItem.BackColor =System.Drawing.ColorTranslator.FromHtml("#00a040");
+            Shape.StencilItem.BackColor = System.Drawing.Color.Green;
             Shape.StencilItem.GradientColor = Color.Black;
             Shape.Label = new Crainiate.Diagramming.Label("Output");
 

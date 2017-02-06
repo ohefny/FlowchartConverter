@@ -86,24 +86,32 @@ namespace TestingLast.Nodes
 
         public void onShapeClicked()
         {
-            if (!connector.Selected|| ! selectable)
-                    return;
-            BaseNode toAttachNode = getPickedNode();
+            if (!connector.Selected || !selectable)
+                return;
+            addNewNode(getPickedNode());
+            connector.Selected = false;
+
+        }
+
+        public void addNewNode(BaseNode toAttachNode)
+        {
+             
             if (toAttachNode != null)
             {
-                 if (checkIfHolderExist()!=null) {
-                    (checkIfHolderExist()).ParentNode.attachNode(toAttachNode, this);
+                if (checkIfHolderExist() != null)
+                {
+                    toAttachNode.ParentNode = (checkIfHolderExist()).ParentNode;
+                    toAttachNode.ParentNode.attachNode(toAttachNode, this);
                 }
 
                 else
                 {
+                    toAttachNode.ParentNode = startNode.ParentNode;
                     startNode.attachNode(toAttachNode);
 
                 }
                 toAttachNode.addToModel();
             }
-            connector.Selected = false;
-            
         }
 
         private HolderNode checkIfHolderExist()

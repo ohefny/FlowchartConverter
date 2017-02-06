@@ -1355,7 +1355,7 @@ namespace Crainiate.Diagramming.Forms
                 //Set to portrait A4
                 Graphics g = null;
                 if (Render.Bitmap != null) g = Graphics.FromImage(Render.Bitmap);
-                SizeF size = Geometry.GetPaperSize(DiagramUnit.Pixel, Crainiate.Diagramming.Printing.PaperSizes.Iso.A4, g);
+                SizeF size = Geometry.GetPaperSize(DiagramUnit.Pixel, Crainiate.Diagramming.Printing.PaperSizes.Iso.FourA, g);
                 SizeF scaledSize = new SizeF(size.Width * Render.ScaleFactor, size.Height * Render.ScaleFactor);
                 if (g != null) g.Dispose();
 

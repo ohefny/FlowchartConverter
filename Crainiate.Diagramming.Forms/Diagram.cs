@@ -495,7 +495,9 @@ namespace Crainiate.Diagramming.Forms
         #endregion
 
         #region Overrides
-
+        public void InitiateClick(MouseEventArgs e) {
+            OnMouseDown(e);
+        }
         protected override void OnMouseDown(MouseEventArgs e)
         {
             //Cancel any text editing
