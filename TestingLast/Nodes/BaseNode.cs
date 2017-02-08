@@ -26,7 +26,7 @@ namespace TestingLast.Nodes
         protected String shapeTag;
         String connectorTag;
         static int counter;
-        protected int shiftY = 90;
+        protected int shiftY = 85;
         protected PointF nodeLocation;//= new PointF(0, 0);
         protected float moreShift = 0;
         public Form Dialog
@@ -199,7 +199,7 @@ namespace TestingLast.Nodes
             {
                 nodes.Add(this);
                 if (this is IfElseNode && NodeLocation.X < 100)
-                    shiftRight(100);
+                    shiftRight(100,null);
             }
         }
         virtual public void removeFromModel()
@@ -208,37 +208,35 @@ namespace TestingLast.Nodes
             {
                 throw new Exception("Model should be set before calling addToModel");
             }
-            Shapes tempShapes = model.Shapes;
-            Lines tempLines = model.Lines;
+            nodes.Remove(this);
             foreach (BaseNode node in nodes)
             {
-                if (node.outConnector.EndNode == this)
+               if (node.outConnector.EndNode == this && node.OutConnector.EndNode!=node.parentNode) //problem for backnode
                 {
                     node.outConnector.EndNode = outConnector.EndNode;
-                    node.outConnector.EndNode.shiftUp(this.NodeLocation);
+                    if (this is DecisionNode)
+                        node.outConnector.EndNode.shiftUp(this.NodeLocation.Y);
+                    else
+                        node.outConnector.EndNode.shiftUp();
                 }
             }
-            nodes.Remove(this);
+            redrawNodes();
 
-            //model.Shapes.Remove(shapeTag);
-            // model.Elements.Remove(this.shape);
-            //  model.Elements.Remove(this.outConnector.Connector);
-            //model.Lines.Remove(connectorTag);
+        }
+
+        protected void redrawNodes()
+        {
+            
             model.Clear();
-            //model.SetLines(tempLines);
-            //model.SetShapes(tempShapes);
-                      
+
             foreach (BaseNode node in nodes)
             {
                 if (node is HolderNode) continue;
                 node.addToModel();
-                
+
             }
-            
-            
         }
 
-      
 
         public abstract void onShapeClicked();
         public void attachNode(BaseNode newNode)
@@ -265,22 +263,63 @@ namespace TestingLast.Nodes
             BaseNode oldOutNode = OutConnector.EndNode;
             OutConnector.EndNode = newNode;
             newNode.OutConnector.EndNode = oldOutNode;
-            if (this.NodeLocation.X == oldOutNode.NodeLocation.X)
+          //  if (this.NodeLocation.X == oldOutNode.NodeLocation.X)
             {
-               // if(newNode.NodeLocation ==null)
+               
                 newNode.NodeLocation = oldOutNode.NodeLocation;
                 oldOutNode.shiftDown(0);
-                
+                if (newNode is DecisionNode)
+                {
+                    balanceParentTrack(newNode);
+                }
+                if (newNode is IfElseNode) {
+                    balanceParentTrack(newNode as IfElseNode);
+                }
             }
             
         }
 
-        private void shiftRight(int distance)
+        private void balanceParentTrack(BaseNode newNode)
+        {
+            BaseNode trackNode = null;
+            do {
+                if (trackNode == null)
+                    trackNode = newNode.ParentNode;
+                else
+                    trackNode = trackNode.ParentNode;
+
+                if (trackNode.NodeLocation.X > newNode.NodeLocation.X
+                    && (newNode as DecisionNode).TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
+                    shiftRight(200,trackNode.ParentNode);
+            }
+            while (!(trackNode is TerminalNode));
+        }
+        private void balanceParentTrack(IfElseNode newNode) {
+            BaseNode trackNode = null;
+            do
+            {
+                if (trackNode == null)
+                    trackNode = newNode.ParentNode;
+                else
+                    trackNode = trackNode.ParentNode;
+
+                if (trackNode.NodeLocation.X < newNode.NodeLocation.X
+                    && (newNode).FalseNode.NodeLocation.X < trackNode.NodeLocation.X)
+                {
+                    shiftRight(150, newNode.ParentNode.ParentNode);
+                    nodes.Add(newNode);
+                    shiftRight(150, newNode.ParentNode);
+                }
+            }
+            while (!(trackNode is TerminalNode));
+        }
+
+        private void shiftRight(int distance,BaseNode trackNode)
         {
             foreach (BaseNode node in nodes)
             {
                 
-                if(!(node is HolderNode))
+                if((!(node is HolderNode)) && (trackNode==null||node.ParentNode==trackNode))
                     node.NodeLocation = new PointF(node.NodeLocation.X + distance, node.NodeLocation.Y);
             }
         }
@@ -305,16 +344,73 @@ namespace TestingLast.Nodes
         {
             if(connectedShape()!=null)
                 NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y - shiftY + moreShift);
-            if (!(this is HolderNode) && OutConnector.EndNode != null)
+            /*  if (!(this is HolderNode) && OutConnector.EndNode != null)
+              {
+                  OutConnector.EndNode.shiftUp();
+                  if(this.ParentNode is DecisionNode){
+                      (this.ParentNode as DecisionNode).BackNode.shiftUp();
+                      this.ParentNode.OutConnector.EndNode.shiftUp();
+                  }
+              }*/
+            if (OutConnector.EndNode == null)
+                return;
+            if (this is HolderNode) //what about middleNode shift
+            {
+                //shifting middle node 
+                if (this.ParentNode is IfNode)
+                {
+
+                    IfNode pNode = (this.ParentNode as IfNode);
+                    pNode.MiddleNode.NodeLocation = new PointF(pNode.MiddleNode.connectedShape().Location.X, pNode.BackNode.NodeLocation.Y);
+
+                } //to decide shifting middle node or not
+                else if (this.ParentNode is IfElseNode)
+                {
+                    IfElseNode pNode = this.ParentNode as IfElseNode;
+                    PointF preLocation = pNode.MiddleNode.NodeLocation;
+                    pNode.balanceMiddleNode();
+                    if (pNode.MiddleNode.NodeLocation.Y == preLocation.Y)
+                        return; //thus don't shift the node after parent node
+                }
+                //shift the node after parentnode
+                this.ParentNode.OutConnector.EndNode.shiftUp();
+            }
+            else
+            {
                 OutConnector.EndNode.shiftUp();
+            }
         }
-        private void shiftUp(PointF nodeLocation)
+        public void shiftUp(float offsetY)
         {
-            //PointF tempLocation = NodeLocation;
+            float tempOffset = this.NodeLocation.Y;
             if (connectedShape() != null)
-                NodeLocation = nodeLocation;
-            if (!(this is HolderNode) && OutConnector.EndNode != null)
-                OutConnector.EndNode.shiftUp();
+                NodeLocation = new PointF(nodeLocation.X, offsetY);
+            if (OutConnector.EndNode == null)
+                return;
+            if (this is HolderNode) //what about middleNode shift
+            { 
+                //shifting middle node 
+                if (this.ParentNode is IfNode)
+                {
+
+                    IfNode pNode = (this.ParentNode as IfNode);
+                    pNode.MiddleNode.NodeLocation = new PointF(pNode.MiddleNode.connectedShape().Location.X, pNode.BackNode.NodeLocation.Y);
+
+                } //to decide shifting middle node or not
+                else if (this.ParentNode is IfElseNode)
+                {
+                    IfElseNode pNode = this.ParentNode as IfElseNode;
+                    PointF preLocation = pNode.MiddleNode.NodeLocation;
+                    pNode.balanceMiddleNode();
+                    if (pNode.MiddleNode.NodeLocation.Y == preLocation.Y)
+                        return; //thus don't shift the node after parent node
+                } 
+               //shift the node after parentnode
+                this.ParentNode.OutConnector.EndNode.shiftUp(offsetY+shiftY);
+            }
+            else {
+                OutConnector.EndNode.shiftUp(offsetY + shiftY);
+            }
         }
     }
 }

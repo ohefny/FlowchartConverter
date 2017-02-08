@@ -20,6 +20,7 @@ namespace TestingLast
         TerminalNode terminalS;
         TerminalNode terminalE;
         public static bool deleteChoosed;
+        public static bool openDialogs = false;
         public Form1()
         {
             InitializeComponent();
@@ -27,25 +28,28 @@ namespace TestingLast
             diagram1.Model.SetSize(new Size(100, 100));
             Model model = diagram1.Model;
             diagram1.Invalidate();
-           // this.Controls.Add(model);
-           
-             terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
-             terminalE= new TerminalNode(TerminalNode.TerminalType.End);
+            // this.Controls.Add(model);
+
+            initializeNodes(model);
+
+        }
+
+        private void initializeNodes(Model model)
+        {
+
+            diagram1.Model.Clear();
+            BaseNode.nodes.Clear();
+            terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
+            terminalE = new TerminalNode(TerminalNode.TerminalType.End);
             BaseNode.Model = model;
             BaseNode.Form = this;
             terminalS.attachNode(terminalE);
-            Connector connector = new Connector();
-            // connector.
-           terminalS.addToModel();
-           terminalE.addToModel();
-
-       
-            
-            
+            terminalE.ParentNode = terminalS;
+            terminalS.addToModel();
+            terminalE.addToModel();
         }
 
 
-      
         private void button1_Click_1(object sender, EventArgs e)
         {
             String str = FlowChartCodeGenerator.getCppCode(terminalS, terminalE);
@@ -78,44 +82,18 @@ namespace TestingLast
 
         private void onLoad_click(object sender, EventArgs e)
         {
-            BaseNode.nodes.Clear();
-            terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
-            terminalE = new TerminalNode(TerminalNode.TerminalType.End);
-            diagram1.Model.Clear();
-            diagram1.Model.OnModelInvalid();
-            BaseNode.nodes.Clear();
-            terminalS.attachNode(terminalE);
-           // Connector connector = new Connector();
-            // connector.
-            terminalS.addToModel();
-            terminalE.addToModel();
+            initializeNodes(BaseNode.Model);
             Project_Save.Project_Loader ps = new Project_Save.Project_Loader(terminalS, terminalE, "F:\\testxml.xml");
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
-            terminalE = new TerminalNode(TerminalNode.TerminalType.End);
-            diagram1.Model.Clear();
-            BaseNode.nodes.Clear();
-           /* diagram1.StopEdit();
-            diagram1.Suspend();
-            diagram1.Refresh();
-            diagram1.Resume();
-            diagram1.Invalidate();
-            //diagram1.InitiateClick(new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
-            /*diagram1.Model.OnModelInvalid();
-            diagram1.Refresh();
-            diagram1.Render.Layers = diagram1.Model.Layers;
-            diagram1.Render.Elements = diagram1.Model.Elements;
-            diagram1.Render.RenderDiagram(new Rectangle(0, 0, diagram1.Width, diagram1.Height), diagram1.Paging);*/
+            initializeNodes(BaseNode.Model);
+        }
 
-            // diagram1.DrawDiagram(new Rectangle(0, 0, this.Width, this.Height));
-            terminalS.attachNode(terminalE);
-            // Connector connector = new Connector();
-            // connector.
-            terminalS.addToModel();
-            terminalE.addToModel();
+        private void DialogsBtn_Click(object sender, EventArgs e)
+        {
+            openDialogs = true;
         }
     }
 }

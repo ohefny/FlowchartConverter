@@ -14,14 +14,15 @@ namespace TestingLast.Nodes
     {
         String var, startVal, endVal, stepBy;
         ForBox.Direction direction;
+        
         public override void onShapeClicked()
         {
             if (Shape.Selected && Form1.deleteChoosed)
             {
-                while (!(TrueNode.OutConnector.EndNode is HolderNode))
+               /* while (!(TrueNode.OutConnector.EndNode is HolderNode))
                 {
                     TrueNode.OutConnector.EndNode.removeFromModel();
-                }
+                }*/
                 removeFromModel();
                 Form1.deleteChoosed = false;
             }

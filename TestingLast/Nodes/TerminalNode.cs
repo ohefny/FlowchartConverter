@@ -18,6 +18,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem = Stencil[FlowchartStencilType.Terminator];
             Shape.BackColor =Color.Magenta;
             Shape.StencilItem.GradientColor = Color.Black;
+            //Shape.Size = new SizeF(40, 40);
             if (termType == TerminalType.Start) {
                 setText("Start");
                 Name = "Start";

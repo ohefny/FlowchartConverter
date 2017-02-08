@@ -63,7 +63,7 @@ namespace TestingLast.Nodes
             }
             if (TrueNode.OutConnector.EndNode is HolderNode)
             {
-                BackNode.NodeLocation = new PointF(point.X, point.Y + 100);
+                BackNode.NodeLocation = new PointF(point.X, point.Y + 60);
             }
             else
             {

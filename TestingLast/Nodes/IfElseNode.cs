@@ -54,19 +54,29 @@ namespace TestingLast.Nodes
                 middleNode = value;
             }
         }
-
+        public override void removeFromModel()
+        {
+            while (FalseNode.OutConnector.EndNode != BackfalseNode)
+                FalseNode.OutConnector.EndNode.removeFromModel();
+           // FalseNode.removeFromModel();
+           
+          //  BackfalseNode.removeFromModel();
+           // middleNode.removeFromModel();
+            base.removeFromModel();
+           // redrawNodes();
+        }
         public override void onShapeClicked()
         {
             if (Shape.Selected && Form1.deleteChoosed)
             {
-                while (!(TrueNode.OutConnector.EndNode is HolderNode))
+               /* while (!(TrueNode.OutConnector.EndNode is HolderNode))
                 {
                     TrueNode.OutConnector.EndNode.removeFromModel();
                 }
                 while (!(FalseNode.OutConnector.EndNode is HolderNode))
                 {
                     FalseNode.OutConnector.EndNode.removeFromModel();
-                }
+                }*/
                 removeFromModel();
                 Form1.deleteChoosed = false;
             }
@@ -115,6 +125,7 @@ namespace TestingLast.Nodes
         {
             MiddleNode = new HolderNode(this);
             MiddleNode.Shape.Label = new Crainiate.Diagramming.Label("Done");
+            this.OutConnector = MiddleNode.OutConnector;
             ///////////////////truepart
             TrueNode = new HolderNode(this);
             TrueNode.Shape.Label = new Crainiate.Diagramming.Label("Start IF");
@@ -151,7 +162,7 @@ namespace TestingLast.Nodes
         {
             //move middle Node
             MiddleNode.NodeLocation = new PointF(Shape.Center.X - MiddleNode.Shape.Width / 2, Shape.Center.Y - MiddleNode.Shape.Size.Height / 2);
-            MiddleNode.shiftDown(moreShift);
+            //MiddleNode.shiftDown(moreShift);
            
             /////////////// move true part
             PointF point = new PointF(Shape.Width + Shape.Location.X + 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
@@ -172,7 +183,11 @@ namespace TestingLast.Nodes
             else
             {
                 BackNode.NodeLocation = new PointF(point.X, BackNode.NodeLocation.Y);
-                TrueNode.OutConnector.EndNode.shiftDown(moreShift);
+                if (moveDirection == MOVE_DOWN)
+                    TrueNode.OutConnector.EndNode.shiftDown(moreShift);
+                else if(moveDirection == MOVE_UP)
+                    TrueNode.OutConnector.EndNode.shiftUp();
+
             }
             ///////////////////////////////False Part
             PointF point2 = new PointF(Shape.Location.X - 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
@@ -193,9 +208,13 @@ namespace TestingLast.Nodes
             else
             {
                 BackfalseNode.NodeLocation = new PointF(point2.X, BackfalseNode.NodeLocation.Y);
-                FalseNode.OutConnector.EndNode.shiftDown(moreShift);
+                if (moveDirection == MOVE_DOWN)
+                    FalseNode.OutConnector.EndNode.shiftDown(moreShift);
+                else if (moveDirection == MOVE_UP)
+                    FalseNode.OutConnector.EndNode.shiftUp();
             }
-
+            float middley = backfalseNode.NodeLocation.Y >= BackNode.NodeLocation.Y ? backfalseNode.NodeLocation.Y : BackNode.NodeLocation.Y;
+            middleNode.NodeLocation = new PointF(middleNode.NodeLocation.X, middley);
         }
 
         public override void shiftMainTrack()
@@ -226,9 +245,9 @@ namespace TestingLast.Nodes
             balanceMiddleNode();
         }
 
-        private void balanceMiddleNode()
+        public void balanceMiddleNode()
         {
-            if (MiddleNode.NodeLocation.Y < BackNode.NodeLocation.Y)
+           /* if (MiddleNode.NodeLocation.Y < BackNode.NodeLocation.Y)
             {
                 MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, BackNode.NodeLocation.Y);
 
@@ -236,7 +255,11 @@ namespace TestingLast.Nodes
             else if (MiddleNode.NodeLocation.Y < BackfalseNode.NodeLocation.Y)
             {
                 MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, BackfalseNode.NodeLocation.Y);
-            }
+            }*/
+            //choose the nodelocation with larger y
+            MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, 
+                (BackfalseNode.NodeLocation.Y > BackNode.NodeLocation.Y) ? 
+                BackfalseNode.NodeLocation.Y : BackNode.NodeLocation.Y);
         }
 
         public IfElseNode()

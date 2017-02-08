@@ -76,9 +76,8 @@ namespace TestingLast.Nodes
             connector.Start.Shape = startNode.Shape;
             connector.OnShapeSelectedListener = this;
             connector.End.Marker = new Arrow();
-           // connector.Start.Marker = new Marker(MarkerStyle.Ellipse);
-            connector.Avoid = true;
-            connector.Jump = true;
+            // connector.Start.Marker = new Marker(MarkerStyle.Ellipse);
+            connector.AllowMove = true; 
             connector.DrawSelected=true;
            // connector.Rounded = true;
         }
@@ -86,11 +85,11 @@ namespace TestingLast.Nodes
 
         public void onShapeClicked()
         {
-            if (!connector.Selected || !selectable)
+            if (!connector.Selected || !selectable || Form1.openDialogs==false)
                 return;
             addNewNode(getPickedNode());
             connector.Selected = false;
-
+            Form1.openDialogs = false;
         }
 
         public void addNewNode(BaseNode toAttachNode)

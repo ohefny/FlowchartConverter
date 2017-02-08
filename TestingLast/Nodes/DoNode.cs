@@ -18,10 +18,10 @@ namespace TestingLast.Nodes
         {
             if (Shape.Selected && Form1.deleteChoosed)
             {
-                while (!(TrueNode.OutConnector.EndNode is HolderNode))
+              /*  while (!(TrueNode.OutConnector.EndNode is HolderNode))
                 {
                     TrueNode.OutConnector.EndNode.removeFromModel();
-                }
+                }*/
                 removeFromModel();
                 Form1.deleteChoosed = false;
             }

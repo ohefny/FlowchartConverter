@@ -102,7 +102,17 @@ namespace TestingLast.Nodes
         abstract protected void makeConnections();
        
         abstract protected void moveConnections();
-        
+
+        public override void removeFromModel()
+        {
+            
+            while (TrueNode.OutConnector.EndNode != BackNode)
+                TrueNode.OutConnector.EndNode.removeFromModel();
+           // TrueNode.removeFromModel();
+           // BackNode.removeFromModel();
+            base.removeFromModel();
+            //redrawNodes();
+        }
         override public void addToModel()
         {
             base.addToModel();
