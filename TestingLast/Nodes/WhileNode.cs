@@ -50,7 +50,7 @@ namespace TestingLast.Nodes
 
         protected override void moveConnections()
         {
-            PointF point = new PointF(Shape.Width + Shape.Location.X + 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point = new PointF(Shape.Width + Shape.Location.X + 70, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (trueConnector.EndNode == null)

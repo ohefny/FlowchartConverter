@@ -202,8 +202,8 @@ namespace TestingLast.Nodes
             if (!nodes.Contains(this))
             {
                 nodes.Add(this);
-               if (this is IfElseNode && NodeLocation.X < 100)
-                    shiftRight(100,null);
+                if (this is IfElseNode && NodeLocation.X < 100)
+                    shiftOnMyRight(-1);
             }
         }
         virtual public void removeFromModel()
@@ -272,18 +272,31 @@ namespace TestingLast.Nodes
                
                 newNode.NodeLocation = oldOutNode.NodeLocation;
                 oldOutNode.shiftDown(0);
+               
                 if (newNode is DecisionNode)
                 {
-                    balanceParentTrack(newNode);
+                    balanceParentTrack(newNode as DecisionNode);
                 }
+                else
+                    balanceParentTrack(newNode);
                 if (newNode is IfElseNode) {
                     balanceParentTrack(newNode as IfElseNode);
                 }
+                
+                
             }
             
         }
+        private void balanceParentTrack(BaseNode newNode) {
+            foreach (BaseNode node in nodes) {
+                if (node.NodeLocation.X > newNode.NodeLocation.X
+                    && newNode.Shape.Width + newNode.NodeLocation.X > (node.NodeLocation.X))
+                    newNode.shiftOnMyRight();
 
-        private void balanceParentTrack(BaseNode newNode)
+            }
+
+        }
+        private void balanceParentTrack(DecisionNode newNode)
         {
             BaseNode trackNode = null;
 
@@ -292,11 +305,13 @@ namespace TestingLast.Nodes
                     trackNode = newNode.ParentNode;
                 else
                     trackNode = trackNode.ParentNode;
-                
+
                 //this is the case when adding to the true part of Decision that is left to main track 
                 if (trackNode.NodeLocation.X > newNode.NodeLocation.X
-                    && (newNode as DecisionNode).TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
-                    shiftRight(200,trackNode.ParentNode);
+                    && newNode.TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
+                {
+                    newNode.shiftOnMyRight();
+                }
             }
             while (!(trackNode is TerminalNode));
         }
@@ -313,25 +328,42 @@ namespace TestingLast.Nodes
                     && (newNode).FalseNode.NodeLocation.X < trackNode.NodeLocation.X)
                 {
                     BaseNode pNode = newNode.ParentNode;
-                    //while(pNode)
-                    shiftRight(150, newNode.ParentNode.ParentNode);
+                    while (!(pNode.ParentNode is TerminalNode))
+                        pNode = pNode.ParentNode;
+                    //pNode.shiftRight();
+                    // shiftRight(150, newNode.ParentNode.ParentNode);
+
+                    //shiftRight(150, newNode.ParentNode);
                     nodes.Add(newNode);
-                    shiftRight(150, newNode.ParentNode);
+                    newNode.shiftOnMyRight(-1);
+                    
                 }
             }
             while (!(trackNode is TerminalNode));
         }
 
-       private void shiftRight(int distance,BaseNode trackNode)
+      /*  private void shiftRight(int distance, BaseNode trackNode, BaseNode exculde=null)
         {
             foreach (BaseNode node in nodes)
             {
-                
-                if((!(node is HolderNode)) && (trackNode==null||node.ParentNode==trackNode))
+
+                if ((!(node is HolderNode)) && (trackNode == null || node.ParentNode == trackNode) && node != exculde)
+                {
                     node.NodeLocation = new PointF(node.NodeLocation.X + distance, node.NodeLocation.Y);
+                    if (node is DecisionNode)
+                        shiftRight(distance, node, node);
+                }
             }
+        }*/
+        private void shiftOnMyRight(int more=0) {
+            foreach (BaseNode node in nodes)
+            {
+                if (node is HolderNode) continue;
+                if (node.NodeLocation.X > this.NodeLocation.X+more)
+                    node.shiftRight(150);
+            }
+
         }
-       
         public virtual void attachNode(BaseNode newNode, ConnectorNode connectorNode)
         {
             attachNode(newNode);
@@ -419,6 +451,9 @@ namespace TestingLast.Nodes
             else {
                 OutConnector.EndNode.shiftUp(offsetY + shiftY);
             }
+        }
+        public void shiftRight(int distance) {
+            NodeLocation = new PointF(NodeLocation.X + distance,NodeLocation.Y);
         }
     }
 }

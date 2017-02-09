@@ -59,7 +59,7 @@ namespace TestingLast.Project_Save
 
                 ConnectorNode con = startNode.OutConnector;
 
-                addBlockNodes(doc.DocumentElement.ChildNodes, startNode);
+                addBlockNodes(doc.DocumentElement.ChildNodes, startNode,startNode);
                // foreach (Pair pair in blockNodes)
                // {
                   //  setAttributes(pair.XmlNode, pair.BaseNode);
@@ -160,7 +160,7 @@ namespace TestingLast.Project_Save
               return con;
   <<<<<<< HEAD
           }*/
-        private void addBlockNodes(XmlNodeList list, BaseNode LastNode)
+        private void addBlockNodes(XmlNodeList list, BaseNode lastNode,BaseNode parentNode)
         {
 
             foreach (XmlNode node in list)
@@ -200,34 +200,34 @@ namespace TestingLast.Project_Save
                 {
                     newNode = new IfNode();
                     setAttributes(node, newNode);
-                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode,newNode);
                 }
                 else if (node.Name.Equals("IfElse"))
                 {
                     newNode = new IfElseNode();
                     setAttributes(node, newNode);
-                    addBlockNodes(node.FirstChild.ChildNodes, ((IfElseNode)newNode).TrueNode);
-                    addBlockNodes(node.LastChild.ChildNodes, ((IfElseNode)newNode).FalseNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((IfElseNode)newNode).TrueNode,newNode);
+                    addBlockNodes(node.LastChild.ChildNodes, ((IfElseNode)newNode).FalseNode, newNode);
 
                 }
                 else if (node.Name.Equals("While"))
                 {
                     newNode = new WhileNode();
                     setAttributes(node, newNode);
-                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode, newNode);
 
                 }
                 else if (node.Name.Equals("DoWhile"))
                 {
                     newNode = new DoNode();
                     setAttributes(node, newNode);
-                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode, newNode);
                 }
                 else if (node.Name.Equals("For"))
                 {
                     newNode = new ForNode();
                     setAttributes(node, newNode);
-                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode, newNode);
 
                 }
                 else
@@ -236,14 +236,15 @@ namespace TestingLast.Project_Save
 
                 if (!(node.Name.Equals("Start") || node.Name.Equals("End")))
                 {
-                    BaseNode oldNode = LastNode.OutConnector.EndNode;
-                    LastNode.OutConnector.EndNode = newNode;
+                    BaseNode oldNode = lastNode.OutConnector.EndNode;
+                    lastNode.OutConnector.EndNode = newNode;
                     newNode.OutConnector.EndNode = oldNode;
                     newNode.addToModel();
+                    newNode.ParentNode = parentNode;   
 
                 }
-
-                LastNode = newNode;
+               
+                lastNode = newNode;
                 // blockNodes.Add(new Pair(node, newNode));
                 setAttributes(node, newNode);
             }

@@ -165,7 +165,7 @@ namespace TestingLast.Nodes
             //MiddleNode.shiftDown(moreShift);
            
             /////////////// move true part
-            PointF point = new PointF(Shape.Width + Shape.Location.X + 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point = new PointF(Shape.Width + Shape.Location.X + 70, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;
 
             if (trueConnector.EndNode == null)
@@ -190,7 +190,7 @@ namespace TestingLast.Nodes
 
             }
             ///////////////////////////////False Part
-            PointF point2 = new PointF(Shape.Location.X - 100, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point2 = new PointF(Shape.Location.X - 70, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             FalseNode.NodeLocation = point2;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (falseConnector.EndNode == null)
