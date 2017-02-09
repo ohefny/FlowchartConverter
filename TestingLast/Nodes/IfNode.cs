@@ -72,7 +72,7 @@ namespace TestingLast.Nodes
                 //AssignmentDialog db = new AssignmentDialog();
                 IfBox ifBox = new IfBox();
                 if (!String.IsNullOrEmpty(Statement)) {
-                   ifBox.setExpression(extractExpression(Statement)); 
+                  // ifBox.setExpression(extractExpression(Statement)); 
                     
                 }
                 DialogResult dr = ifBox.ShowDialog();

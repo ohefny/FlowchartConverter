@@ -26,6 +26,7 @@ namespace TestingLast
             InitializeComponent();
             new OutputNode();
             diagram1.Model.SetSize(new Size(100, 100));
+        
             Model model = diagram1.Model;
             diagram1.Invalidate();
             // this.Controls.Add(model);

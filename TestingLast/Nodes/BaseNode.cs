@@ -173,6 +173,10 @@ namespace TestingLast.Nodes
            
             
         }
+        public BaseNode(PointF location): this()
+        {
+            NodeLocation = location;
+        }
         virtual public void setText(String label) {
             Shape.Label = new Crainiate.Diagramming.Label(label);
             SizeF size;
@@ -198,7 +202,7 @@ namespace TestingLast.Nodes
             if (!nodes.Contains(this))
             {
                 nodes.Add(this);
-                if (this is IfElseNode && NodeLocation.X < 100)
+               if (this is IfElseNode && NodeLocation.X < 100)
                     shiftRight(100,null);
             }
         }
@@ -282,12 +286,14 @@ namespace TestingLast.Nodes
         private void balanceParentTrack(BaseNode newNode)
         {
             BaseNode trackNode = null;
+
             do {
                 if (trackNode == null)
                     trackNode = newNode.ParentNode;
                 else
                     trackNode = trackNode.ParentNode;
-
+                
+                //this is the case when adding to the true part of Decision that is left to main track 
                 if (trackNode.NodeLocation.X > newNode.NodeLocation.X
                     && (newNode as DecisionNode).TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
                     shiftRight(200,trackNode.ParentNode);
@@ -302,10 +308,12 @@ namespace TestingLast.Nodes
                     trackNode = newNode.ParentNode;
                 else
                     trackNode = trackNode.ParentNode;
-
+                //this is the case when adding in the false part of ifelse that is right to main track
                 if (trackNode.NodeLocation.X < newNode.NodeLocation.X
                     && (newNode).FalseNode.NodeLocation.X < trackNode.NodeLocation.X)
                 {
+                    BaseNode pNode = newNode.ParentNode;
+                    //while(pNode)
                     shiftRight(150, newNode.ParentNode.ParentNode);
                     nodes.Add(newNode);
                     shiftRight(150, newNode.ParentNode);
@@ -314,7 +322,7 @@ namespace TestingLast.Nodes
             while (!(trackNode is TerminalNode));
         }
 
-        private void shiftRight(int distance,BaseNode trackNode)
+       private void shiftRight(int distance,BaseNode trackNode)
         {
             foreach (BaseNode node in nodes)
             {
@@ -323,7 +331,7 @@ namespace TestingLast.Nodes
                     node.NodeLocation = new PointF(node.NodeLocation.X + distance, node.NodeLocation.Y);
             }
         }
-
+       
         public virtual void attachNode(BaseNode newNode, ConnectorNode connectorNode)
         {
             attachNode(newNode);

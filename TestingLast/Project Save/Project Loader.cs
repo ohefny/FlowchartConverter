@@ -46,7 +46,7 @@ namespace TestingLast.Project_Save
     {
         TerminalNode startNode;
         TerminalNode endNode;
-        List<Pair> blockNodes = new List<Pair>();
+       // List<Pair> blockNodes = new List<Pair>();
         public Project_Loader(TerminalNode startNode, TerminalNode endNode, string filePath)
         {
             
@@ -59,17 +59,18 @@ namespace TestingLast.Project_Save
 
                 ConnectorNode con = startNode.OutConnector;
                 addBlockNodes(doc.DocumentElement.ChildNodes, startNode);
-                foreach (Pair pair in blockNodes)
-                {
-                    setAttributes(pair.XmlNode, pair.BaseNode);
-                }
-                blockNodes = null;
+               // foreach (Pair pair in blockNodes)
+               // {
+                  //  setAttributes(pair.XmlNode, pair.BaseNode);
+              //  }
+              //  blockNodes = null;
             }
             catch (Exception ex) {
+                
             }
         }
 
-        private ConnectorNode addBlockNodes(XmlNodeList list, ConnectorNode con)
+      /*  private ConnectorNode addBlockNodes(XmlNodeList list, ConnectorNode con)
         {
             
             foreach (XmlNode node in list)
@@ -154,7 +155,7 @@ namespace TestingLast.Project_Save
             
 
             return con;
-        }
+        }*/
         private void addBlockNodes(XmlNodeList list, BaseNode LastNode)
         {
 
@@ -239,7 +240,7 @@ namespace TestingLast.Project_Save
                 }
                 
                 LastNode = newNode;
-                blockNodes.Add(new Pair(node, newNode));
+               // blockNodes.Add(new Pair(node, newNode));
                 setAttributes(node, newNode);
             }
 
