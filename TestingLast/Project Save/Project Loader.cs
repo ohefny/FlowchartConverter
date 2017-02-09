@@ -58,7 +58,7 @@ namespace TestingLast.Project_Save
                 doc.Load(filePath);
 
                 ConnectorNode con = startNode.OutConnector;
-                addBlockNodes(doc.DocumentElement.ChildNodes, con);
+                addBlockNodes(doc.DocumentElement.ChildNodes, startNode);
                 foreach (Pair pair in blockNodes)
                 {
                     setAttributes(pair.XmlNode, pair.BaseNode);
@@ -75,8 +75,7 @@ namespace TestingLast.Project_Save
             foreach (XmlNode node in list)
             {
                 BaseNode newNode = null;
-                if (node.Name.Equals("End")) {
-                    
+                if (node.Name.Equals("End")) {                   
                     newNode = endNode;
                 }
                 else if (node.Name.Equals("Start"))
@@ -156,10 +155,101 @@ namespace TestingLast.Project_Save
 
             return con;
         }
+        private void addBlockNodes(XmlNodeList list, BaseNode LastNode)
+        {
+
+            foreach (XmlNode node in list)
+            {
+                BaseNode newNode = null;
+                if (node.Name.Equals("End"))
+                {
+                    newNode = endNode;
+                }
+                else if (node.Name.Equals("Start"))
+                {
+                    newNode = startNode;
+                }
+                else if (node.Name.Equals("Assign"))
+                {
+                    newNode = new AssignNode();
+
+
+                }
+                else if (node.Name.Equals("Declare"))
+                {
+                    newNode = new DeclareNode();
+
+
+                }
+                else if (node.Name.Equals("Input"))
+                {
+                    newNode = new InputNode();
+
+                }
+                else if (node.Name.Equals("Output"))
+                {
+                    newNode = new OutputNode();
+
+                }
+                else if (node.Name.Equals("If"))
+                {
+                    newNode = new IfNode();
+                    setAttributes(node, newNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+                }
+                else if (node.Name.Equals("IfElse"))
+                {
+                    newNode = new IfElseNode();
+                    setAttributes(node, newNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((IfElseNode)newNode).TrueNode);
+                    addBlockNodes(node.LastChild.ChildNodes, ((IfElseNode)newNode).FalseNode);
+
+                }
+                else if (node.Name.Equals("While"))
+                {
+                    newNode = new WhileNode();
+                    setAttributes(node, newNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+
+                }
+                else if (node.Name.Equals("DoWhile"))
+                {
+                    newNode = new DoNode();
+                    setAttributes(node, newNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+                }
+                else if (node.Name.Equals("For"))
+                {
+                    newNode = new ForNode();
+                    setAttributes(node, newNode);
+                    addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode);
+
+                }
+                else
+                {
+                }
+
+                if (!(node.Name.Equals("Start") || node.Name.Equals("End")))
+                {
+                    BaseNode oldNode = LastNode.OutConnector.EndNode;
+                    LastNode.OutConnector.EndNode = newNode;
+                    newNode.OutConnector.EndNode = oldNode;
+                    newNode.addToModel();
+
+                }
+                
+                LastNode = newNode;
+                blockNodes.Add(new Pair(node, newNode));
+                setAttributes(node, newNode);
+            }
+
+
+            
+        }
 
         private static void setAttributes(XmlNode node, BaseNode newNode)
         {
-            string statment= node.Attributes["Statment"]?.InnerText;
+            string statment= escapesToRegular(node.Attributes["Statment"]?.InnerText);
             string location = node.Attributes["Location"]?.InnerText;
             string[] true_end_location = node.Attributes["True_End_Location"]?.InnerText.Split(',');
             string[] false_end_location = node.Attributes["False_End_Location"]?.InnerText.Split(',');
@@ -195,6 +285,16 @@ namespace TestingLast.Project_Save
 
             }
         }
+        private static string escapesToRegular(String str)
+        {
+            if (str == null) return null;
+            str = str.Replace("&quot;", "\"");
+            str = str.Replace("&apos;","'" );
+            str = str.Replace("&lt;","<");
+            str = str.Replace("&gt;",">");
+            str = str.Replace("&amp;", "&");
+            return str;
 
+        }
     }
 }
