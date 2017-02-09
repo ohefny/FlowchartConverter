@@ -247,7 +247,15 @@ namespace TestingLast.Nodes
 
         public void balanceMiddleNode()
         {
-           
+           /* if (MiddleNode.NodeLocation.Y < BackNode.NodeLocation.Y)
+            {
+                MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, BackNode.NodeLocation.Y);
+
+            }
+            else if (MiddleNode.NodeLocation.Y < BackfalseNode.NodeLocation.Y)
+            {
+                MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, BackfalseNode.NodeLocation.Y);
+            }*/
             //choose the nodelocation with larger y
             MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, 
                 (BackfalseNode.NodeLocation.Y > BackNode.NodeLocation.Y) ? 

@@ -153,7 +153,6 @@
             this.ClientSize = new System.Drawing.Size(1184, 681);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.diagram1);
-            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);

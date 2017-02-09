@@ -147,19 +147,9 @@ namespace TestingLast.Project_Save
                 sb.Append(" True_End_Location = \"" + decisionNode.BackNode.NodeLocation.X.ToString() + "," + decisionNode.BackNode.NodeLocation.Y.ToString() + "\" ");
 
             }
-            sb.Append(" Statment = \"" + xmlWithEscapes(node.Statement) +"\" ");
+            sb.Append(" Statment = \"" + node.Statement +"\" ");
             sb.Append(" Location = \"" + node.NodeLocation.X.ToString()+","+ node.NodeLocation.Y.ToString() + "\" ");
             return sb.ToString();
-        }
-        private static string xmlWithEscapes(String str) {
-            if (str == null) return null;
-            str=str.Replace("\"", "&quot;");
-            str = str.Replace("'", "&apos;");
-            str = str.Replace("<", "&lt;");
-            str = str.Replace(">", "&gt;");
-            str = str.Replace("&", "&amp;");
-            return str;
-
         }
     }
 }
