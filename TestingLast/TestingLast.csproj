@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeGeneration\FlowChartCodeGenerator.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="Dialogs\AssignmentDialog.cs">
       <SubType>Form</SubType>
     </Compile>

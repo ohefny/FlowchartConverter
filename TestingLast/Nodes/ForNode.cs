@@ -17,14 +17,14 @@ namespace TestingLast.Nodes
         
         public override void onShapeClicked()
         {
-            if (Shape.Selected && Form1.deleteChoosed)
+            if (Shape.Selected && Controller.DeleteChoosed)
             {
                /* while (!(TrueNode.OutConnector.EndNode is HolderNode))
                 {
                     TrueNode.OutConnector.EndNode.removeFromModel();
                 }*/
                 removeFromModel();
-                Form1.deleteChoosed = false;
+                Controller.DeleteChoosed = false;
             }
             else if(Shape.Selected)
             {

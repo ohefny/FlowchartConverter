@@ -17,43 +17,29 @@ namespace TestingLast
 {
     public partial class Form1 : Form
     {
+        Controller controller;
         TerminalNode terminalS;
         TerminalNode terminalE;
-        public static bool deleteChoosed;
-        public static bool openDialogs = false;
+        
         public Form1()
         {
+            
             InitializeComponent();
-            new OutputNode();
-            diagram1.Model.SetSize(new Size(100, 100));
-        
+            
             Model model = diagram1.Model;
+            controller = new Controller(model);
             diagram1.Invalidate();
             // this.Controls.Add(model);
 
-            initializeNodes(model);
+            //initializeNodes(model);
 
         }
 
-        private void initializeNodes(Model model)
-        {
-
-            diagram1.Model.Clear();
-            BaseNode.nodes.Clear();
-            terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
-            terminalE = new TerminalNode(TerminalNode.TerminalType.End);
-            BaseNode.Model = model;
-            BaseNode.Form = this;
-            terminalS.attachNode(terminalE);
-            terminalE.ParentNode = terminalS;
-            terminalS.addToModel();
-            terminalE.addToModel();
-        }
-
+        
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            String str = FlowChartCodeGenerator.getCppCode(terminalS, terminalE);
+            String str = controller.getCode(Controller.Language.CPP);
             MessageBox.Show(str);
 
         }
@@ -61,40 +47,40 @@ namespace TestingLast
       
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.Cross;
-            deleteChoosed = true;
+            controller.DeleteChoosed = true;
         }
 
         private void diagram1_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
-
-                deleteChoosed = false;
-
+                controller.cancelClickedButtons();
             }
         }
 
         private void xmlBtn_Click(object sender, EventArgs e)
         {
-            Project_Save.Project_Saver ps = new Project_Save.Project_Saver(terminalS, terminalE, "F:\\", "testxml");
-            MessageBox.Show(ps.XmlString);
+            controller.saveProject("F:\\", "testxml");
+            
+           
+            //MessageBox.Show(ps.XmlString);
         }
 
         private void onLoad_click(object sender, EventArgs e)
         {
-            initializeNodes(BaseNode.Model);
-            Project_Save.Project_Loader ps = new Project_Save.Project_Loader(terminalS, terminalE, "F:\\testxml.xml");
+            //initializeNodes(BaseNode.Model);
+            controller.loadProject("F:\\testxml.xml");
+           
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            initializeNodes(BaseNode.Model);
+            controller.initializeProject();
         }
 
         private void DialogsBtn_Click(object sender, EventArgs e)
         {
-            openDialogs = true;
+            controller.OpenDialogs = true;
         }
     }
 }

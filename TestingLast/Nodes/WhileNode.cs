@@ -50,7 +50,7 @@ namespace TestingLast.Nodes
 
         protected override void moveConnections()
         {
-            PointF point = new PointF(Shape.Width + Shape.Location.X + 70, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point = new PointF(Shape.Width + Shape.Location.X + 90, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (trueConnector.EndNode == null)
@@ -80,13 +80,13 @@ namespace TestingLast.Nodes
         }
         public override void onShapeClicked()
         {
-            if (Shape.Selected && Form1.deleteChoosed)
+            if (Shape.Selected && Controller.DeleteChoosed)
             {
                 while (!(TrueNode.OutConnector.EndNode is HolderNode)) {
                     TrueNode.OutConnector.EndNode.removeFromModel();
                 }
                 removeFromModel();
-                Form1.deleteChoosed = false;
+                Controller.DeleteChoosed = false;
             }
 
             // DialogResult dr = whileBox.ShowDialog();

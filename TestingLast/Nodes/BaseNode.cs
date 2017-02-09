@@ -14,6 +14,7 @@ namespace TestingLast.Nodes
 
     public abstract class BaseNode : Crainiate.Diagramming.OnShapeClickListener
     {
+        static Controller controller;
         static Form1 form;
         public static List<BaseNode> nodes = new List<BaseNode>();      
         static Model model;
@@ -26,7 +27,7 @@ namespace TestingLast.Nodes
         protected String shapeTag;
         String connectorTag;
         static int counter;
-        protected int shiftY = 85;
+        protected int shiftY = 95;
         protected PointF nodeLocation;//= new PointF(0, 0);
         protected float moreShift = 0;
         public Form Dialog
@@ -154,8 +155,23 @@ namespace TestingLast.Nodes
             }
         }
 
+        internal static Controller Controller
+        {
+            get
+            {
+                return controller;
+            }
+
+            set
+            {
+                controller = value;
+            }
+        }
+
         public BaseNode()
         {
+            if (Controller == null)
+                throw new Exception("Controller Must Be set First");
             shape = new Shape();
             Shape.Label = new Crainiate.Diagramming.Label();
             Shape.Label.Color = Color.White;
@@ -289,6 +305,7 @@ namespace TestingLast.Nodes
         }
         private void balanceParentTrack(BaseNode newNode) {
             foreach (BaseNode node in nodes) {
+                if (node is HolderNode) continue;
                 if (node.NodeLocation.X > newNode.NodeLocation.X
                     && newNode.Shape.Width + newNode.NodeLocation.X > (node.NodeLocation.X))
                     newNode.shiftOnMyRight();
@@ -342,19 +359,7 @@ namespace TestingLast.Nodes
             while (!(trackNode is TerminalNode));
         }
 
-      /*  private void shiftRight(int distance, BaseNode trackNode, BaseNode exculde=null)
-        {
-            foreach (BaseNode node in nodes)
-            {
-
-                if ((!(node is HolderNode)) && (trackNode == null || node.ParentNode == trackNode) && node != exculde)
-                {
-                    node.NodeLocation = new PointF(node.NodeLocation.X + distance, node.NodeLocation.Y);
-                    if (node is DecisionNode)
-                        shiftRight(distance, node, node);
-                }
-            }
-        }*/
+     
         private void shiftOnMyRight(int more=0) {
             foreach (BaseNode node in nodes)
             {
@@ -384,14 +389,7 @@ namespace TestingLast.Nodes
         {
             if(connectedShape()!=null)
                 NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y - shiftY + moreShift);
-            /*  if (!(this is HolderNode) && OutConnector.EndNode != null)
-              {
-                  OutConnector.EndNode.shiftUp();
-                  if(this.ParentNode is DecisionNode){
-                      (this.ParentNode as DecisionNode).BackNode.shiftUp();
-                      this.ParentNode.OutConnector.EndNode.shiftUp();
-                  }
-              }*/
+          
             if (OutConnector.EndNode == null)
                 return;
             if (this is HolderNode) //what about middleNode shift

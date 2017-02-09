@@ -60,11 +60,7 @@ namespace TestingLast.Project_Save
                 ConnectorNode con = startNode.OutConnector;
 
                 addBlockNodes(doc.DocumentElement.ChildNodes, startNode,startNode);
-               // foreach (Pair pair in blockNodes)
-               // {
-                  //  setAttributes(pair.XmlNode, pair.BaseNode);
-              //  }
-              //  blockNodes = null;
+              
 
             }
             catch (Exception ex) {
@@ -72,94 +68,7 @@ namespace TestingLast.Project_Save
             }
         }
 
-        /*  private ConnectorNode addBlockNodes(XmlNodeList list, ConnectorNode con)
-          {
-
-              foreach (XmlNode node in list)
-              {
-                  BaseNode newNode = null;
-                  if (node.Name.Equals("End")) {
-
-                      newNode = endNode;
-                  }
-                  else if (node.Name.Equals("Start"))
-                  {
-                      newNode = startNode;
-                  }
-                  else if (node.Name.Equals("Assign"))
-                  {
-                      newNode = new AssignNode();
-
-
-                  }
-                  else if (node.Name.Equals("Declare"))
-                  {
-                      newNode = new DeclareNode();
-
-
-                  }
-                  else if (node.Name.Equals("Input"))
-                  {
-                      newNode = new InputNode();
-
-                  }
-                  else if (node.Name.Equals("Output"))
-                  {
-                      newNode = new OutputNode();
-
-                  }
-                  else if (node.Name.Equals("If"))
-                  {
-                      newNode = new IfNode();
-                      setAttributes(node, newNode);
-                      addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode.OutConnector);
-                  }
-                  else if (node.Name.Equals("IfElse"))
-                  {
-                      newNode = new IfElseNode();
-                      setAttributes(node, newNode);
-                      addBlockNodes(node.FirstChild.ChildNodes, ((IfElseNode)newNode).TrueNode.OutConnector);
-                      addBlockNodes(node.LastChild.ChildNodes, ((IfElseNode)newNode).FalseNode.OutConnector);
-
-                  }
-                  else if (node.Name.Equals("While"))
-                  {
-                      newNode = new WhileNode();
-                      setAttributes(node, newNode);
-                      addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode.OutConnector);
-
-                  }
-                  else if (node.Name.Equals("DoWhile"))
-                  {
-                      newNode = new DoNode();
-                      setAttributes(node, newNode);
-                      addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode.OutConnector);
-                                     }
-                  else if (node.Name.Equals("For"))
-                  {
-                      newNode = new ForNode();
-                      setAttributes(node, newNode);
-                      addBlockNodes(node.FirstChild.ChildNodes, ((DecisionNode)newNode).TrueNode.OutConnector);
-
-                  }
-                  else
-                  {
-                  }
-
-                  if (!(node.Name.Equals("Start")||node.Name.Equals("End")))
-                  {
-                      con.addNewNode(newNode);
-                      con = newNode.OutConnector;
-
-                 }
-                  blockNodes.Add(new Pair(node,newNode));
-                  setAttributes(node, newNode);
-              }
-
-
-              return con;
-  <<<<<<< HEAD
-          }*/
+   
         private void addBlockNodes(XmlNodeList list, BaseNode lastNode,BaseNode parentNode)
         {
 

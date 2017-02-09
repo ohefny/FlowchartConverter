@@ -11,6 +11,7 @@ namespace TestingLast.Nodes
 {
     public class ConnectorNode : Crainiate.Diagramming.OnShapeClickListener
     {
+        private static Controller controller;
         BaseNode startNode;
         BaseNode endNode;
         Connector connector = new Connector();
@@ -68,10 +69,25 @@ namespace TestingLast.Nodes
             }
         }
 
+        public static Controller Controller
+        {
+            get
+            {
+                return controller;
+            }
+
+            set
+            {
+                controller = value;
+            }
+        }
+
         public void setEndNode(BaseNode endNode) {
             this.endNode = endNode;
         }
         public ConnectorNode(BaseNode startNode) {
+            if (Controller == null)
+                throw new Exception("Controller must be set to use Connectors");
             this.startNode = startNode;
             connector.Start.Shape = startNode.Shape;
             connector.OnShapeSelectedListener = this;
@@ -85,11 +101,11 @@ namespace TestingLast.Nodes
 
         public void onShapeClicked()
         {
-            if (!connector.Selected || !selectable || Form1.openDialogs==false)
+            if (!connector.Selected || !selectable || Controller.OpenDialogs==false)
                 return;
             addNewNode(getPickedNode());
             connector.Selected = false;
-            Form1.openDialogs = false;
+            Controller.OpenDialogs = false;
         }
 
         public void addNewNode(BaseNode toAttachNode)
