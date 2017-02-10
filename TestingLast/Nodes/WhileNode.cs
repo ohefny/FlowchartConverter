@@ -33,16 +33,16 @@ namespace TestingLast.Nodes
         protected override void makeConnections()
         {
             TrueNode = new HolderNode(this);
-            trueConnector = new ConnectorNode(this);
-            trueConnector.Connector.Opacity = 50;
+            TrueConnector = new ConnectorNode(this);
+            TrueConnector.Connector.Opacity = 50;
             // trueConnector.Connector.Forward
-            trueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
+            TrueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("False");
             BackNode = new HolderNode(this);
             BackNode.OutConnector.EndNode = this;
             BackNode.OutConnector.Connector.Opacity = 50;
             TrueNode.OutConnector.EndNode = BackNode;
-            trueConnector.Selectable = false;
+            TrueConnector.Selectable = false;
             BackNode.OutConnector.Selectable = false;
             BackNode.Shape.Label = new Crainiate.Diagramming.Label("B");
             
@@ -50,12 +50,12 @@ namespace TestingLast.Nodes
 
         protected override void moveConnections()
         {
-            PointF point = new PointF(Shape.Width + Shape.Location.X + 90, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point = new PointF(Shape.Width + Shape.Location.X + horizontalSpace, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
-            if (trueConnector.EndNode == null)
+            if (TrueConnector.EndNode == null)
             {
-                trueConnector.EndNode = TrueNode;
+                TrueConnector.EndNode = TrueNode;
                 //this.OutConnector.EndNode.shiftDown();
                 TrueNode.attachNode(BackNode);
                 return;

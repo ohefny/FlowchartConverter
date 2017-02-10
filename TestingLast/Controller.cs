@@ -45,6 +45,19 @@ namespace TestingLast
             }
         }
 
+        public List<BaseNode> Nodes
+        {
+            get
+            {
+                return nodes;
+            }
+
+            set
+            {
+                nodes = value;
+            }
+        }
+
         public  enum Language { CPP,CSHARP };
 
         public Controller(Model model)
@@ -58,7 +71,7 @@ namespace TestingLast
         {
 
             model.Clear();
-            nodes.Clear();
+            Nodes.Clear();
             BaseNode.Controller = this;
             BaseNode.Model = model;
             ConnectorNode.Controller = this;
@@ -101,6 +114,129 @@ namespace TestingLast
             Project_Loader projectLoader = new Project_Loader(terminalS, terminalE, path);
         }
 
-        
-    }
+        internal void redrawNodes()
+        {
+
+            model.Clear();
+
+            foreach (BaseNode node in Nodes)
+            {
+                if (node is HolderNode) continue;
+                node.addToModel();
+
+            }
+        }
+        //BalanceNodes methods invoked to correct any conflicts or overlapping in the mode  
+        internal void balanceNodes(BaseNode newNode)
+        {
+            BaseNode trackNode = null;
+
+            do
+            {
+                if (trackNode == null)
+                    trackNode = newNode.ParentNode;
+                else
+                    trackNode = trackNode.ParentNode;
+                if (newNode is IfElseNode) {
+                    //this is the case when adding in the false part of ifelse that is right to main track
+                    if (trackNode.NodeLocation.X < newNode.NodeLocation.X
+                     && (newNode as IfElseNode).FalseNode.NodeLocation.X <= trackNode.NodeLocation.X + trackNode.Shape.Width)
+                    {
+                        addNode(newNode);
+                        shiftNodesRight(newNode,false);
+
+                    }
+                }
+                if (newNode is DecisionNode)
+                {
+                    //this is the case when adding to the true part of Decision that is left to main track 
+                    if (trackNode.NodeLocation.X > newNode.NodeLocation.X
+                     && (newNode as DecisionNode).TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
+                    {
+                        shiftNodesRight(newNode,true);
+                    }
+
+                }
+                else
+                {
+                    //this is the case when the shape is overlaping with node in it's right 
+                    if (trackNode.NodeLocation.X > newNode.NodeLocation.X
+                        && newNode.Shape.Width + newNode.NodeLocation.X > trackNode.NodeLocation.X)
+                    {
+                        shiftNodesRight(newNode,true,100);
+                    }
+                }
+            }
+            while (!(trackNode is TerminalNode));
+        }
+
+        internal void addToModel(BaseNode toAddNode)
+        {
+            if (model == null)
+            {
+                throw new Exception("Model should be set before calling addToModel");
+            }
+            if (toAddNode.OutConnector.EndNode != null)
+                model.Lines.Add(toAddNode.ConnectorTag, toAddNode.OutConnector.Connector);
+            if (toAddNode.Shape != null)
+                model.Shapes.Add(toAddNode.ShapeTag, toAddNode.Shape);
+            addNode(toAddNode);
+            if (toAddNode is IfElseNode && toAddNode.NodeLocation.X < 100)
+                shiftNodesRight(toAddNode,true); //to be replaced by controller
+            if(toAddNode is DecisionNode)
+                model.Lines.Add((toAddNode as DecisionNode).TrueConnector.Connector);
+            if (toAddNode is IfElseNode)
+            {
+                model.Lines.Add((toAddNode as IfElseNode).FalseConnector.Connector);
+            }
+        }
+
+        internal void removeNode(BaseNode toRemoveNode)
+        {
+            if (model == null)
+            {
+                throw new Exception("Model should be set before calling addToModel");
+            }
+            nodes.Remove(toRemoveNode);
+            foreach (BaseNode node in Nodes)
+            {
+                if (node.OutConnector.EndNode == toRemoveNode && node.OutConnector.EndNode != node.ParentNode) //problem for backnode
+                {
+                    node.OutConnector.EndNode = toRemoveNode.OutConnector.EndNode;
+                    if (toRemoveNode is DecisionNode)
+                        node.OutConnector.EndNode.shiftUp(toRemoveNode.NodeLocation.Y);
+                    else
+                        node.OutConnector.EndNode.shiftUp();
+                }
+            }
+            redrawNodes();
+        }
+
+        internal void addNode(BaseNode node)
+        {
+            if (!nodes.Contains(node))
+            {
+                nodes.Add(node);
+                if (node is IfElseNode && node.NodeLocation.X < 100)
+                   shiftNodesRight(node,false,150);
+                
+            }
+        }
+        public void shiftNodesRight(BaseNode shiftNode,bool exculdeNode,int distance=150)
+        {
+            foreach (BaseNode node in this.Nodes)
+            {
+                if (node is HolderNode) continue;
+                if (exculdeNode)
+                {
+                    if (node.NodeLocation.X > shiftNode.NodeLocation.X)
+                        node.shiftRight(distance);
+                }
+                else
+                    if (node.NodeLocation.X >= shiftNode.NodeLocation.X)
+                    node.shiftRight(distance);
+            }
+
+        }
+       }
 }

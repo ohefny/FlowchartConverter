@@ -20,7 +20,7 @@ namespace TestingLast.Nodes
             Shape.BackColor = System.Drawing.Color.White;
             Shape.Size = new System.Drawing.SizeF(15, 15);
             Shape.GradientColor = System.Drawing.Color.White;
-            shapeTag = "Shape_Holder" + hCounter.ToString();
+            ShapeTag = "Shape_Holder" + hCounter.ToString();
             hCounter++;
         }
 

@@ -16,7 +16,7 @@ namespace TestingLast.Nodes
     {
         static Controller controller;
         static Form1 form;
-        public static List<BaseNode> nodes = new List<BaseNode>();      
+        //public static List<BaseNode> nodes = new List<BaseNode>();      
         static Model model;
         private ConnectorNode outConnector;
         Form dialog;
@@ -24,8 +24,8 @@ namespace TestingLast.Nodes
         Shape shape;
         BaseNode parentNode;
         FlowchartStencil stencil;
-        protected String shapeTag;
-        String connectorTag;
+        private String shapeTag;
+        private String connectorTag;
         static int counter;
         protected int shiftY = 95;
         protected PointF nodeLocation;//= new PointF(0, 0);
@@ -168,6 +168,32 @@ namespace TestingLast.Nodes
             }
         }
 
+        public string ShapeTag
+        {
+            get
+            {
+                return shapeTag;
+            }
+
+            set
+            {
+                shapeTag = value;
+            }
+        }
+
+        public string ConnectorTag
+        {
+            get
+            {
+                return connectorTag;
+            }
+
+            set
+            {
+                connectorTag = value;
+            }
+        }
+
         public BaseNode()
         {
             if (Controller == null)
@@ -184,8 +210,8 @@ namespace TestingLast.Nodes
             Shape.Label.Color = Color.White;
             OutConnector = new ConnectorNode(this);
             counter++;
-            shapeTag = "Shape_" + counter.ToString();
-            connectorTag = "Connector_" + counter.ToString();
+            ShapeTag = "Shape_" + counter.ToString();
+            ConnectorTag = "Connector_" + counter.ToString();
            
             
         }
@@ -206,56 +232,17 @@ namespace TestingLast.Nodes
         }
         virtual public void addToModel()
         {
-            if (model == null)
-            {
-                throw new Exception("Model should be set before calling addToModel");
-            }
-            if (OutConnector.EndNode != null)
-                model.Lines.Add(connectorTag, OutConnector.Connector);
-            if (Shape != null)
-                model.Shapes.Add(shapeTag, shape);
-
-            if (!nodes.Contains(this))
-            {
-                nodes.Add(this);
-                if (this is IfElseNode && NodeLocation.X < 100)
-                    shiftOnMyRight(-1);
-            }
+            Controller.addToModel(this);
+           
+            
         }
         virtual public void removeFromModel()
         {
-            if (model == null)
-            {
-                throw new Exception("Model should be set before calling addToModel");
-            }
-            nodes.Remove(this);
-            foreach (BaseNode node in nodes)
-            {
-               if (node.outConnector.EndNode == this && node.OutConnector.EndNode!=node.parentNode) //problem for backnode
-                {
-                    node.outConnector.EndNode = outConnector.EndNode;
-                    if (this is DecisionNode)
-                        node.outConnector.EndNode.shiftUp(this.NodeLocation.Y);
-                    else
-                        node.outConnector.EndNode.shiftUp();
-                }
-            }
-            redrawNodes();
-
+            Controller.removeNode(this);
+           
         }
 
-        protected void redrawNodes()
-        {
-            
-            model.Clear();
-
-            foreach (BaseNode node in nodes)
-            {
-                if (node is HolderNode) continue;
-                node.addToModel();
-
-            }
-        }
+        
 
 
         public abstract void onShapeClicked();
@@ -283,92 +270,31 @@ namespace TestingLast.Nodes
             BaseNode oldOutNode = OutConnector.EndNode;
             OutConnector.EndNode = newNode;
             newNode.OutConnector.EndNode = oldOutNode;
+            float x = this.NodeLocation.X;
+            if (this.NodeLocation.X != oldOutNode.NodeLocation.X) {
+                if (this is HolderNode)
+                    x = oldOutNode.NodeLocation.X;
+                else if (oldOutNode is HolderNode)
+                    x = this.NodeLocation.X;
+            }
           //  if (this.NodeLocation.X == oldOutNode.NodeLocation.X)
             {
-               
-                newNode.NodeLocation = oldOutNode.NodeLocation;
-                oldOutNode.shiftDown(0);
-               
-                if (newNode is DecisionNode)
-                {
-                    balanceParentTrack(newNode as DecisionNode);
-                }
-                else
-                    balanceParentTrack(newNode);
-                if (newNode is IfElseNode) {
-                    balanceParentTrack(newNode as IfElseNode);
-                }
-                
-                
-            }
+                  /*if (this is HolderNode) {
+                      float x = this.NodeLocation.X - newNode.Shape.Width / 2;
+                      newNode.NodeLocation = new PointF(x, oldOutNode.NodeLocation.Y);
+                  }
+                  else*/
+                  //give the new node the same x as this node and y as the node used to be in it's place
+                  newNode.NodeLocation = new PointF(x, oldOutNode.NodeLocation.Y) ;
+                  oldOutNode.shiftDown(0);
+             
+                  controller.balanceNodes(newNode);
+             }
             
         }
-        private void balanceParentTrack(BaseNode newNode) {
-            foreach (BaseNode node in nodes) {
-                if (node is HolderNode) continue;
-                if (node.NodeLocation.X > newNode.NodeLocation.X
-                    && newNode.Shape.Width + newNode.NodeLocation.X > (node.NodeLocation.X))
-                    newNode.shiftOnMyRight();
-
-            }
-
-        }
-        private void balanceParentTrack(DecisionNode newNode)
-        {
-            BaseNode trackNode = null;
-
-            do {
-                if (trackNode == null)
-                    trackNode = newNode.ParentNode;
-                else
-                    trackNode = trackNode.ParentNode;
-
-                //this is the case when adding to the true part of Decision that is left to main track 
-                if (trackNode.NodeLocation.X > newNode.NodeLocation.X
-                    && newNode.TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
-                {
-                    newNode.shiftOnMyRight();
-                }
-            }
-            while (!(trackNode is TerminalNode));
-        }
-        private void balanceParentTrack(IfElseNode newNode) {
-            BaseNode trackNode = null;
-            do
-            {
-                if (trackNode == null)
-                    trackNode = newNode.ParentNode;
-                else
-                    trackNode = trackNode.ParentNode;
-                //this is the case when adding in the false part of ifelse that is right to main track
-                if (trackNode.NodeLocation.X < newNode.NodeLocation.X
-                    && (newNode).FalseNode.NodeLocation.X < trackNode.NodeLocation.X)
-                {
-                    BaseNode pNode = newNode.ParentNode;
-                    while (!(pNode.ParentNode is TerminalNode))
-                        pNode = pNode.ParentNode;
-                    //pNode.shiftRight();
-                    // shiftRight(150, newNode.ParentNode.ParentNode);
-
-                    //shiftRight(150, newNode.ParentNode);
-                    nodes.Add(newNode);
-                    newNode.shiftOnMyRight(-1);
-                    
-                }
-            }
-            while (!(trackNode is TerminalNode));
-        }
-
+        
      
-        private void shiftOnMyRight(int more=0) {
-            foreach (BaseNode node in nodes)
-            {
-                if (node is HolderNode) continue;
-                if (node.NodeLocation.X > this.NodeLocation.X+more)
-                    node.shiftRight(150);
-            }
-
-        }
+        
         public virtual void attachNode(BaseNode newNode, ConnectorNode connectorNode)
         {
             attachNode(newNode);

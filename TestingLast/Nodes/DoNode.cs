@@ -13,6 +13,7 @@ namespace TestingLast.Nodes
 {
     class DoNode : DecisionNode
     {
+        
         HolderNode startNode;
         public override void onShapeClicked()
         {
@@ -78,12 +79,12 @@ namespace TestingLast.Nodes
         protected override void makeConnections()
         {
             startNode = new HolderNode(this);
-            trueConnector = new ConnectorNode(this);
-            trueConnector.Connector.Opacity = 50;
+            TrueConnector = new ConnectorNode(this);
+            TrueConnector.Connector.Opacity = 50;
             TrueNode = new HolderNode(this);
-            trueConnector.EndNode = startNode;
+            TrueConnector.EndNode = startNode;
             startNode.OutConnector.EndNode = TrueNode;
-            trueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
+            TrueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("False");
             BackNode = new HolderNode(this);
             BackNode.OutConnector.Connector.End.Shape = Shape;
@@ -91,21 +92,21 @@ namespace TestingLast.Nodes
             TrueNode.attachNode(BackNode);
             BackNode.OutConnector.setEndNode(this);
             BackNode.OutConnector.Selectable = false;
-            trueConnector.Selectable = false;
+            TrueConnector.Selectable = false;
             startNode.OutConnector.Selectable = false;
             BackNode.OutConnector.Connector.Opacity = 50;
             startNode.OutConnector.Connector.Opacity = 50;
-            trueConnector.Connector.Opacity = 50;   
+            TrueConnector.Connector.Opacity = 50;   
         }
         protected override void moveConnections()
         {   
             Shape.Location = new PointF(nodeLocation.X, nodeLocation.Y + shiftY);
-            PointF point = new PointF(Shape.Width + Shape.Location.X + 90, startNode.Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point = new PointF(Shape.Width + Shape.Location.X + horizontalSpace, startNode.Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
-            if (trueConnector.EndNode == null)
+            if (TrueConnector.EndNode == null)
             {
-                trueConnector.EndNode = TrueNode;
+                TrueConnector.EndNode = TrueNode;
                 //this.OutConnector.EndNode.shiftDown();
                 TrueNode.attachNode(BackNode);
                 return;

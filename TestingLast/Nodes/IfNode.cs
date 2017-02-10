@@ -111,16 +111,16 @@ namespace TestingLast.Nodes
             ///////////////////truepart
             TrueNode = new HolderNode(this);
             TrueNode.Shape.Label = new Crainiate.Diagramming.Label("Start IF");
-            trueConnector = new ConnectorNode(this);
-            trueConnector.Connector.Opacity = 50;
-            trueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
+            TrueConnector = new ConnectorNode(this);
+            TrueConnector.Connector.Opacity = 50;
+            TrueConnector.Connector.Label = new Crainiate.Diagramming.Label("True");
             BackNode = new HolderNode(this);
             BackNode.Shape.Label = new Crainiate.Diagramming.Label("End IF");
             BackNode.OutConnector.EndNode = this;
             BackNode.OutConnector.Connector.End.Shape = MiddleNode.Shape;
             BackNode.OutConnector.Connector.Opacity = 50;        
             TrueNode.OutConnector.EndNode = BackNode;
-            trueConnector.Selectable = false;
+            TrueConnector.Selectable = false;
             BackNode.OutConnector.Selectable = false;
             BackNode.OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
            
@@ -133,12 +133,12 @@ namespace TestingLast.Nodes
             //middleNode.shiftDown(moreShift);
            // shiftMainTrack();
             /////////////// move true part
-            PointF point = new PointF(Shape.Width+Shape.Location.X + 90, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF point = new PointF(Shape.Width+Shape.Location.X + horizontalSpace, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
             TrueNode.NodeLocation = point;
 
-            if (trueConnector.EndNode == null)
+            if (TrueConnector.EndNode == null)
             {
-                trueConnector.EndNode = TrueNode;
+                TrueConnector.EndNode = TrueNode;
                 //this.OutConnector.EndNode.shiftDown();
                 TrueNode.attachNode(BackNode);
 

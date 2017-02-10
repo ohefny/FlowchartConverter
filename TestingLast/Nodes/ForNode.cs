@@ -84,7 +84,7 @@ namespace TestingLast.Nodes
             // Shape.Label = new Crainiate.Diagramming.Label("For");
             Name = "For";
             setText("For");
-            trueConnector.Connector.Label = new Crainiate.Diagramming.Label("Next");
+            TrueConnector.Connector.Label = new Crainiate.Diagramming.Label("Next");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
             Statement=("false");
         }

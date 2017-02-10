@@ -23,7 +23,7 @@ namespace TestingLast.Nodes
                 setText("Start");
                 Name = "Start";
                // Shape.Label = new Crainiate.Diagramming.Label("Start");
-                NodeLocation = new PointF(50, 10);
+                NodeLocation = new PointF(80, 10);
                 ParentNode = this;
                 
             }

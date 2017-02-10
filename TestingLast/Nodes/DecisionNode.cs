@@ -13,6 +13,7 @@ namespace TestingLast.Nodes
 {
     abstract class DecisionNode :BaseNode
     {
+        protected const int horizontalSpace = 100;
         protected const int MOVE_UP = 1;
         protected const int MOVE_DOWN = 2;
         protected const int MOVE_RIGHT = 3;
@@ -81,7 +82,19 @@ namespace TestingLast.Nodes
             }
         }
 
-       
+        public ConnectorNode TrueConnector
+        {
+            get
+            {
+                return trueConnector;
+            }
+
+            set
+            {
+                trueConnector = value;
+            }
+        }
+
         public DecisionNode()
         {
 
@@ -90,9 +103,9 @@ namespace TestingLast.Nodes
             Shape.GradientColor = Color.Black;
            
                             
-            holderTag = shapeTag + " holder";
-            backConnectorTag = shapeTag + " backConnector";
-            trueConnectorTag = shapeTag + " trueConnector";
+            holderTag = ShapeTag + " holder";
+            backConnectorTag = ShapeTag + " backConnector";
+            trueConnectorTag = ShapeTag + " trueConnector";
             
 
             makeConnections();
@@ -111,12 +124,11 @@ namespace TestingLast.Nodes
            // TrueNode.removeFromModel();
            // BackNode.removeFromModel();
             base.removeFromModel();
-            //redrawNodes();
+            
         }
         override public void addToModel()
         {
             base.addToModel();
-            Model.Lines.Add(trueConnectorTag, trueConnector.Connector);
             TrueNode.addToModel();
             BackNode.addToModel();
             //  Model.Shapes.Add(holderTag,holderNode.Shape);
