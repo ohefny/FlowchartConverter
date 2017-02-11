@@ -139,7 +139,7 @@ namespace TestingLast.Nodes
             
             
         }
-        public override void shiftMainTrack()
+        public override void shiftMainTrack(int moreShift=0)
         {
             Shape.Location = new PointF(Shape.Location.X ,BackNode.Shape.Center.Y- Shape.Size.Height / 2);
             if (OutConnector.EndNode != null)

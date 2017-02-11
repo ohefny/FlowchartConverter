@@ -120,9 +120,7 @@ namespace TestingLast.Nodes
         {
             
             while (TrueNode.OutConnector.EndNode != BackNode)
-                TrueNode.OutConnector.EndNode.removeFromModel();
-           // TrueNode.removeFromModel();
-           // BackNode.removeFromModel();
+                TrueNode.OutConnector.EndNode.removeFromModel();   
             base.removeFromModel();
             
         }
@@ -174,7 +172,7 @@ namespace TestingLast.Nodes
 
         }
 
-        public abstract void shiftMainTrack();
+        public abstract void shiftMainTrack(int moreShift = 0);
        
     }
 

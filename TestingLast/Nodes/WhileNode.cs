@@ -24,7 +24,7 @@ namespace TestingLast.Nodes
 
         }
 
-        public override void shiftMainTrack()
+        public override void shiftMainTrack(int moreShift=0)
         {
             if(OutConnector.EndNode!=null)
                 OutConnector.EndNode.shiftDown(moreShift);
@@ -51,19 +51,27 @@ namespace TestingLast.Nodes
         protected override void moveConnections()
         {
             PointF point = new PointF(Shape.Width + Shape.Location.X + horizontalSpace, Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF oldPlace = TrueNode.NodeLocation;
             TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (TrueConnector.EndNode == null)
             {
                 TrueConnector.EndNode = TrueNode;
-                //this.OutConnector.EndNode.shiftDown();
-                TrueNode.attachNode(BackNode);
-                return;
-                //      holderNode.attachNode(this, backConnector);
+                TrueNode.OutConnector.EndNode = BackNode;
+              //  TrueNode.attachNode(BackNode);
+               // return;
+               
             }
             if (TrueNode.OutConnector.EndNode is HolderNode)
             {
-                BackNode.NodeLocation = new PointF(point.X, point.Y + 60);
+                
+                if (moveDirection == MOVE_UP)
+                {
+                    TrueNode.OutConnector.EndNode.shiftUp(oldPlace.Y - point.Y);
+                    //   OutConnector.EndNode.shiftUp(); //shift main track
+                }
+                else
+                    BackNode.NodeLocation = new PointF(point.X, point.Y + 60);
             }
             else
             {
@@ -72,10 +80,11 @@ namespace TestingLast.Nodes
                     TrueNode.OutConnector.EndNode.shiftDown(moreShift);
                 else if(moveDirection==MOVE_UP)
                 {
-                    TrueNode.OutConnector.EndNode.shiftUp();
+                    TrueNode.OutConnector.EndNode.shiftUp(oldPlace.Y-point.Y);
                  //   OutConnector.EndNode.shiftUp(); //shift main track
                 }
             }
+            
             // trueNode.NodeLocation = point;
         }
         public override void onShapeClicked()

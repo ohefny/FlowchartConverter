@@ -167,7 +167,7 @@ namespace TestingLast
                     }
                 }
             }
-            while (!(trackNode is TerminalNode));
+            while (!(trackNode is TerminalNode)); //loop through parent and grandparents to see any conflict
         }
 
         internal void addToModel(BaseNode toAddNode)
@@ -203,10 +203,10 @@ namespace TestingLast
                 if (node.OutConnector.EndNode == toRemoveNode && node.OutConnector.EndNode != node.ParentNode) //problem for backnode
                 {
                     node.OutConnector.EndNode = toRemoveNode.OutConnector.EndNode;
-                    if (toRemoveNode is DecisionNode)
-                        node.OutConnector.EndNode.shiftUp(toRemoveNode.NodeLocation.Y);
-                    else
-                        node.OutConnector.EndNode.shiftUp();
+                  //  if (toRemoveNode is DecisionNode)
+                  //      node.OutConnector.EndNode.shiftUp(toRemoveNode.NodeLocation.Y);
+                  //  else
+                        node.OutConnector.EndNode.shiftUp(node.OutConnector.EndNode.NodeLocation.Y-toRemoveNode.NodeLocation.Y);
                 }
             }
             redrawNodes();

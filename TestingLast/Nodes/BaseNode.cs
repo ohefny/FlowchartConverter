@@ -301,80 +301,49 @@ namespace TestingLast.Nodes
 
         }
        
-        virtual public void shiftDown(float moreShift)
+        virtual public void shiftDown(float moreShift=0)
         {
-            this.moreShift = moreShift;
-            //moreShift = 0;
+           // this.moreShift = moreShift;
+            
             if (connectedShape() != null)
                 NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y + shiftY+moreShift);
             
-            if (!(this is HolderNode) && OutConnector.EndNode != null)
+            if (!(this is HolderNode)&& OutConnector.EndNode != null)
                 OutConnector.EndNode.shiftDown(moreShift);
         }
-        public void shiftUp()
+        //used to shift nodes up offsetY is how much to shift up
+        public void shiftUp( float offsetY )
         {
-            if(connectedShape()!=null)
-                NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y - shiftY + moreShift);
-          
-            if (OutConnector.EndNode == null)
+            
+            NodeLocation = new PointF(NodeLocation.X, NodeLocation.Y - offsetY);
+            if (OutConnector.EndNode == null || this is DecisionNode)
                 return;
             if (this is HolderNode) //what about middleNode shift
             {
-                //shifting middle node 
-                if (this.ParentNode is IfNode)
-                {
-
-                    IfNode pNode = (this.ParentNode as IfNode);
-                    pNode.MiddleNode.NodeLocation = new PointF(pNode.MiddleNode.connectedShape().Location.X, pNode.BackNode.NodeLocation.Y);
-
-                } //to decide shifting middle node or not
-                else if (this.ParentNode is IfElseNode)
+                 //to decide shifting middle node or not
+                if (this.ParentNode is IfElseNode)
                 {
                     IfElseNode pNode = this.ParentNode as IfElseNode;
                     PointF preLocation = pNode.MiddleNode.NodeLocation;
-                    pNode.balanceMiddleNode();
+                    pNode.balanceHolderNodes();
                     if (pNode.MiddleNode.NodeLocation.Y == preLocation.Y)
                         return; //thus don't shift the node after parent node
                 }
-                //shift the node after parentnode
-                this.ParentNode.OutConnector.EndNode.shiftUp();
-            }
-            else
-            {
-                OutConnector.EndNode.shiftUp();
-            }
-        }
-        public void shiftUp(float offsetY)
-        {
-            float tempOffset = this.NodeLocation.Y;
-            if (connectedShape() != null)
-                NodeLocation = new PointF(nodeLocation.X, offsetY);
-            if (OutConnector.EndNode == null)
-                return;
-            if (this is HolderNode) //what about middleNode shift
-            { 
                 //shifting middle node 
-                if (this.ParentNode is IfNode)
+                else if (this.ParentNode is IfNode)
                 {
 
                     IfNode pNode = (this.ParentNode as IfNode);
                     pNode.MiddleNode.NodeLocation = new PointF(pNode.MiddleNode.connectedShape().Location.X, pNode.BackNode.NodeLocation.Y);
 
-                } //to decide shifting middle node or not
-                else if (this.ParentNode is IfElseNode)
-                {
-                    IfElseNode pNode = this.ParentNode as IfElseNode;
-                    PointF preLocation = pNode.MiddleNode.NodeLocation;
-                    pNode.balanceMiddleNode();
-                    if (pNode.MiddleNode.NodeLocation.Y == preLocation.Y)
-                        return; //thus don't shift the node after parent node
-                } 
-               //shift the node after parentnode
-                this.ParentNode.OutConnector.EndNode.shiftUp(offsetY+shiftY);
+                }
+                this.ParentNode.OutConnector.EndNode.shiftUp(offsetY);
+               
             }
-            else {
-                OutConnector.EndNode.shiftUp(offsetY + shiftY);
-            }
+            else
+                OutConnector.EndNode.shiftUp(offsetY);
+                
+            
         }
         public void shiftRight(int distance) {
             NodeLocation = new PointF(NodeLocation.X + distance,NodeLocation.Y);

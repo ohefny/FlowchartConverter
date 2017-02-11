@@ -93,7 +93,9 @@ namespace TestingLast.Nodes
             connector.OnShapeSelectedListener = this;
             connector.End.Marker = new Arrow();
             // connector.Start.Marker = new Marker(MarkerStyle.Ellipse);
-            connector.AllowMove = true; 
+            connector.AllowMove = true;
+            connector.Avoid = connector.Jump = false;
+            connector.SetOrder(1);
             connector.DrawSelected=true;
            // connector.Rounded = true;
         }

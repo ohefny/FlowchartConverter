@@ -33,20 +33,17 @@ namespace TestingLast.Nodes
         
         public override void shiftDown(float moreShift)
         {
-            this.moreShift = moreShift ;
-            if (OutConnector.EndNode != ParentNode)
-                base.shiftDown(moreShift);
-            else
-            {
                 NodeLocation = new PointF(NodeLocation.X, NodeLocation.Y + shiftY+ moreShift);
-                if (ParentNode is DecisionNode) {
+                if (this.ParentNode is IfElseNode) //to balance Holder Nodes
+                    (this.ParentNode as IfElseNode).balanceHolderNodes();
 
-                    if (ParentNode.OutConnector.EndNode!=null&& ParentNode.OutConnector.EndNode.NodeLocation.Y < NodeLocation.Y) 
-                        ((DecisionNode)ParentNode).shiftMainTrack();
+                //if the next node in main track has smaller y shift it and nodes next to it
+                if (ParentNode.OutConnector.EndNode.NodeLocation.Y < NodeLocation.Y)
+                    ((DecisionNode)ParentNode).shiftMainTrack();
+
+                 
                 
-                //this shifts down main track even if it will be shifted
-                }
-            }
+            
 
 
         }
