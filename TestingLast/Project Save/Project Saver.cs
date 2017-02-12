@@ -49,11 +49,12 @@ namespace TestingLast.Project_Save
         private string getBlockXML(BaseNode node, BaseNode endBlockNode)
         {
             indentation += 4;
-            StringBuilder sb = new StringBuilder("\n");
+            StringBuilder sb = new StringBuilder("\r\n");
 
             while (node != endBlockNode)
             {
                 if (!(node is HolderNode )) {
+                    sb.Append("\r\n");
                     sb.Append(' ', indentation);
                     sb.Append("<" + node.Name + putAttributes(node)+ ">");
                 }
@@ -64,52 +65,37 @@ namespace TestingLast.Project_Save
                      {
                          IfElseNode ifNode = (IfElseNode)node;
                          indentation += 4;
-                         sb.Append("\n");
+                         sb.Append("\r\n");
                          sb.Append(' ', indentation);
                          sb.Append("<True>");
                          sb.Append(getBlockXML(ifNode.TrueNode, ifNode.BackNode));
                          sb.Append("</True>");
-                         sb.Append("\n");
+                         sb.Append("\r\n");
                          sb.Append(' ', indentation);
                          sb.Append("<False>");
                          sb.Append(getBlockXML(ifNode.FalseNode, ifNode.BackfalseNode));
                          sb.Append("</False>");
                          indentation -= 4;
-                        sb.Append(Environment.NewLine);
+                        sb.Append("\r\n");
                     }
-                    /* else if (node is IfNode)
-                     {
-                         IfNode ifNode = (IfNode)node;
-                        sb.Append("<True>");
-                        sb.Append(getBlockXML(ifNode.TrueNode, ifNode.BackNode));
-                        sb.Append("</True>");
-
-                    }
-                     else if (node is DoNode)
-                     {
-                         DecisionNode loopNode = (DecisionNode)node;
-                        sb.Append("<True>");
-                        sb.Append(getBlockXML(loopNode.TrueNode, loopNode.BackNode));
-                        sb.Append("</True>");
-                        
-                     }*/
+                    
                      else
                      {
                          DecisionNode loopNode = (DecisionNode)node;
                         indentation += 4;
-                        sb.Append("\n");
+                        sb.Append("\r\n");
                         sb.Append(' ', indentation);
                         sb.Append("<True>");
                         sb.Append(getBlockXML(loopNode.TrueNode, loopNode.BackNode));
                         sb.Append("</True>");
                         indentation -= 4;
-                        sb.Append(Environment.NewLine);
+                        sb.Append("\r\n");
                     }
                  }
                  else
                  {
                    
-                     sb.Append(Environment.NewLine);
+                     sb.Append("\r\n");
                  }
 
                 if (!(node is HolderNode )) {
@@ -119,8 +105,10 @@ namespace TestingLast.Project_Save
                 node = node.OutConnector.EndNode;
 
             }
+            sb.Append("\r\n");
             indentation -= 4;
             sb.Append(' ', indentation);
+            
           //  sb.Append("</" + node.Name + "> \n");
 
             return sb.ToString();
@@ -130,6 +118,15 @@ namespace TestingLast.Project_Save
         private string putAttributes(BaseNode node)
         {
             StringBuilder sb = new StringBuilder();
+            if (node is DeclareNode) {
+                DeclareNode declareNode = (DeclareNode)node;
+                sb.Append(" Variable_Name = \"" + declareNode._Var.VarName + "\"");
+                sb.Append(" Variable_Type = \"" + declareNode._Var.VarType + "\"");
+                sb.Append(" Single_Variable = \"" + declareNode._Var.Single + "\"");
+                sb.Append(" Size = \"" + declareNode._Var.Size + "\"");
+               
+
+            }
             if (node is IfElseNode)
             {
                 IfElseNode ifElseNode = (IfElseNode)node;

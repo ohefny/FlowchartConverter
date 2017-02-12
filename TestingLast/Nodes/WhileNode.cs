@@ -19,8 +19,9 @@ namespace TestingLast.Nodes
 
             Name = "While";
             //Shape.Label = new Crainiate.Diagramming.Label("While");
+           
+            //Statement = "false";
             setText("While");
-            Statement = "false";
 
         }
 

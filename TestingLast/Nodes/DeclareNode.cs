@@ -10,8 +10,86 @@ using System.Windows.Forms;
 
 namespace TestingLast.Nodes
 {
-    class DeclareNode : BaseNode
+    public class DeclareNode : BaseNode
     {
+        
+        public class Variable {
+            public enum Data_Type {INTEGER,STRING,REAL,BOOLEAN,CHAR }
+            String varName;
+            Data_Type varType;
+            bool single;
+            int size;
+
+            public string VarName
+            {
+                get
+                {
+                    return varName;
+                }
+
+                set
+                {
+                    varName = value;
+                }
+            }
+
+            public Data_Type VarType
+            {
+                get
+                {
+                    return varType;
+                }
+
+                set
+                {
+                    varType = value;
+                }
+            }
+
+            public bool Single
+            {
+                get
+                {
+                    return single;
+                }
+
+                set
+                {
+                    single = value;
+                }
+            }
+
+            public int Size
+            {
+                get
+                {
+                    return size;
+                }
+
+                set
+                {
+                    size = value;
+                }
+            }
+
+            
+
+        }
+        Variable variable;
+
+        public Variable _Var
+        {
+            get
+            {
+                return variable;
+            }
+
+            set
+            {
+                variable = value;
+            }
+        }
+
         public override void onShapeClicked()
         {
             if (Shape.Selected && Controller.DeleteChoosed)
@@ -42,50 +120,66 @@ namespace TestingLast.Nodes
                         MessageBox.Show("You must enter a valid declare expression");
                         return;
                     }
-                    if (db.DeclareVariableType.Equals("Array"))
-                    {
-                        string dataType = "";
-                        if (db.DeclareDataType.Equals("Integer"))
-                            dataType = "int";
-                        else if (db.DeclareDataType.Equals("Float"))
-                            dataType = "float";
-                        else if (db.DeclareDataType.Equals("Bool"))
-                            dataType = "bool";
-                        else
-                            dataType = "char";
-                        Statement = dataType + "[" + db.DeclareArraySize + "] " + db.DeclareVariable;
-                    }
-                    else
-                    {
-                        string dataType = "";
-                        if (db.DeclareDataType.Equals("Integer"))
-                            dataType = "int";
-                        else if (db.DeclareDataType.Equals("Float"))
-                            dataType = "float";
-                        else if (db.DeclareDataType.Equals("Bool"))
-                            dataType = "bool";
-                        else
-                            dataType = "String";
-                        Statement = dataType + " " + db.DeclareVariable;
-                    }
-
-                    setText(Statement);
+                    initializeVariable(db);
+                    makeStatment();
+                    
                     //Statement += " ;";
                 }
                 // MessageBox.Show(Statement);
-            
+
             }
             Shape.Selected = false;
         }
+
+        private void makeStatment()
+        {
+            if(variable.Single)
+                Statement = variable.VarType + "  " + variable.VarName;
+            else
+                Statement = variable.VarType + " Array " + variable.VarName + "[" + variable.Size+ "]";
+            
+        }
+
+        private void initializeVariable(DeclareBox db)
+        {
+            variable.VarName = db.DeclareVariable;
+            if (db.DeclareDataType.Equals("Integer"))
+                variable.VarType = Variable.Data_Type.INTEGER;
+            else if (db.DeclareDataType.Equals("Float"))
+                variable.VarType = Variable.Data_Type.REAL;
+            else if (db.DeclareDataType.Equals("Bool"))
+                variable.VarType = Variable.Data_Type.BOOLEAN;
+            else
+                variable.VarType = Variable.Data_Type.STRING;
+
+
+            if (db.DeclareVariableType.Equals("Array"))
+            {
+                variable.Single = false;
+                
+                variable.Size = Int32.Parse(db.DeclareArraySize);
+            }
+            else
+            {
+                variable.Single = true;
+                
+            }
+        }
+
+        protected override void showStatment()
+        {
+            setText(Statement);
+        }
+
         public DeclareNode()
         {
             Name = "Declare";
             Shape.StencilItem = Stencil[FlowchartStencilType.InternalStorage];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#e3810c");
-            Shape.GradientColor = Color.White;
-            Shape.Label = new Crainiate.Diagramming.Label("Declare");
-            Statement = "int x";
-
+            Shape.GradientColor = Color.Black;
+            setText("Declare");
+            
+            variable = new Variable();
         }
     }
 }

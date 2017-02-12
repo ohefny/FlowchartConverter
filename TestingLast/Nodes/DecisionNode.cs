@@ -166,14 +166,24 @@ namespace TestingLast.Nodes
         {
            
             clickedConnector.StartNode.attachNode(newNode);
-      //      if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y)
-        //        shiftMainTrack(); //this causes a problem when 
+            if (OutConnector.EndNode.NodeLocation.Y < BackNode.NodeLocation.Y+shiftY)
+                shiftMainTrack(); //this causes a problem when 
                               //backNode shifts dirctely after being attached to another while node
 
         }
 
         public abstract void shiftMainTrack(int moreShift = 0);
-       
+        override public void setText(String label) {
+            float oldWidth = Shape.Width;
+            base.setText(label);
+            //if the shape is bigger then move nodes to right by the difference
+            if (!Controller.LoadingProject)
+            {
+                TrueNode.shiftRight((int)(Shape.Width - oldWidth));
+                BackNode.shiftRight((int)(Shape.Width - oldWidth));
+            }
+        }
+
     }
 
 }

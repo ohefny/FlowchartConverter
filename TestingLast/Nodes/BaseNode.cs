@@ -22,12 +22,13 @@ namespace TestingLast.Nodes
         Form dialog;
         String statement;
         Shape shape;
+        float rightShifCaused = 0;
         BaseNode parentNode;
         FlowchartStencil stencil;
         private String shapeTag;
         private String connectorTag;
         static int counter;
-        protected int shiftY = 95;
+        protected int shiftY = 85;
         protected PointF nodeLocation;//= new PointF(0, 0);
         protected float moreShift = 0;
         public Form Dialog
@@ -52,9 +53,19 @@ namespace TestingLast.Nodes
 
             set
             {
+
                 statement = value;
+                if (!String.IsNullOrEmpty(value))
+                    showStatment();
             }
         }
+
+        protected virtual void showStatment()
+        {
+            if (!String.IsNullOrEmpty(Statement))
+                setText(Statement);
+        }
+
 
         public virtual Shape connectedShape()
         {
@@ -194,6 +205,19 @@ namespace TestingLast.Nodes
             }
         }
 
+        public float RightShifCaused
+        {
+            get
+            {
+                return rightShifCaused;
+            }
+
+            set
+            {
+                rightShifCaused = value;
+            }
+        }
+
         public BaseNode()
         {
             if (Controller == null)
@@ -212,14 +236,15 @@ namespace TestingLast.Nodes
             counter++;
             ShapeTag = "Shape_" + counter.ToString();
             ConnectorTag = "Connector_" + counter.ToString();
-           
-            
+
+
         }
-        public BaseNode(PointF location): this()
+        public BaseNode(PointF location) : this()
         {
             NodeLocation = location;
         }
-        virtual public void setText(String label) {
+        virtual public void setText(String label)
+        {
             Shape.Label = new Crainiate.Diagramming.Label(label);
             SizeF size;
             using (Graphics g = Graphics.FromHwnd(IntPtr.Zero))
@@ -227,100 +252,98 @@ namespace TestingLast.Nodes
                 size = g.MeasureString(label, Shape.Label.Font);
             }
             // SizeF size =TextRenderer.MeasureText("Input SAFSAF ASFSAFS ASSAFFS ", Singleton.Instance.DefaultFont);
-            Shape.Size = new SizeF(size.Width + 70, Shape.Size.Height);
+            float oldWidth = Shape.Size.Width;
+            Shape.Size = new SizeF(size.Width + 50, Shape.Size.Height);
             Shape.Label.Color = Color.White;
+            if (!Controller.LoadingProject)
+                Controller.shiftNodesRight(this, true, (int)(Shape.Size.Width - oldWidth));
         }
         virtual public void addToModel()
         {
             Controller.addToModel(this);
-           
-            
+
+
         }
         virtual public void removeFromModel()
         {
+
             Controller.removeNode(this);
-           
+
         }
 
-        
+
 
 
         public abstract void onShapeClicked();
         public void attachNode(BaseNode newNode)
         {
 
-              if (this is TerminalNode && newNode is TerminalNode ||
-                  this is HolderNode && newNode is HolderNode)
-              {
-                  if (newNode.connectedShape() == null)
-                  {
-                      //do nothing
-                  }
-                  if (this.connectedShape() == null)
-                  {
-                      //donothing
-                  }
-                  OutConnector.EndNode = newNode;
-                  newNode.NodeLocation = this.NodeLocation;
-                  newNode.shiftDown(0);
-                  return;
+            if (this is TerminalNode && newNode is TerminalNode ||
+                this is HolderNode && newNode is HolderNode)
+            {
+                if (newNode.connectedShape() == null)
+                {
+                    //do nothing
+                }
+                if (this.connectedShape() == null)
+                {
+                    //donothing
+                }
+                OutConnector.EndNode = newNode;
+                newNode.NodeLocation = this.NodeLocation;
+                newNode.shiftDown(0);
+                return;
 
-              }
-           
+            }
+
             BaseNode oldOutNode = OutConnector.EndNode;
             OutConnector.EndNode = newNode;
             newNode.OutConnector.EndNode = oldOutNode;
             float x = this.NodeLocation.X;
-            if (this.NodeLocation.X != oldOutNode.NodeLocation.X) {
+            float y = oldOutNode.NodeLocation.Y;
+            //if the holdernode and nodes in the same track have different x choose nodes x
+            if (this.NodeLocation.X != oldOutNode.NodeLocation.X)
+            {
                 if (this is HolderNode)
                     x = oldOutNode.NodeLocation.X;
                 else if (oldOutNode is HolderNode)
                     x = this.NodeLocation.X;
             }
-          //  if (this.NodeLocation.X == oldOutNode.NodeLocation.X)
-            {
-                  /*if (this is HolderNode) {
-                      float x = this.NodeLocation.X - newNode.Shape.Width / 2;
-                      newNode.NodeLocation = new PointF(x, oldOutNode.NodeLocation.Y);
-                  }
-                  else*/
-                  //give the new node the same x as this node and y as the node used to be in it's place
-                  newNode.NodeLocation = new PointF(x, oldOutNode.NodeLocation.Y) ;
-                  oldOutNode.shiftDown(0);
-             
-                  controller.balanceNodes(newNode);
-             }
-            
+            oldOutNode.shiftDown(0);
+            newNode.NodeLocation = new PointF(x, y);
+            controller.balanceNodes(newNode);
+
+
         }
-        
-     
-        
+
+
+
         public virtual void attachNode(BaseNode newNode, ConnectorNode connectorNode)
         {
             attachNode(newNode);
 
         }
-       
-        virtual public void shiftDown(float moreShift=0)
+
+        virtual public void shiftDown(float moreShift = 0)
         {
-           // this.moreShift = moreShift;
-            
+            // this.moreShift = moreShift;
+
             if (connectedShape() != null)
-                NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y + shiftY+moreShift);
-            
-            if (!(this is HolderNode)&& OutConnector.EndNode != null)
+                NodeLocation = new PointF(connectedShape().Location.X, connectedShape().Location.Y + shiftY + moreShift);
+
+            if (!(this is HolderNode) && OutConnector.EndNode != null)
                 OutConnector.EndNode.shiftDown(moreShift);
         }
         //used to shift nodes up offsetY is how much to shift up
-        public void shiftUp( float offsetY )
+        public void shiftUp(float offsetY)
         {
-            
+
             NodeLocation = new PointF(NodeLocation.X, NodeLocation.Y - offsetY);
             if (OutConnector.EndNode == null || this is DecisionNode)
                 return;
             if (this is HolderNode) //what about middleNode shift
             {
-                 //to decide shifting middle node or not
+                //to decide shifting middle node or not
                 if (this.ParentNode is IfElseNode)
                 {
                     IfElseNode pNode = this.ParentNode as IfElseNode;
@@ -338,15 +361,16 @@ namespace TestingLast.Nodes
 
                 }
                 this.ParentNode.OutConnector.EndNode.shiftUp(offsetY);
-               
+
             }
             else
                 OutConnector.EndNode.shiftUp(offsetY);
-                
-            
+
+
         }
-        public void shiftRight(int distance) {
-            NodeLocation = new PointF(NodeLocation.X + distance,NodeLocation.Y);
+        public void shiftRight(int distance)
+        {
+            NodeLocation = new PointF(NodeLocation.X + distance, NodeLocation.Y);
         }
     }
 }

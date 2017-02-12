@@ -1,0 +1,32 @@
+using System;
+public class MyProgram
+{
+    public static void Main(String[] args)
+    {
+        
+    }
+    
+    // .NET can only read single characters or entire lines from the console.
+    // The following functions are designed to help input specific data types.
+    // 'out' is a pass-by-reference modifier in C#.
+    
+    private static void input(out double result)
+    {
+        while (!double.TryParse(Console.ReadLine(), out result));
+    }
+    
+    private static void input(out int result)
+    {
+        while (!int.TryParse(Console.ReadLine(), out result));
+    }
+    
+    private static void input(out boolean result)
+    {
+        while (!boolean.TryParse(Console.ReadLine(), out result));
+    }
+    
+    private static void input(out string result)
+    {
+        result = Console.ReadLine();
+    }
+}

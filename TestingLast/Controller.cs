@@ -7,6 +7,7 @@ using Crainiate.Diagramming;
 using TestingLast.Nodes;
 using TestingLast.CodeGeneration;
 using TestingLast.Project_Save;
+using Crainiate.Diagramming.Forms;
 
 namespace TestingLast
 {
@@ -18,6 +19,7 @@ namespace TestingLast
         private TerminalNode terminalS;
         private bool deleteChoosed;
         private bool openDialogs;
+        private Diagram diagram;
 
         public bool DeleteChoosed
         {
@@ -58,15 +60,21 @@ namespace TestingLast
             }
         }
 
+        public bool LoadingProject { get; internal set; }
+
         public  enum Language { CPP,CSHARP };
 
-        public Controller(Model model)
+      
+
+        public Controller(Diagram diagram1)
         {
-            this.model = model;
+            this.diagram = diagram1;
+            this.model = diagram1.Model;
+           // diagram1.Controller.Model.Elements.SetModifiable(true);
             initializeProject();
             new OutputNode();
-            
         }
+
         public void initializeProject()
         {
 
@@ -81,6 +89,7 @@ namespace TestingLast
             terminalE.ParentNode = terminalS;
             terminalS.addToModel();
             terminalE.addToModel();
+            diagram.Controller.Refresh();
         }
 
         internal void saveProject(string path, string fileName)
@@ -95,7 +104,7 @@ namespace TestingLast
                     return FlowChartCodeGenerator.getCppCode(terminalS, terminalE);
                     break;
                 case Language.CSHARP:
-                    return "";
+                    return FlowChartCodeGenerator.getCsCode(terminalS, terminalE);
                     break;
             }
             return null;
@@ -110,8 +119,13 @@ namespace TestingLast
 
         internal void loadProject(string path)
         {
+            LoadingProject = true;
             initializeProject();
             Project_Loader projectLoader = new Project_Loader(terminalS, terminalE, path);
+            //redrawNodes();
+            diagram.Controller.Refresh();
+            LoadingProject = false;
+            
         }
 
         internal void redrawNodes()
@@ -125,6 +139,7 @@ namespace TestingLast
                 node.addToModel();
 
             }
+            diagram.Controller.Refresh();
         }
         //BalanceNodes methods invoked to correct any conflicts or overlapping in the mode  
         internal void balanceNodes(BaseNode newNode)
@@ -193,6 +208,7 @@ namespace TestingLast
 
         internal void removeNode(BaseNode toRemoveNode)
         {
+            
             if (model == null)
             {
                 throw new Exception("Model should be set before calling addToModel");
@@ -203,12 +219,12 @@ namespace TestingLast
                 if (node.OutConnector.EndNode == toRemoveNode && node.OutConnector.EndNode != node.ParentNode) //problem for backnode
                 {
                     node.OutConnector.EndNode = toRemoveNode.OutConnector.EndNode;
-                  //  if (toRemoveNode is DecisionNode)
-                  //      node.OutConnector.EndNode.shiftUp(toRemoveNode.NodeLocation.Y);
-                  //  else
-                        node.OutConnector.EndNode.shiftUp(node.OutConnector.EndNode.NodeLocation.Y-toRemoveNode.NodeLocation.Y);
+                    node.OutConnector.EndNode.shiftUp(node.OutConnector.EndNode.NodeLocation.Y-toRemoveNode.NodeLocation.Y);
+                    break;
                 }
             }
+            //shiftNodesRight(toRemoveNode, true, (int)(toRemoveNode.RightShifCaused * -1));
+
             redrawNodes();
         }
 
@@ -224,6 +240,7 @@ namespace TestingLast
         }
         public void shiftNodesRight(BaseNode shiftNode,bool exculdeNode,int distance=150)
         {
+            shiftNode.RightShifCaused += distance;
             foreach (BaseNode node in this.Nodes)
             {
                 if (node is HolderNode) continue;

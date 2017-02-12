@@ -247,22 +247,13 @@ namespace TestingLast.Nodes
         }
 
         public void balanceHolderNodes()
-        {  /* //align all holder nodes in horizontal line
-            if (BackfalseNode.NodeLocation.Y > BackNode.NodeLocation.Y) {
-                MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, BackfalseNode.NodeLocation.Y);
-                BackNode.NodeLocation = new PointF(BackNode.NodeLocation.X, BackfalseNode.NodeLocation.Y);
-            }
-            else {
-                MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X, BackNode.NodeLocation.Y);
-                BackfalseNode.NodeLocation = new PointF(BackfalseNode.NodeLocation.X, BackNode.NodeLocation.Y);
-
-            }*/
+        {  
            //choose the nodelocation with larger y
-            
+            float y = MiddleNode.NodeLocation.Y;
             MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X,
                 (BackfalseNode.NodeLocation.Y > BackNode.NodeLocation.Y) ?
                 BackfalseNode.NodeLocation.Y : BackNode.NodeLocation.Y);
-            if (OutConnector.EndNode.NodeLocation.Y < MiddleNode.NodeLocation.Y + shiftY)
+            if (OutConnector.EndNode != null && OutConnector.EndNode.NodeLocation.Y < MiddleNode.NodeLocation.Y + shiftY)
                 shiftMainTrack();
             
         }

@@ -28,18 +28,17 @@ namespace TestingLast.Nodes
                 if (dr == DialogResult.OK)
                 {
                     Statement = od.getExpression();
-                    setText("Print " + Statement);
+                    
                   //  Statement = surrondExpression(Statement);
                 }
                 Shape.Selected = false;
             }
             Shape.Selected = false;
         }
-        private String surrondExpression(String str)
+        
+        protected override void showStatment()
         {
-            return "cout<< " + str + " ;";
-
-
+            base.setText("Print " + Statement);
         }
         public OutputNode()
         {
@@ -47,7 +46,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem = Stencil[FlowchartStencilType.Data];
             Shape.StencilItem.BackColor = System.Drawing.Color.Green;
             Shape.StencilItem.GradientColor = Color.Black;
-            Shape.Label = new Crainiate.Diagramming.Label("Output");
+            setText("Output");
 
         }
     }

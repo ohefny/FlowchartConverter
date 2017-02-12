@@ -105,7 +105,9 @@ namespace TestingLast.Nodes
             //move middle Node
             MiddleNode.NodeLocation = new PointF(Shape.Center.X - MiddleNode.Shape.Width / 2, Shape.Center.Y - MiddleNode.Shape.Size.Height / 2);
             base.moveConnections();
-            MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X,BackNode.NodeLocation.Y); 
+            MiddleNode.NodeLocation = new PointF(MiddleNode.NodeLocation.X,BackNode.NodeLocation.Y);
+            if (OutConnector.EndNode != null && OutConnector.EndNode.NodeLocation.Y < MiddleNode.NodeLocation.Y + shiftY)
+                shiftMainTrack();
         }
 
        
@@ -133,8 +135,9 @@ namespace TestingLast.Nodes
             Shape.StencilItem = Stencil[FlowchartStencilType.Decision];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#c04040");
             Shape.GradientColor = Color.Black;
+            //Statement = "false";
             setText("IF");
-            Statement = "false";
+            
            
         }
         public override void addToModel()

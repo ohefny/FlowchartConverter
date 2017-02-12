@@ -34,7 +34,7 @@ namespace TestingLast.Nodes
                         return;
                     }
                     Statement = db.AssignmentVariable + " = " + db.AssignmentExpression;
-                    setText(Statement);
+                   
                     
                 }
                 ///MessageBox.Show(Statement);
@@ -42,15 +42,17 @@ namespace TestingLast.Nodes
             }
             Shape.Selected = false;
         }
+
+       
         public AssignNode()
         {
             Name = "Assign";
             Shape.StencilItem = Stencil[FlowchartStencilType.Default];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#fdfd80");
             Shape.GradientColor = Color.Black;
-            Shape.Label = new Crainiate.Diagramming.Label("Assing");
-            Shape.Label.Color = Color.White;
-            Statement = " x = 15 ";
+            setText("Assing");
+            
+            
         }
     }
 }

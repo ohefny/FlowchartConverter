@@ -46,7 +46,7 @@ namespace TestingLast.Project_Save
     {
         TerminalNode startNode;
         TerminalNode endNode;
-       // List<Pair> blockNodes = new List<Pair>();
+        List<Pair> blockNodes = new List<Pair>();
         public Project_Loader(TerminalNode startNode, TerminalNode endNode, string filePath)
         {
             
@@ -60,7 +60,8 @@ namespace TestingLast.Project_Save
                 ConnectorNode con = startNode.OutConnector;
 
                 addBlockNodes(doc.DocumentElement.ChildNodes, startNode,startNode);
-              
+             //   foreach (Pair pair in blockNodes)
+              //      setAttributes(pair.XmlNode, pair.BaseNode);
 
             }
             catch (Exception ex) {
@@ -154,7 +155,7 @@ namespace TestingLast.Project_Save
                 }
                
                 lastNode = newNode;
-                // blockNodes.Add(new Pair(node, newNode));
+                 blockNodes.Add(new Pair(node, newNode));
                 setAttributes(node, newNode);
             }
 
@@ -168,9 +169,9 @@ namespace TestingLast.Project_Save
             string[] true_end_location = node.Attributes["True_End_Location"]?.InnerText.Split(',');
             string[] false_end_location = node.Attributes["False_End_Location"]?.InnerText.Split(',');
             string[] mid_location = node.Attributes["Mid_Location"]?.InnerText.Split(',');
+            
             newNode.Statement = statment;
-            if(!(newNode is TerminalNode))
-                newNode.setText(statment);
+            
             if (location != null)
             {
                 
@@ -180,10 +181,10 @@ namespace TestingLast.Project_Save
             if (newNode is IfElseNode)
             {
                 IfElseNode ifElseNode = (IfElseNode)newNode;
-                ifElseNode.BackNode.NodeLocation= new System.Drawing.PointF((float)Double.Parse(true_end_location[0]), (float)Double.Parse(true_end_location[1]));
+                ifElseNode.BackNode.NodeLocation = new System.Drawing.PointF((float)Double.Parse(true_end_location[0]), (float)Double.Parse(true_end_location[1]));
                 ifElseNode.BackfalseNode.NodeLocation = new System.Drawing.PointF((float)Double.Parse(false_end_location[0]), (float)Double.Parse(false_end_location[1]));
                 ifElseNode.MiddleNode.NodeLocation = new System.Drawing.PointF((float)Double.Parse(mid_location[0]), (float)Double.Parse(mid_location[1]));
-                
+
             }
             else if (newNode is IfNode)
             {
@@ -196,6 +197,32 @@ namespace TestingLast.Project_Save
             {
                 DecisionNode decisionNode = (DecisionNode)newNode;
                 decisionNode.BackNode.NodeLocation = new System.Drawing.PointF((float)Double.Parse(true_end_location[0]), (float)Double.Parse(true_end_location[1]));
+
+            }
+            else if (newNode is DeclareNode) {
+                string variable_name = node.Attributes["Variable_Name"].InnerText;
+                string variable_type = node.Attributes["Variable_Type"].InnerText;
+                string single = node.Attributes["Single_Variable"].InnerText;
+                string size = node.Attributes["Size"].InnerText;
+                DeclareNode declareNode = (DeclareNode)newNode;
+                declareNode._Var.VarName = variable_name;
+                declareNode._Var.Size = Int32.Parse(size);
+                declareNode._Var.Single = Boolean.Parse(single);
+                switch (variable_type)
+                {
+                    case "INTEGER":
+                        declareNode._Var.VarType = DeclareNode.Variable.Data_Type.INTEGER;
+                        break;
+                    case "REAL":
+                        declareNode._Var.VarType = DeclareNode.Variable.Data_Type.REAL;
+                        break;
+                    case "BOOLEAN":
+                        declareNode._Var.VarType = DeclareNode.Variable.Data_Type.BOOLEAN;
+                        break;
+                    case "STRING":
+                        declareNode._Var.VarType = DeclareNode.Variable.Data_Type.STRING;
+                        break;
+                }
 
             }
         }

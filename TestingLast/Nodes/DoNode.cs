@@ -72,7 +72,7 @@ namespace TestingLast.Nodes
             //Shape.Label = new Crainiate.Diagramming.Label("Do");
             Name = "DoWhile";
             setText("Do While");
-            Statement = "false";
+           // Statement = "false";
           
         }
     

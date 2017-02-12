@@ -38,7 +38,7 @@ namespace TestingLast.Nodes
                     (this.ParentNode as IfElseNode).balanceHolderNodes();
 
                 //if the next node in main track has smaller y shift it and nodes next to it
-                if (ParentNode.OutConnector.EndNode.NodeLocation.Y < NodeLocation.Y)
+                else if (ParentNode.OutConnector.EndNode.NodeLocation.Y < NodeLocation.Y+shiftY)
                     ((DecisionNode)ParentNode).shiftMainTrack();
 
                  

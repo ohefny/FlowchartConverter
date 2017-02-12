@@ -20,6 +20,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem.GradientColor = Color.Black;
             //Shape.Size = new SizeF(40, 40);
             if (termType == TerminalType.Start) {
+                Statement = "Start";
                 setText("Start");
                 Name = "Start";
                // Shape.Label = new Crainiate.Diagramming.Label("Start");
@@ -28,6 +29,7 @@ namespace TestingLast.Nodes
                 
             }
             else {
+                Statement = "End";
                 setText("End");
                 Name = "End";
                 //  Shape.Label = new Crainiate.Diagramming.Label("End");

@@ -1,5 +1,6 @@
 ﻿using Crainiate.Diagramming;
 using Crainiate.Diagramming.Flowcharting;
+using Crainiate.Diagramming.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,8 +28,9 @@ namespace TestingLast
             InitializeComponent();
             
             Model model = diagram1.Model;
-            controller = new Controller(model);
+            controller = new Controller(diagram1);
             diagram1.Invalidate();
+            diagram1.Controller.Refresh();
             // this.Controls.Add(model);
 
             //initializeNodes(model);

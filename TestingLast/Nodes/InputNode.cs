@@ -31,7 +31,7 @@ namespace TestingLast.Nodes
                 {
 
                     Statement = db.getExpression();
-                    setText("Read "+Statement);
+                    
                  //   Statement = surrondExpression(Statement);
 
                     
@@ -41,6 +41,13 @@ namespace TestingLast.Nodes
             }
             Shape.Selected = false;
         }
+
+        protected override void showStatment()
+        {
+            base.setText("Read "+Statement);
+        }
+
+        
         private String surrondExpression(String str)
         {
             return "cin>> " + str + " ;";
@@ -53,7 +60,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem = Stencil[FlowchartStencilType.Data];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#0040a0");
             Shape.GradientColor = Color.Black;
-            Shape.Label = new Crainiate.Diagramming.Label("Input");
+            setText("Input");
 
             
         }

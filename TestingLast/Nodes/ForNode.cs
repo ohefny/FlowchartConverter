@@ -35,12 +35,16 @@ namespace TestingLast.Nodes
                     setExpVariables(forBox);
                     Statement = generateEx();
 
-                    setText(Statement);
+                    
                     
                     //MessageBox.Show(Statement);
                 }
             }
             Shape.Selected = false;
+        }
+        protected override void showStatment()
+        {
+            base.setText(var+" = "+startVal+" to "+endVal+ " "+direction);
         }
 
         private string generateEx()
@@ -83,10 +87,11 @@ namespace TestingLast.Nodes
             //base();
             // Shape.Label = new Crainiate.Diagramming.Label("For");
             Name = "For";
+           // Statement = ("false");
             setText("For");
             TrueConnector.Connector.Label = new Crainiate.Diagramming.Label("Next");
             OutConnector.Connector.Label = new Crainiate.Diagramming.Label("Done");
-            Statement=("false");
+            
         }
     }
 }
