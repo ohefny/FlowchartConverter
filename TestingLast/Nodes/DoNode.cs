@@ -17,16 +17,8 @@ namespace TestingLast.Nodes
         HolderNode startNode;
         public override void onShapeClicked()
         {
-            if (Shape.Selected && Controller.DeleteChoosed)
-            {
-              /*  while (!(TrueNode.OutConnector.EndNode is HolderNode))
-                {
-                    TrueNode.OutConnector.EndNode.removeFromModel();
-                }*/
-                removeFromModel();
-                Controller.DeleteChoosed = false;
-            }
-            else if(Shape.Selected)
+            base.onShapeClicked();
+            if (Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
                 DoWhileBox doWhileBox = new DoWhileBox();

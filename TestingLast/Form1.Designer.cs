@@ -140,7 +140,7 @@
             this.DialogsBtn.Name = "DialogsBtn";
             this.DialogsBtn.Size = new System.Drawing.Size(75, 23);
             this.DialogsBtn.TabIndex = 7;
-            this.DialogsBtn.Text = "Dialogs";
+            this.DialogsBtn.Text = "Move";
             this.DialogsBtn.UseVisualStyleBackColor = true;
             this.DialogsBtn.Click += new System.EventHandler(this.DialogsBtn_Click);
             // 

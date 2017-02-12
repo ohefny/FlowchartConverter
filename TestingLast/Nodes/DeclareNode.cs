@@ -92,13 +92,8 @@ namespace TestingLast.Nodes
 
         public override void onShapeClicked()
         {
-            if (Shape.Selected && Controller.DeleteChoosed)
-            {
-
-                removeFromModel();
-                Controller.DeleteChoosed = false;
-            }
-            else if(Shape.Selected)
+            base.onShapeClicked();
+            if(Shape.Selected)
             {
                 TextBox textBox = new TextBox();
                 textBox.Location = new Point( (int) Shape.Location.X, (int) Shape.Location.Y);

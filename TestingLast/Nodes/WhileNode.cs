@@ -18,9 +18,6 @@ namespace TestingLast.Nodes
         {
 
             Name = "While";
-            //Shape.Label = new Crainiate.Diagramming.Label("While");
-           
-            //Statement = "false";
             setText("While");
 
         }
@@ -90,17 +87,8 @@ namespace TestingLast.Nodes
         }
         public override void onShapeClicked()
         {
-            if (Shape.Selected && Controller.DeleteChoosed)
-            {
-                while (!(TrueNode.OutConnector.EndNode is HolderNode)) {
-                    TrueNode.OutConnector.EndNode.removeFromModel();
-                }
-                removeFromModel();
-                Controller.DeleteChoosed = false;
-            }
-
-            // DialogResult dr = whileBox.ShowDialog();
-            else if (Shape.Selected)
+            base.onShapeClicked();
+            if (Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
                 WhileBox whileBox = new WhileBox();
@@ -123,10 +111,7 @@ namespace TestingLast.Nodes
             Shape.Selected = false;
         }
 
-        private string surrondExpression(string str)
-        {
-            return "while ( " + str + " )";
-        }
+        
         private string extractExpression(string str) {
             if (String.IsNullOrEmpty(str))
                 return str;

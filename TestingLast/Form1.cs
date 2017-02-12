@@ -77,12 +77,12 @@ namespace TestingLast
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            controller.initializeProject();
+            controller.newProject();
         }
 
         private void DialogsBtn_Click(object sender, EventArgs e)
         {
-            controller.OpenDialogs = true;
+            controller.AllowMove = true;
         }
     }
 }

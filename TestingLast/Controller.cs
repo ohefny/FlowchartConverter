@@ -18,9 +18,10 @@ namespace TestingLast
         private TerminalNode terminalE;
         private TerminalNode terminalS;
         private bool deleteChoosed;
-        private bool openDialogs;
+        private bool allowMove;
         private Diagram diagram;
-
+        
+        private BaseNode nodeInitiateRemoving;
         public bool DeleteChoosed
         {
             get
@@ -34,16 +35,16 @@ namespace TestingLast
             }
         }
 
-        public bool OpenDialogs
+        public bool AllowMove
         {
             get
             {
-                return openDialogs;
+                return allowMove;
             }
 
             set
             {
-                openDialogs = value;
+                allowMove = value;
             }
         }
 
@@ -59,8 +60,10 @@ namespace TestingLast
                 nodes = value;
             }
         }
-
+        
         public bool LoadingProject { get; internal set; }
+
+        
 
         public  enum Language { CPP,CSHARP };
 
@@ -89,6 +92,12 @@ namespace TestingLast
             terminalE.ParentNode = terminalS;
             terminalS.addToModel();
             terminalE.addToModel();
+            
+        }
+
+        internal void newProject()
+        {
+            initializeProject();
             diagram.Controller.Refresh();
         }
 
@@ -114,7 +123,7 @@ namespace TestingLast
         {
 
             DeleteChoosed = false;
-            OpenDialogs = false;
+            AllowMove = false;
         }
 
         internal void loadProject(string path)
@@ -157,9 +166,10 @@ namespace TestingLast
                     if (trackNode.NodeLocation.X < newNode.NodeLocation.X
                      && (newNode as IfElseNode).FalseNode.NodeLocation.X <= trackNode.NodeLocation.X + trackNode.Shape.Width)
                     {
+                        
                         addNode(newNode);
                         shiftNodesRight(newNode,false);
-
+                        
                     }
                 }
                 if (newNode is DecisionNode)
@@ -168,7 +178,13 @@ namespace TestingLast
                     if (trackNode.NodeLocation.X > newNode.NodeLocation.X
                      && (newNode as DecisionNode).TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
                     {
-                        shiftNodesRight(newNode,true);
+                       /* if (trackNode is IfElseNode)
+                        {
+                            (trackNode as IfElseNode).MoveFalsePart = false;
+                            shiftNodesRight(newNode, true);
+                            (trackNode as IfElseNode).MoveFalsePart = true;
+                        }*/
+                        shiftNodesRight(newNode, true);
                     }
 
                 }
@@ -206,38 +222,49 @@ namespace TestingLast
             }
         }
 
+        
         internal void removeNode(BaseNode toRemoveNode)
         {
             
+
             if (model == null)
             {
                 throw new Exception("Model should be set before calling addToModel");
             }
-            nodes.Remove(toRemoveNode);
+            
             foreach (BaseNode node in Nodes)
             {
-                if (node.OutConnector.EndNode == toRemoveNode && node.OutConnector.EndNode != node.ParentNode) //problem for backnode
+                BaseNode nextNode = node.OutConnector.EndNode;
+                if (nextNode!=null&&nextNode.ToBeRemoved && node.OutConnector.EndNode != node.ParentNode) //problem for backnode
                 {
-                    node.OutConnector.EndNode = toRemoveNode.OutConnector.EndNode;
-                    node.OutConnector.EndNode.shiftUp(node.OutConnector.EndNode.NodeLocation.Y-toRemoveNode.NodeLocation.Y);
+                    node.OutConnector.EndNode = nextNode.OutConnector.EndNode;
+                    node.OutConnector.EndNode.shiftUp(node.OutConnector.EndNode.NodeLocation.Y - toRemoveNode.NodeLocation.Y);
                     break;
                 }
             }
-            //shiftNodesRight(toRemoveNode, true, (int)(toRemoveNode.RightShifCaused * -1));
-
-            redrawNodes();
-        }
-
-        internal void addNode(BaseNode node)
-        {
-            if (!nodes.Contains(node))
-            {
-                nodes.Add(node);
-                if (node is IfElseNode && node.NodeLocation.X < 100)
-                   shiftNodesRight(node,false,150);
-                
+           
+            for (int i = 0; i < Nodes.Count; i++) {
+                if (Nodes[i].ToBeRemoved) {
+                    Nodes.Remove(Nodes[i]);
+                    i--;
+                }
             }
+            redrawNodes();
+           
         }
+
+       
+        
+         internal void addNode(BaseNode node)
+         {
+             if (!nodes.Contains(node))
+             {
+                 nodes.Add(node);
+                 if (node is IfElseNode && node.NodeLocation.X < 100)
+                    shiftNodesRight(node,false,150);
+
+             }
+         }
         public void shiftNodesRight(BaseNode shiftNode,bool exculdeNode,int distance=150)
         {
             shiftNode.RightShifCaused += distance;

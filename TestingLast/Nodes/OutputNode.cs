@@ -14,13 +14,8 @@ namespace TestingLast.Nodes
     {
         public override void onShapeClicked()
         {
-            if (Shape.Selected && Controller.DeleteChoosed)
-            {
-                removeFromModel();
-                Controller.DeleteChoosed = false;
-
-            }
-            else if(Shape.Selected)
+            base.onShapeClicked();
+            if (Shape.Selected)
             {
                 OutputBox od = new OutputBox();
                 DialogResult dr = od.ShowDialog();

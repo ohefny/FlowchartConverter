@@ -116,13 +116,20 @@ namespace TestingLast.Nodes
        
         abstract protected void moveConnections();
 
-        public override void removeFromModel()
+       
+        public override void addRemoveFlag(bool v)
         {
-            
-            while (TrueNode.OutConnector.EndNode != BackNode)
-                TrueNode.OutConnector.EndNode.removeFromModel();   
-            base.removeFromModel();
-            
+            BackNode.ToBeRemoved = true;
+            TrueNode.ToBeRemoved = true;
+            BaseNode nextNode = TrueNode;
+            while (nextNode.OutConnector.EndNode != BackNode)
+            {
+                nextNode.OutConnector.EndNode.addRemoveFlag(true);
+                nextNode = nextNode.OutConnector.EndNode;
+            }
+            nextNode = null;
+            //base.addRemoveFlag(v);
+            this.ToBeRemoved = true;
         }
         override public void addToModel()
         {
@@ -150,18 +157,7 @@ namespace TestingLast.Nodes
 
 
         }
-        /*    public override void shiftDown()
-            {
-                if (!shifted)
-                {
-                    shifted = true;
-                    base.shiftDown();
-                    trueNode.shiftDown();
-
-                }
-            }
-        */
-
+      
         public override void attachNode(BaseNode newNode, ConnectorNode clickedConnector)
         {
            

@@ -18,6 +18,7 @@ namespace TestingLast.Nodes
         static Form1 form;
         //public static List<BaseNode> nodes = new List<BaseNode>();      
         static Model model;
+        bool toBeRemoved = false;
         private ConnectorNode outConnector;
         Form dialog;
         String statement;
@@ -218,6 +219,19 @@ namespace TestingLast.Nodes
             }
         }
 
+        public bool ToBeRemoved
+        {
+            get
+            {
+                return toBeRemoved;
+            }
+
+            set
+            {
+                toBeRemoved = value;
+            }
+        }
+
         public BaseNode()
         {
             if (Controller == null)
@@ -255,8 +269,11 @@ namespace TestingLast.Nodes
             float oldWidth = Shape.Size.Width;
             Shape.Size = new SizeF(size.Width + 50, Shape.Size.Height);
             Shape.Label.Color = Color.White;
-            if (!Controller.LoadingProject)
+            if (!Controller.LoadingProject) {
+                //Controller.balanceNodes(this);
                 Controller.shiftNodesRight(this, true, (int)(Shape.Size.Width - oldWidth));
+            }
+            
         }
         virtual public void addToModel()
         {
@@ -266,15 +283,28 @@ namespace TestingLast.Nodes
         }
         virtual public void removeFromModel()
         {
-
+            addRemoveFlag(true);
+            
             Controller.removeNode(this);
-
+            
+        }
+        // mark each node to be removed with flag to perform lazy deletion
+        virtual public void addRemoveFlag(bool v)
+        {
+            toBeRemoved = v;
         }
 
-
-
-
-        public abstract void onShapeClicked();
+        public virtual void onShapeClicked()
+        {
+            if (Shape.Selected && Controller.DeleteChoosed)
+            {
+                
+                removeFromModel();
+                Controller.DeleteChoosed = false;
+                Shape.Selected = false;
+                
+            }
+        }
         public void attachNode(BaseNode newNode)
         {
 
@@ -316,9 +346,8 @@ namespace TestingLast.Nodes
 
         }
 
-
-
-        public virtual void attachNode(BaseNode newNode, ConnectorNode connectorNode)
+        
+    public virtual void attachNode(BaseNode newNode, ConnectorNode connectorNode)
         {
             attachNode(newNode);
 
@@ -372,5 +401,7 @@ namespace TestingLast.Nodes
         {
             NodeLocation = new PointF(NodeLocation.X + distance, NodeLocation.Y);
         }
+
+      
     }
 }

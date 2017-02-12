@@ -103,11 +103,11 @@ namespace TestingLast.Nodes
 
         public void onShapeClicked()
         {
-            if (!connector.Selected || !selectable || Controller.OpenDialogs==false)
+            if (!connector.Selected || !selectable || Controller.AllowMove==true)
                 return;
             addNewNode(getPickedNode());
             connector.Selected = false;
-            Controller.OpenDialogs = false;
+            
         }
 
         public void addNewNode(BaseNode toAttachNode)
