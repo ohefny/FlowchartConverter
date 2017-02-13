@@ -75,3 +75,33 @@ G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming.Forms\obj\
 G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csproj.GenerateResource.Cache
 G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.dll
 G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.pdb
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.Forms.dll
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.Forms.pdb
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.dll
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.pdb
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csprojResolveAssemblyReference.cache
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Diagram.resources
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.LabelEdit.resources
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\FlowchartingResources.resources
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Printing.PrintDocument.resources
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Overview.resources
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Ruler.resources
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Palette.resources
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csproj.GenerateResource.Cache
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.dll
+F:\hefny\Project\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.Forms.dll
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.Forms.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.dll
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csprojResolveAssemblyReference.cache
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Diagram.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.LabelEdit.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\FlowchartingResources.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Printing.PrintDocument.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Overview.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Ruler.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Palette.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csproj.GenerateResource.Cache
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.dll
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.pdb

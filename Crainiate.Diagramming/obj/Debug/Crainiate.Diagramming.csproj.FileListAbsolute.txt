@@ -24,3 +24,13 @@ G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\bin\Craini
 G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.csprojResolveAssemblyReference.cache
 G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.dll
 G:\Backup\vs projects 2015\Projects\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.pdb
+F:\hefny\Project\TestingLast\Crainiate.Diagramming\bin\Crainiate.Diagramming.dll
+F:\hefny\Project\TestingLast\Crainiate.Diagramming\bin\Crainiate.Diagramming.pdb
+F:\hefny\Project\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.csprojResolveAssemblyReference.cache
+F:\hefny\Project\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.dll
+F:\hefny\Project\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\bin\Crainiate.Diagramming.dll
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\bin\Crainiate.Diagramming.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.csprojResolveAssemblyReference.cache
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.dll
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.pdb

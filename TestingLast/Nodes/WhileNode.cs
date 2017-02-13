@@ -1,6 +1,6 @@
 ﻿using Crainiate.Diagramming;
 using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -91,7 +92,7 @@ namespace TestingLast.Nodes
             if (Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
-                WhileBox whileBox = new WhileBox();
+                WhileDialog whileBox = new WhileDialog();
 
               //  whileBox.setExpression(extractExpression(Statement));
 
@@ -99,7 +100,7 @@ namespace TestingLast.Nodes
                 DialogResult dr = whileBox.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                    Statement = whileBox.getExpression();
+                    Statement = whileBox.LoopExpression;
                     setText(Statement);
                     //Statement = surrondExpression(Statement);
                     //setText(Statement);       

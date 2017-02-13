@@ -12,15 +12,88 @@ namespace TestingLast.Nodes
 {
     class ForNode : WhileNode
     {
-        String var, startVal, endVal, stepBy;
-        ForBox.Direction direction;
-        
+        String var, startVal, endVal, stepBy,direction;
+
+        public string Var
+        {
+            get
+            {
+                return var;
+            }
+
+            set
+            {
+                var = value;
+            }
+        }
+
+        public string StartVal
+        {
+            get
+            {
+                return startVal;
+            }
+
+            set
+            {
+                startVal = value;
+            }
+        }
+
+        public string EndVal
+        {
+            get
+            {
+                return endVal;
+            }
+
+            set
+            {
+                endVal = value;
+            }
+        }
+
+        public string StepBy
+        {
+            get
+            {
+                return stepBy;
+            }
+
+            set
+            {
+                stepBy = value;
+            }
+        }
+
+        public string Direction
+        {
+            get
+            {
+                return direction;
+            }
+
+            set
+            {
+                direction = value;
+            }
+        }
+
+        //ForDialog.Direction direction;
+
         public override void onShapeClicked()
         {
-            base.onShapeClicked();
+            if (Shape.Selected && Controller.DeleteChoosed)
+            {
+
+                removeFromModel();
+                Controller.DeleteChoosed = false;
+                Shape.Selected = false;
+
+            }
             if (Shape.Selected)
             {
-                ForBox forBox = new ForBox();
+                ForDialog forBox = new ForDialog();
                 if (forBox.ShowDialog() == DialogResult.OK)
                 {
 
@@ -36,25 +109,25 @@ namespace TestingLast.Nodes
         }
         protected override void showStatment()
         {
-            base.setText(var+" = "+startVal+" to "+endVal+ " "+direction);
+            base.setText(Var+" = "+StartVal+" to "+EndVal+ " "+Direction);
         }
 
         private string generateEx()
         {
-            return "int " + var + " = "
-                + startVal + " ; " + var + getDirectionCondition()
-                + endVal + " ; " + var + getDirectionOperator() 
-                + stepBy;
+            return "int " + Var + " = "
+                + StartVal + " ; " + Var + getDirectionCondition()
+                +" "+ EndVal + " ; " + Var + getDirectionOperator() 
+                + StepBy;
 
         }
 
-        private void setExpVariables(ForBox forBox)
+        private void setExpVariables(ForDialog forBox)
         {
-            var = forBox.getVar();
-            startVal = forBox.getStartVal();
-            endVal = forBox.getEndVal();
-            stepBy = forBox.getStepByVal();
-            direction = forBox.getDirection();
+            Var = forBox.LoopVariable;
+            StartVal = forBox.LoopStart;
+            EndVal = forBox.LoopEnd;
+            StepBy = forBox.LoopStep;
+            Direction = forBox.LoopBehaviour;
         }
 
         private string surrondExpression(string str)
@@ -63,14 +136,14 @@ namespace TestingLast.Nodes
         }
         private string getDirectionOperator()
         {
-            if (direction == ForBox.Direction.Increasing)
+            if (Direction.Equals("Increment"))
                 return "+=";
             return "-=";
         }
 
         private string getDirectionCondition()
         {
-            if (direction == ForBox.Direction.Increasing)
+            if (Direction.Equals("Increment"))
                 return "<";
             return ">";
         }

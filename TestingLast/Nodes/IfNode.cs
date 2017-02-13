@@ -1,5 +1,5 @@
 ﻿using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -31,18 +32,25 @@ namespace TestingLast.Nodes
 
         public override void onShapeClicked()
         {
-            base.onShapeClicked();
+           if (Shape.Selected && Controller.DeleteChoosed)
+            {
+                
+                removeFromModel();
+                Controller.DeleteChoosed = false;
+                Shape.Selected = false;
+                
+            }
             if (Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
-                IfBox ifBox = new IfBox();
+                IfDialog ifBox = new IfDialog();
                 if (!String.IsNullOrEmpty(Statement)) {
                   // ifBox.setExpression(extractExpression(Statement)); 
                     
                 }
                 DialogResult dr = ifBox.ShowDialog();
                 if (dr == DialogResult.OK) {
-                    Statement = ifBox.getExpression();
+                    Statement = ifBox.DecisionExpression;
                    // Statement = surrondExpression(Statement);
                     setText(Statement);       
                     //Shape.Label = new Crainiate.Diagramming.Label(Statement);

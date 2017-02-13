@@ -35,3 +35,74 @@ G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLas
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.csproj.GenerateResource.Cache
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.exe
 G:\Backup\vs projects 2015\Projects\TestingLast\TestingLast\obj\Debug\TestingLast.pdb
+F:\TestingLast\TestingLast\bin\Debug\TestingLast.exe.config
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.exe
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.pdb
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.csprojResolveAssemblyReference.cache
+F:\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.AssignmentDialog.resources
+F:\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.DeclareBox.resources
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.ForBox.resources
+F:\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.InputBox.resources
+F:\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.OutputBox.resources
+F:\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.PickDialog.resources
+F:\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.DoWhileBox.resources
+F:\TestingLast\TestingLast\obj\Debug\DrawShapes.Dialogs.WhileBox.resources
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.Form1.resources
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.Properties.Resources.resources
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.TestForm.frmGroup.resources
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.csproj.GenerateResource.Cache
+F:\TestingLast\TestingLast\bin\Debug\TestingLast.exe
+F:\TestingLast\TestingLast\bin\Debug\TestingLast.pdb
+F:\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.dll
+F:\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.dll
+F:\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.pdb
+F:\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.pdb
+F:\TestingLast\TestingLast\obj\Debug\TestingLast.CodeForm.resources
+F:\hefny\Project\TestingLast\TestingLast\bin\Debug\TestingLast.exe.config
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.exe
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.pdb
+F:\hefny\Project\TestingLast\TestingLast\bin\Debug\TestingLast.exe
+F:\hefny\Project\TestingLast\TestingLast\bin\Debug\TestingLast.pdb
+F:\hefny\Project\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.dll
+F:\hefny\Project\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.dll
+F:\hefny\Project\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.pdb
+F:\hefny\Project\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.pdb
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.csprojResolveAssemblyReference.cache
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.CodeForm.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Form1.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Properties.Resources.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.TestForm.frmGroup.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.csproj.GenerateResource.Cache
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.AssignDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.DeclareDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.DoDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.ForDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.IfDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.InputDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.OutputDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.PickerDialog.resources
+F:\hefny\Project\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.WhileDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\bin\Debug\TestingLast.exe.config
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.exe
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.csprojResolveAssemblyReference.cache
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.CodeForm.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.AssignDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.DeclareDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.DoDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.ForDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.IfDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.InputDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.OutputDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.PickerDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Dialogs.WhileDialog.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Form1.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.Properties.Resources.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.TestForm.frmGroup.resources
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\obj\Debug\TestingLast.csproj.GenerateResource.Cache
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\bin\Debug\TestingLast.exe
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\bin\Debug\TestingLast.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.dll
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.dll
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.Forms.pdb
+C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\TestingLast\bin\Debug\Crainiate.Diagramming.pdb

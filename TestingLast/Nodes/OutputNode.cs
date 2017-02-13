@@ -1,5 +1,5 @@
 ﻿using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -17,12 +18,12 @@ namespace TestingLast.Nodes
             base.onShapeClicked();
             if (Shape.Selected)
             {
-                OutputBox od = new OutputBox();
+                OutputDialog od = new OutputDialog();
                 DialogResult dr = od.ShowDialog();
 
                 if (dr == DialogResult.OK)
                 {
-                    Statement = od.getExpression();
+                    Statement = od.OutputExpression;
                     
                   //  Statement = surrondExpression(Statement);
                 }

@@ -1,5 +1,5 @@
 ﻿using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
+
 namespace TestingLast.Nodes
 {
     class IfElseNode : IfNode
@@ -74,10 +76,11 @@ namespace TestingLast.Nodes
         
         public override void addRemoveFlag(bool v)
         {
+            base.addRemoveFlag(v);
             BackfalseNode.ToBeRemoved = true;
             FalseNode.ToBeRemoved = true;
             BaseNode nextNode = FalseNode;
-            while (nextNode.OutConnector.EndNode != BackNode)
+            while (nextNode.OutConnector.EndNode != BackfalseNode)
             {
                 nextNode.OutConnector.EndNode.addRemoveFlag(true);
                 nextNode = nextNode.OutConnector.EndNode;
@@ -92,7 +95,7 @@ namespace TestingLast.Nodes
             if (Shape.Selected)
             {
                 
-                IfBox ifBox = new IfBox();
+                IfDialog ifBox = new IfDialog();
                /* if (!String.IsNullOrEmpty(Statement))
                 {
                     ifBox.setExpression(extractExpression(Statement));
@@ -101,7 +104,7 @@ namespace TestingLast.Nodes
                 DialogResult dr = ifBox.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                    Statement = ifBox.getExpression();
+                    Statement = ifBox.DecisionExpression;
                     //Statement = surrondExpression(Statement);
                     setText(Statement);       
                     //Shape.Label = new Crainiate.Diagramming.Label(Statement);
@@ -243,8 +246,8 @@ namespace TestingLast.Nodes
             base.addToModel();
             FalseNode.addToModel();
             BackfalseNode.addToModel();
-           /// MiddleNode.addToModel();
-            Model.Lines.Add(FalseConnector.Connector);
+            //MiddleNode.addToModel();
+            //Controller.Model.Lines.Add(FalseConnector.Connector);
         }
     }
 }

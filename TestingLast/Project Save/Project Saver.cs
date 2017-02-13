@@ -15,7 +15,7 @@ namespace TestingLast.Project_Save
         const string begin= "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n <FlowChart>";
         const string endStr = "</FlowChart>";
         string xmlString = "";
-
+        static Controller Controller;
         public string XmlString
         {
             get
@@ -29,20 +29,20 @@ namespace TestingLast.Project_Save
             }
         }
 
-        public Project_Saver(TerminalNode start, TerminalNode end, String path,String filename) {
-            
+        public Project_Saver(Controller controller,TerminalNode start, TerminalNode end, String path) {
+            Controller = controller;
             stringBuilder.Append(begin);
             stringBuilder.Append(getBlockXML(start, null));
             stringBuilder.Append(endStr);
             XmlString = stringBuilder.ToString();
             try
             {
-                File.WriteAllText(path + '\\' + filename + ".xml", xmlString);
+                File.WriteAllText(path, xmlString);
 
             }
             catch (Exception ex) {
-                
 
+                Controller.showErrorMsg("File Not Found");
             }
         }
 
@@ -108,9 +108,7 @@ namespace TestingLast.Project_Save
             sb.Append("\r\n");
             indentation -= 4;
             sb.Append(' ', indentation);
-            
-          //  sb.Append("</" + node.Name + "> \n");
-
+         
             return sb.ToString();
             
         }
@@ -118,6 +116,7 @@ namespace TestingLast.Project_Save
         private string putAttributes(BaseNode node)
         {
             StringBuilder sb = new StringBuilder();
+            
             if (node is DeclareNode) {
                 DeclareNode declareNode = (DeclareNode)node;
                 sb.Append(" Variable_Name = \"" + declareNode._Var.VarName + "\"");
@@ -143,11 +142,30 @@ namespace TestingLast.Project_Save
             else if (node is DecisionNode) {
                 DecisionNode decisionNode = (DecisionNode)node;
                 sb.Append(" True_End_Location = \"" + decisionNode.BackNode.NodeLocation.X.ToString() + "," + decisionNode.BackNode.NodeLocation.Y.ToString() + "\" ");
+                if (node is ForNode) {
+                    ForNode forNode = node as ForNode;
+                    sb.Append(" Variable = \"" + forNode.Var+ "\" ");
+                    sb.Append(" Direction = \"" + forNode.Direction + "\" ");
+                    sb.Append(" StartVal = \"" + forNode.StartVal + "\" ");
+                    sb.Append(" EndVal = \"" + forNode.EndVal + "\" ");
+                    sb.Append(" StepBy = \"" + forNode.StepBy + "\" ");
 
+                }
             }
-            sb.Append(" Statment = \"" + node.Statement +"\" ");
+            sb.Append(" Statment = \"" + xmlWithEscapes(node.Statement) + "\" ");
             sb.Append(" Location = \"" + node.NodeLocation.X.ToString()+","+ node.NodeLocation.Y.ToString() + "\" ");
             return sb.ToString();
         }
+        private static string xmlWithEscapes(String str)
+        {
+            if (str == null) return null;
+            str = str.Replace("\"", "&quot;");
+            str = str.Replace("'", "&apos;");
+            str = str.Replace("<", "&lt;");
+            str = str.Replace(">", "&gt;");
+            str = str.Replace("&", "&amp;");
+            return str;
+            
+         }
     }
 }

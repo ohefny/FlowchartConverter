@@ -46,42 +46,69 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeForm.Designer.cs">
+      <DependentUpon>CodeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CodeGeneration\FlowChartCodeGenerator.cs" />
+    <Compile Include="Compiler.cs" />
     <Compile Include="Controller.cs" />
-    <Compile Include="Dialogs\AssignmentDialog.cs">
+    <Compile Include="Dialogs\AssignDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\DeclareBox.cs">
+    <Compile Include="Dialogs\AssignDialog.Designer.cs">
+      <DependentUpon>AssignDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DeclareDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\ForBox.cs">
+    <Compile Include="Dialogs\DeclareDialog.Designer.cs">
+      <DependentUpon>DeclareDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\ForBox.designer.cs">
-      <DependentUpon>ForBox.cs</DependentUpon>
+    <Compile Include="Dialogs\DoDialog.Designer.cs">
+      <DependentUpon>DoDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\IfBox.cs">
+    <Compile Include="Dialogs\ForDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\InputBox.cs">
+    <Compile Include="Dialogs\ForDialog.Designer.cs">
+      <DependentUpon>ForDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\IfDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\OutputBox.cs">
+    <Compile Include="Dialogs\IfDialog.Designer.cs">
+      <DependentUpon>IfDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\InputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\PickDialog.cs">
+    <Compile Include="Dialogs\InputDialog.Designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\OutputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\PickDialog.Designer.cs">
-      <DependentUpon>PickDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\OutputDialog.Designer.cs">
+      <DependentUpon>OutputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\DoWhileBox.cs">
+    <Compile Include="Dialogs\PickerDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\WhileBox.cs">
+    <Compile Include="Dialogs\PickerDialog.Designer.cs">
+      <DependentUpon>PickerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WhileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Extended\ExtendedShape.cs" />
+    <Compile Include="Dialogs\WhileDialog.Designer.cs">
+      <DependentUpon>WhileDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,29 +143,35 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TestForm\frmGroup.Designer.cs" />
-    <EmbeddedResource Include="Dialogs\AssignmentDialog.resx">
-      <DependentUpon>AssignmentDialog.cs</DependentUpon>
+    <EmbeddedResource Include="CodeForm.resx">
+      <DependentUpon>CodeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\DeclareBox.resx">
-      <DependentUpon>DeclareBox.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\AssignDialog.resx">
+      <DependentUpon>AssignDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\ForBox.resx">
-      <DependentUpon>ForBox.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\DeclareDialog.resx">
+      <DependentUpon>DeclareDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\InputBox.resx">
-      <DependentUpon>InputBox.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\DoDialog.resx">
+      <DependentUpon>DoDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\OutputBox.resx">
-      <DependentUpon>OutputBox.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\ForDialog.resx">
+      <DependentUpon>ForDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\PickDialog.resx">
-      <DependentUpon>PickDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\IfDialog.resx">
+      <DependentUpon>IfDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\DoWhileBox.resx">
-      <DependentUpon>DoWhileBox.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\WhileBox.resx">
-      <DependentUpon>WhileBox.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\OutputDialog.resx">
+      <DependentUpon>OutputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PickerDialog.resx">
+      <DependentUpon>PickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WhileDialog.resx">
+      <DependentUpon>WhileDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -149,6 +182,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm\frmGroup.resx" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -244,6 +278,7 @@
   <ItemGroup>
     <None Include="Resources\CsCode.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

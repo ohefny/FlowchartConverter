@@ -1,6 +1,6 @@
 ﻿using Crainiate.Diagramming;
 using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -19,18 +20,18 @@ namespace TestingLast.Nodes
             if (Shape.Selected)
             {
 
-                InputBox db = new InputBox();
+                InputDialog db = new InputDialog();
                 DialogResult dr = db.ShowDialog();
                 
                 if (dr == DialogResult.OK)
                 {
 
-                    Statement = db.getExpression();
-                    
+                    Statement = db.InputVariable;
+
                  //   Statement = surrondExpression(Statement);
 
-                    
-                    
+
+
                 }
                 
             }

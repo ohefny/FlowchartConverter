@@ -17,7 +17,7 @@ namespace TestingLast.Nodes
         static Controller controller;
         static Form1 form;
         //public static List<BaseNode> nodes = new List<BaseNode>();      
-        static Model model;
+        
         bool toBeRemoved = false;
         private ConnectorNode outConnector;
         Form dialog;
@@ -99,18 +99,7 @@ namespace TestingLast.Nodes
             }
         }
 
-        public static Model Model
-        {
-            get
-            {
-                return model;
-            }
-
-            set
-            {
-                model = value;
-            }
-        }
+        
 
         virtual public PointF NodeLocation
         {
@@ -328,17 +317,22 @@ namespace TestingLast.Nodes
 
             BaseNode oldOutNode = OutConnector.EndNode;
             OutConnector.EndNode = newNode;
-            newNode.OutConnector.EndNode = oldOutNode;
+            //newNode.OutConnector.EndNode = oldOutNode;
             float x = this.NodeLocation.X;
             float y = oldOutNode.NodeLocation.Y;
             //if the holdernode and nodes in the same track have different x choose nodes x
             if (this.NodeLocation.X != oldOutNode.NodeLocation.X)
             {
-                if (this is HolderNode)
+                if (this.ParentNode is IfElseNode 
+                    && this==(this.parentNode as IfElseNode).MiddleNode) {
+                    x = this.parentNode.NodeLocation.X;
+                }
+                else if (this is HolderNode)
                     x = oldOutNode.NodeLocation.X;
                 else if (oldOutNode is HolderNode)
                     x = this.NodeLocation.X;
             }
+            newNode.OutConnector.EndNode = oldOutNode;
             oldOutNode.shiftDown(0);
             newNode.NodeLocation = new PointF(x, y);
             controller.balanceNodes(newNode);

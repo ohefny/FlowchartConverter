@@ -1,28 +1,7 @@
-﻿
-using Crainiate.Diagramming;
-using Crainiate.Diagramming.Flowcharting;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TestingLast.Properties;
-
-namespace DrawShapes.Dialogs
+﻿namespace TestingLast.Dialogs
 {
-    public class AssignmentDialog : Form
+    partial class AssignDialog
     {
-        private string _assignmentVariable;
-        private string _assignmentExpression;
-
-        public AssignmentDialog()
-        {
-            InitializeComponent();
-            InitializeDialog();
-        }
-       
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -49,8 +28,8 @@ namespace DrawShapes.Dialogs
         /// </summary>
         private void InitializeComponent()
         {
-            Crainiate.Diagramming.Forms.Paging paging1 = new Crainiate.Diagramming.Forms.Paging();
-            Crainiate.Diagramming.Forms.Margin margin1 = new Crainiate.Diagramming.Forms.Margin();
+            Crainiate.Diagramming.Forms.Paging paging2 = new Crainiate.Diagramming.Forms.Paging();
+            Crainiate.Diagramming.Forms.Margin margin2 = new Crainiate.Diagramming.Forms.Margin();
             this.ok_button = new System.Windows.Forms.Button();
             this.cancel_btton = new System.Windows.Forms.Button();
             this.diagram1 = new Crainiate.Diagramming.Forms.Diagram();
@@ -93,17 +72,17 @@ namespace DrawShapes.Dialogs
             this.diagram1.GridStyle = Crainiate.Diagramming.GridStyle.Pixel;
             this.diagram1.Location = new System.Drawing.Point(0, 0);
             this.diagram1.Name = "diagram1";
-            paging1.Enabled = true;
-            margin1.Bottom = 0F;
-            margin1.Left = 0F;
-            margin1.Right = 0F;
-            margin1.Top = 0F;
-            paging1.Margin = margin1;
-            paging1.Padding = new System.Drawing.SizeF(40F, 40F);
-            paging1.Page = 1;
-            paging1.PageSize = new System.Drawing.SizeF(793.7008F, 1122.52F);
-            paging1.WorkspaceColor = System.Drawing.SystemColors.AppWorkspace;
-            this.diagram1.Paging = paging1;
+            paging2.Enabled = true;
+            margin2.Bottom = 0F;
+            margin2.Left = 0F;
+            margin2.Right = 0F;
+            margin2.Top = 0F;
+            paging2.Margin = margin2;
+            paging2.Padding = new System.Drawing.SizeF(40F, 40F);
+            paging2.Page = 1;
+            paging2.PageSize = new System.Drawing.SizeF(793.7008F, 1122.52F);
+            paging2.WorkspaceColor = System.Drawing.SystemColors.AppWorkspace;
+            this.diagram1.Paging = paging2;
             this.diagram1.Size = new System.Drawing.Size(490, 301);
             this.diagram1.TabIndex = 1;
             this.diagram1.Zoom = 100F;
@@ -182,7 +161,7 @@ namespace DrawShapes.Dialogs
             this.equal_label.Text = " =";
             this.equal_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // AssignmentDialog
+            // Assign
             // 
             this.AcceptButton = this.ok_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,7 +182,7 @@ namespace DrawShapes.Dialogs
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AssignmentDialog";
+            this.Name = "Assign";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Assign Properties";
             this.ResumeLayout(false);
@@ -212,54 +191,6 @@ namespace DrawShapes.Dialogs
         }
 
         #endregion
-        private void InitializeDialog()
-        {
-            Model model = diagram1.Model;
-            diagram1.Model.SetSize(new Size(1000, 1000));
-
-            FlowchartStencil stencil = (FlowchartStencil)Singleton.Instance.GetStencil(typeof(FlowchartStencil));
-
-            //Assign
-            Shape shape = new Shape();
-            shape.Location = new PointF(10, 10);
-            shape.Size = new SizeF(100, 100);
-            shape.AllowScale = false;
-            shape.AllowMove = false;
-            shape.Selected = false;
-            shape.StencilItem = stencil[FlowchartStencilType.Process];
-            shape.Label = new Crainiate.Diagramming.Label("Assign");
-            shape.GradientColor = System.Drawing.Color.Black;
-            shape.BackColor = System.Drawing.Color.LightGreen;
-            model.Shapes.Add("assign", shape);
-        }
-
-        private void name_text_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            _assignmentVariable = textBox.Text;
-        }
-
-        private void expression_text_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            _assignmentExpression = textBox.Text;
-        }
-
-        public string AssignmentVariable
-        {
-            get
-            {
-                return _assignmentVariable;
-            }
-        }
-
-        public string AssignmentExpression
-        {
-            get
-            {
-                return _assignmentExpression;
-            }
-        }
 
         private Crainiate.Diagramming.Forms.Diagram diagram1;
         private System.Windows.Forms.Button ok_button;
@@ -271,6 +202,4 @@ namespace DrawShapes.Dialogs
         private System.Windows.Forms.TextBox expression_text;
         private System.Windows.Forms.Label equal_label;
     }
-
-
 }

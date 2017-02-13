@@ -35,14 +35,14 @@ namespace TestingLast.CodeGeneration
             indentation = 8;
             string[] seperators = new String[] { "\r\n" };
             string[] lines = Resources.cscode.Split(seperators, StringSplitOptions.None);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
                 sb.Append(lines[i]);
                 sb.Append("\r\n");
             }         
           
             sb.Append(getBlockCode(startNode, terminateNode));
-            for (int i = 5; i < lines.Length; i++)
+            for (int i = 7; i < lines.Length; i++)
             {
                 sb.Append(lines[i]);
                 sb.Append("\r\n");
@@ -184,7 +184,7 @@ namespace TestingLast.CodeGeneration
                     return getDeclareCsCode((node as DeclareNode)._Var) + ";";
 
                 case NodeType.INPUT:
-                    return "input(" + node.Statement + ") ;";
+                    return "input(out " + node.Statement + ") ;";
 
                 case NodeType.OUTPUT:
                     return "Console.WriteLine(" + node.Statement + ") ;";

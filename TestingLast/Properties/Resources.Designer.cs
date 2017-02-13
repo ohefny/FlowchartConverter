@@ -172,6 +172,8 @@ namespace TestingLast.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to using System;
+        ///using System.Collections.Generic;
+        ///using System.Text;
         ///public class MyProgram
         ///{
         ///    public static void Main(String[] args)
@@ -185,14 +187,36 @@ namespace TestingLast.Properties {
         ///    
         ///    private static void input(out double result)
         ///    {
-        ///        while (!double.TryParse(Console.ReadLine(), out result));
-        ///    }
-        ///    
-        ///    private static void input(out int res [rest of string was truncated]&quot;;.
+        ///        while (!double.TryParse(Console.ReadLine(), out result));        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string cscode {
             get {
                 return ResourceManager.GetString("cscode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to using System;
+        ///using System.Collections.Generic;
+        ///using System.Text;
+        ///public class MyProgram
+        ///{
+        ///    public static void Main(String[] args)
+        ///    {
+        ///        
+        ///    }
+        ///    
+        ///    // .NET can only read single characters or entire lines from the console.
+        ///    // The following functions are designed to help input specific data types.
+        ///    // &apos;out&apos; is a pass-by-reference modifier in C#.
+        ///    
+        ///    private static void input(out double result)
+        ///    {
+        ///        while (!double.TryParse(Console.ReadLine(), out result));        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CsCode1 {
+            get {
+                return ResourceManager.GetString("CsCode1", resourceCulture);
             }
         }
         

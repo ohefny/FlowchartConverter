@@ -1,5 +1,5 @@
 ﻿using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -17,7 +18,7 @@ namespace TestingLast.Nodes
             base.onShapeClicked();
             if (Shape.Selected)
             {
-                AssignmentDialog db = new AssignmentDialog();
+                AssignDialog db = new AssignDialog();
                 DialogResult dr = db.ShowDialog();
 
                 if (dr == DialogResult.OK)
@@ -45,7 +46,7 @@ namespace TestingLast.Nodes
             Shape.StencilItem = Stencil[FlowchartStencilType.Default];
             Shape.BackColor = System.Drawing.ColorTranslator.FromHtml("#fdfd80");
             Shape.GradientColor = Color.Black;
-            setText("Assing");
+            setText("Assign");
             
             
         }

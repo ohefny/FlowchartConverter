@@ -1,5 +1,5 @@
 ﻿using Crainiate.Diagramming;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,7 +105,10 @@ namespace TestingLast.Nodes
         {
             if (!connector.Selected || !selectable || Controller.AllowMove==true)
                 return;
-            addNewNode(getPickedNode());
+            BaseNode node = getPickedNode();
+            if (node == null)
+                return;
+            addNewNode(node);
             connector.Selected = false;
             
         }
@@ -147,34 +150,12 @@ namespace TestingLast.Nodes
         public static BaseNode getPickedNode()
         {
             BaseNode toAttachNode = null;
-            PickDialog pd = new PickDialog();
+            PickerDialog pd = new PickerDialog();
             DialogResult res = pd.ShowDialog();
-
-            int selectedShape = pd.getSelectedShape();
-            if (selectedShape == 0)
-            {
-                toAttachNode = new DeclareNode();
-            }
-            else if (selectedShape == 1)
-            {
-                toAttachNode = new AssignNode();
-            }
-
-            else if (selectedShape == 2)//"whileImg"
-                toAttachNode = new WhileNode();
-            else if (selectedShape == 3)//"forImg"
-                toAttachNode = new ForNode();
-
-            else if (selectedShape == 4)//"doImg"
-                toAttachNode = new DoNode();
-            else if (selectedShape == 5)//"ifImg"
-                toAttachNode = new IfNode();
-            else if (selectedShape == 6)//"inputImg"
-                toAttachNode = new InputNode();
-            else if (selectedShape == 7)// "outputImg"
-                toAttachNode = new OutputNode();
-            else if (selectedShape == 8)
-                toAttachNode = new IfElseNode();
+            if (res != DialogResult.OK)
+                return null;
+            toAttachNode = pd.SelectedShape;
+            
             return toAttachNode;
         }
     }

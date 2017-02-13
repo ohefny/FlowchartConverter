@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Crainiate.Diagramming;
-using DrawShapes.Dialogs;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -17,17 +17,24 @@ namespace TestingLast.Nodes
         HolderNode startNode;
         public override void onShapeClicked()
         {
-            base.onShapeClicked();
+            if (Shape.Selected && Controller.DeleteChoosed)
+            {
+
+                removeFromModel();
+                Controller.DeleteChoosed = false;
+                Shape.Selected = false;
+
+            }
             if (Shape.Selected)
             {
                 //AssignmentDialog db = new AssignmentDialog();
-                DoWhileBox doWhileBox = new DoWhileBox();
+                DoDialog doWhileBox = new DoDialog();
 
-                doWhileBox.setExpression(extractExpression(Statement));
+                //doWhileBox.setExpression(extractExpression(Statement));
                 DialogResult dr = doWhileBox.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                    Statement = doWhileBox.getExpression();
+                    Statement = doWhileBox.LoopExpression;
 
                     setText(Statement);
                     
@@ -81,7 +88,7 @@ namespace TestingLast.Nodes
             BackNode = new HolderNode(this);
             BackNode.OutConnector.Connector.End.Shape = Shape;
             BackNode.Shape.Label = new Crainiate.Diagramming.Label("B");
-            TrueNode.attachNode(BackNode);
+            TrueNode.OutConnector.EndNode = BackNode;
             BackNode.OutConnector.setEndNode(this);
             BackNode.OutConnector.Selectable = false;
             TrueConnector.Selectable = false;
@@ -94,6 +101,7 @@ namespace TestingLast.Nodes
         {   
             Shape.Location = new PointF(nodeLocation.X, nodeLocation.Y + shiftY);
             PointF point = new PointF(Shape.Width + Shape.Location.X + horizontalSpace, startNode.Shape.Center.Y - TrueNode.Shape.Size.Height / 2);
+            PointF oldPlace = TrueNode.NodeLocation;
             TrueNode.NodeLocation = point;
             // backNode.NodeLocation = new PointF(point.X, point.Y + 100);
             if (TrueConnector.EndNode == null)
@@ -104,9 +112,17 @@ namespace TestingLast.Nodes
                 return;
                 //      holderNode.attachNode(this, backConnector);
             }
-            if (TrueNode.OutConnector.EndNode is HolderNode)
+            BackNode.NodeLocation = new PointF(point.X, BackNode.NodeLocation.Y);
+            if (moveDirection == MOVE_DOWN)
+                TrueNode.OutConnector.EndNode.shiftDown(moreShift);
+            else if (moveDirection == MOVE_UP)
             {
-                BackNode.NodeLocation = new PointF(point.X, point.Y + 100);
+                TrueNode.OutConnector.EndNode.shiftUp(oldPlace.Y - point.Y);
+                //   OutConnector.EndNode.shiftUp(); //shift main track
+            }
+           /* if (TrueNode.OutConnector.EndNode is HolderNode)
+            {
+                BackNode.NodeLocation = new PointF(point.X, point.Y + 60);
                 shiftMainTrack();
             }
 
@@ -114,7 +130,7 @@ namespace TestingLast.Nodes
             {
                 TrueNode.OutConnector.EndNode.shiftDown(moreShift);
                 
-            }
+            }*/
         }
         public override Shape connectedShape()
         {
@@ -122,11 +138,11 @@ namespace TestingLast.Nodes
         }
         override public void addToModel()
         {
-            Model.Shapes.Add(Shape);
-           
-            Model.Shapes.Add(startNode.Shape);
-           Model.Lines.Add(BackNode.OutConnector.Connector);
-            Model.Lines.Add(startNode.OutConnector.Connector);
+            Controller.Model.Shapes.Add(Shape);
+
+            Controller.Model.Shapes.Add(startNode.Shape);
+            Controller.Model.Lines.Add(BackNode.OutConnector.Connector);
+            Controller.Model.Lines.Add(startNode.OutConnector.Connector);
             base.addToModel();
             
             

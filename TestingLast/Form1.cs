@@ -27,13 +27,9 @@ namespace TestingLast
             
             InitializeComponent();
             
-            Model model = diagram1.Model;
+            
             controller = new Controller(diagram1);
-            diagram1.Invalidate();
-            diagram1.Controller.Refresh();
-            // this.Controls.Add(model);
-
-            //initializeNodes(model);
+          
 
         }
 
@@ -62,7 +58,7 @@ namespace TestingLast
 
         private void xmlBtn_Click(object sender, EventArgs e)
         {
-            controller.saveProject("F:\\", "testxml");
+            controller.saveProject("F:\\");
             
            
             //MessageBox.Show(ps.XmlString);
@@ -83,6 +79,75 @@ namespace TestingLast
         private void DialogsBtn_Click(object sender, EventArgs e)
         {
             controller.AllowMove = true;
+        }
+
+        private void open_button_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = "Xml Source (*.xml)|*.xml";
+            string path = null;
+            if (DialogResult.OK == opf.ShowDialog())
+            {
+                path = opf.FileName;
+
+            }
+            else
+            {
+                return;
+            }
+
+            controller.loadProject(path);
+        }
+
+        private void save_button_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Xml Source (*.xml)|*.xml";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                controller.saveProject(saveFileDialog.FileName);
+            }
+            else
+                return;
+               
+        }
+
+        private void move_button_Click(object sender, EventArgs e)
+        {
+            controller.AllowMove = true;
+        }
+
+        private void clear_button_Click(object sender, EventArgs e)
+        {
+            controller.newProject();
+        }
+
+        private void delete_button_Click(object sender, EventArgs e)
+        {
+            controller.DeleteChoosed = true;
+        }
+
+        private void sourceCodeButton_Click(object sender, EventArgs e)
+        {
+            string cppStr = controller.getCode(Controller.Language.CPP);
+            string cSharpStr = controller.getCode(Controller.Language.CSHARP);
+           // MessageBox.Show(cppStr);
+           // MessageBox.Show(cSharpStr);
+            CodeForm code = new CodeForm();
+            code.setMeta(cppStr, cSharpStr);
+            code.set(cppStr);
+            code.Show();
+        }
+
+        private void export_button_Click(object sender, EventArgs e)
+        {
+            var fbd = new FolderBrowserDialog();
+
+            if (fbd.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            {
+                Crainiate.Diagramming.Forms.FormsDocument _fd = new FormsDocument(diagram1.Model);
+                _fd.Export(fbd.SelectedPath + "output.jpg", ExportFormat.Jpeg);
+            }
         }
     }
 }

@@ -63,7 +63,18 @@ namespace TestingLast
         
         public bool LoadingProject { get; internal set; }
 
-        
+        public Model Model
+        {
+            get
+            {
+                return model;
+            }
+
+            set
+            {
+                model = value;
+            }
+        }
 
         public  enum Language { CPP,CSHARP };
 
@@ -72,7 +83,7 @@ namespace TestingLast
         public Controller(Diagram diagram1)
         {
             this.diagram = diagram1;
-            this.model = diagram1.Model;
+            this.Model = diagram1.Model;
            // diagram1.Controller.Model.Elements.SetModifiable(true);
             initializeProject();
             new OutputNode();
@@ -81,10 +92,9 @@ namespace TestingLast
         public void initializeProject()
         {
 
-            model.Clear();
+            Model.Clear();
             Nodes.Clear();
-            BaseNode.Controller = this;
-            BaseNode.Model = model;
+            BaseNode.Controller = this;          
             ConnectorNode.Controller = this;
             terminalS = new TerminalNode(TerminalNode.TerminalType.Start);
             terminalE = new TerminalNode(TerminalNode.TerminalType.End);
@@ -101,9 +111,9 @@ namespace TestingLast
             diagram.Controller.Refresh();
         }
 
-        internal void saveProject(string path, string fileName)
+        internal void saveProject(string path)
         {
-            Project_Saver ps = new Project_Saver(terminalS, terminalE, path, fileName);
+            Project_Saver ps = new Project_Saver(this,terminalS, terminalE, path);
         }
 
         public string getCode(Language lang)
@@ -140,7 +150,7 @@ namespace TestingLast
         internal void redrawNodes()
         {
 
-            model.Clear();
+            Model.Clear();
 
             foreach (BaseNode node in Nodes)
             {
@@ -178,12 +188,7 @@ namespace TestingLast
                     if (trackNode.NodeLocation.X > newNode.NodeLocation.X
                      && (newNode as DecisionNode).TrueNode.NodeLocation.X > trackNode.NodeLocation.X)
                     {
-                       /* if (trackNode is IfElseNode)
-                        {
-                            (trackNode as IfElseNode).MoveFalsePart = false;
-                            shiftNodesRight(newNode, true);
-                            (trackNode as IfElseNode).MoveFalsePart = true;
-                        }*/
+                      
                         shiftNodesRight(newNode, true);
                     }
 
@@ -203,22 +208,22 @@ namespace TestingLast
 
         internal void addToModel(BaseNode toAddNode)
         {
-            if (model == null)
+            if (Model == null)
             {
                 throw new Exception("Model should be set before calling addToModel");
             }
             if (toAddNode.OutConnector.EndNode != null)
-                model.Lines.Add(toAddNode.ConnectorTag, toAddNode.OutConnector.Connector);
+                Model.Lines.Add(toAddNode.ConnectorTag, toAddNode.OutConnector.Connector);
             if (toAddNode.Shape != null)
-                model.Shapes.Add(toAddNode.ShapeTag, toAddNode.Shape);
+                Model.Shapes.Add(toAddNode.ShapeTag, toAddNode.Shape);
             addNode(toAddNode);
             if (toAddNode is IfElseNode && toAddNode.NodeLocation.X < 100)
                 shiftNodesRight(toAddNode,true); //to be replaced by controller
             if(toAddNode is DecisionNode)
-                model.Lines.Add((toAddNode as DecisionNode).TrueConnector.Connector);
+                Model.Lines.Add((toAddNode as DecisionNode).TrueConnector.Connector);
             if (toAddNode is IfElseNode)
             {
-                model.Lines.Add((toAddNode as IfElseNode).FalseConnector.Connector);
+                Model.Lines.Add((toAddNode as IfElseNode).FalseConnector.Connector);
             }
         }
 
@@ -227,24 +232,25 @@ namespace TestingLast
         {
             
 
-            if (model == null)
+            if (Model == null)
             {
                 throw new Exception("Model should be set before calling addToModel");
             }
-            
+           
             foreach (BaseNode node in Nodes)
             {
                 BaseNode nextNode = node.OutConnector.EndNode;
-                if (nextNode!=null&&nextNode.ToBeRemoved && node.OutConnector.EndNode != node.ParentNode) //problem for backnode
+                if (nextNode == toRemoveNode && node.OutConnector.EndNode != node.ParentNode) //problem for backnode
                 {
                     node.OutConnector.EndNode = nextNode.OutConnector.EndNode;
                     node.OutConnector.EndNode.shiftUp(node.OutConnector.EndNode.NodeLocation.Y - toRemoveNode.NodeLocation.Y);
                     break;
                 }
             }
-           
+            
             for (int i = 0; i < Nodes.Count; i++) {
                 if (Nodes[i].ToBeRemoved) {
+                    //Nodes[i].OutConnector.EndNode.shiftUp(Nodes[i].OutConnector.EndNode.NodeLocation.Y - toRemoveNode.NodeLocation.Y);
                     Nodes.Remove(Nodes[i]);
                     i--;
                 }
@@ -280,6 +286,9 @@ namespace TestingLast
                     if (node.NodeLocation.X >= shiftNode.NodeLocation.X)
                     node.shiftRight(distance);
             }
+
+        }
+        public void showErrorMsg(string str) {
 
         }
        }

@@ -62,8 +62,11 @@ namespace Crainiate.Diagramming.Serialization
                 {
                      foreach (Type type in assembly.GetTypes())
                      {
-                        typeList.Add(type.FullName, type);
-                     }
+                        if (!typeList.ContainsKey(type.FullName))
+                        {
+                            typeList.Add(type.FullName, type);
+                        }
+                    }
                 }
             }
             return typeList;

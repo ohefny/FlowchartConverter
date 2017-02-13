@@ -1,5 +1,5 @@
 ﻿using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestingLast.Dialogs;
 
 namespace TestingLast.Nodes
 {
@@ -98,7 +99,7 @@ namespace TestingLast.Nodes
                 TextBox textBox = new TextBox();
                 textBox.Location = new Point( (int) Shape.Location.X, (int) Shape.Location.Y);
                 textBox.Width = (int) Shape.Width;
-                DeclareBox db = new DeclareBox();
+                DeclareDialog db = new DeclareDialog();
                 DialogResult dr = db.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
@@ -135,7 +136,7 @@ namespace TestingLast.Nodes
             
         }
 
-        private void initializeVariable(DeclareBox db)
+        private void initializeVariable(DeclareDialog db)
         {
             variable.VarName = db.DeclareVariable;
             if (db.DeclareDataType.Equals("Integer"))

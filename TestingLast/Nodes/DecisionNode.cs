@@ -1,6 +1,6 @@
 ﻿using Crainiate.Diagramming;
 using Crainiate.Diagramming.Flowcharting;
-using DrawShapes.Dialogs;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -136,7 +136,7 @@ namespace TestingLast.Nodes
             base.addToModel();
             TrueNode.addToModel();
             BackNode.addToModel();
-            //  Model.Shapes.Add(holderTag,holderNode.Shape);
+            //Controller.Model.Shapes.Add(holderTag,holderNode.Shape);
             //  Model.Lines.Add(backConnectorTag, backConnector.Connector);
         }
         protected void attachToTrue(BaseNode newNode, bool addToEnd)

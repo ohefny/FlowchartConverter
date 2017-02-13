@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 public class MyProgram
 {
     public static void Main(String[] args)
@@ -20,9 +22,9 @@ public class MyProgram
         while (!int.TryParse(Console.ReadLine(), out result));
     }
     
-    private static void input(out boolean result)
+    private static void input(out bool result)
     {
-        while (!boolean.TryParse(Console.ReadLine(), out result));
+        while (!bool.TryParse(Console.ReadLine(), out result));
     }
     
     private static void input(out string result)

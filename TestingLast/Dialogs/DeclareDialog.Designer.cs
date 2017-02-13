@@ -1,31 +1,12 @@
-﻿using TestingLast.Properties;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Crainiate.Diagramming;
-using Crainiate.Diagramming.Flowcharting;
-using System.Drawing;
-
-namespace DrawShapes.Dialogs
+﻿namespace TestingLast.Dialogs
 {
-     class DeclareBox : Form
+    partial class DeclareDialog
     {
-        private string _declareVariable;
-        private string _declareDataType;
-        private string _declareVariableType;
-        private string _declareArraySize;
-
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        public DeclareBox() {
-            InitializeComponent();
-            InitializeDialog();
-        }
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -47,8 +28,8 @@ namespace DrawShapes.Dialogs
         /// </summary>
         private void InitializeComponent()
         {
-            Crainiate.Diagramming.Forms.Paging paging2 = new Crainiate.Diagramming.Forms.Paging();
-            Crainiate.Diagramming.Forms.Margin margin2 = new Crainiate.Diagramming.Forms.Margin();
+            Crainiate.Diagramming.Forms.Paging paging3 = new Crainiate.Diagramming.Forms.Paging();
+            Crainiate.Diagramming.Forms.Margin margin3 = new Crainiate.Diagramming.Forms.Margin();
             this.ok_button = new System.Windows.Forms.Button();
             this.cancel_button = new System.Windows.Forms.Button();
             this.diagram1 = new Crainiate.Diagramming.Forms.Diagram();
@@ -94,17 +75,17 @@ namespace DrawShapes.Dialogs
             this.diagram1.GridStyle = Crainiate.Diagramming.GridStyle.Pixel;
             this.diagram1.Location = new System.Drawing.Point(0, 0);
             this.diagram1.Name = "diagram1";
-            paging2.Enabled = true;
-            margin2.Bottom = 0F;
-            margin2.Left = 0F;
-            margin2.Right = 0F;
-            margin2.Top = 0F;
-            paging2.Margin = margin2;
-            paging2.Padding = new System.Drawing.SizeF(40F, 40F);
-            paging2.Page = 1;
-            paging2.PageSize = new System.Drawing.SizeF(793.7008F, 1122.52F);
-            paging2.WorkspaceColor = System.Drawing.SystemColors.AppWorkspace;
-            this.diagram1.Paging = paging2;
+            paging3.Enabled = true;
+            margin3.Bottom = 0F;
+            margin3.Left = 0F;
+            margin3.Right = 0F;
+            margin3.Top = 0F;
+            paging3.Margin = margin3;
+            paging3.Padding = new System.Drawing.SizeF(40F, 40F);
+            paging3.Page = 1;
+            paging3.PageSize = new System.Drawing.SizeF(793.7008F, 1122.52F);
+            paging3.WorkspaceColor = System.Drawing.SystemColors.AppWorkspace;
+            this.diagram1.Paging = paging3;
             this.diagram1.Size = new System.Drawing.Size(512, 291);
             this.diagram1.TabIndex = 1;
             this.diagram1.Zoom = 100F;
@@ -223,7 +204,7 @@ namespace DrawShapes.Dialogs
             this.size_text.TabIndex = 11;
             this.size_text.TextChanged += new System.EventHandler(this.size_text_TextChanged);
             // 
-            // DeclareBox
+            // DeclareDialog
             // 
             this.AcceptButton = this.ok_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,7 +228,7 @@ namespace DrawShapes.Dialogs
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "DeclareBox";
+            this.Name = "DeclareDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Declare Properties";
             this.ResumeLayout(false);
@@ -256,101 +237,6 @@ namespace DrawShapes.Dialogs
         }
 
         #endregion
-
-        private void InitializeDialog()
-        {
-            Model model = diagram1.Model;
-            diagram1.Model.SetSize(new Size(1000, 1000));
-
-            FlowchartStencil stencil = (FlowchartStencil)Singleton.Instance.GetStencil(typeof(FlowchartStencil));
-
-            //Declare
-            Shape shape = new Shape();
-            shape.Location = new PointF(10, 20);
-            shape.Size = new SizeF(100, 100);
-            shape.AllowScale = false;
-            shape.AllowMove = false;
-            shape.StencilItem = stencil[FlowchartStencilType.InternalStorage];
-            shape.Label = new Crainiate.Diagramming.Label("Declare");
-            shape.GradientColor = System.Drawing.Color.Black;
-            shape.BackColor = System.Drawing.Color.LightGray;
-            model.Shapes.Add("declare", shape);
-
-            this.type_box.SelectedItem = "Single";
-            this.data_box.SelectedItem = "Integer";
-        }
-
-
-        private void variable_box_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            if (comboBox.SelectedItem.Equals("Single"))
-            {
-                this.size_text.Enabled = false;
-                this.size_text.BackColor = Color.LightGray;
-                this.size_text.Text = null;
-                this._declareVariableType = "Single";
-            }
-
-            else
-            {
-                this.size_text.Enabled = true;
-                this.size_text.BackColor = Color.White;
-                this._declareVariableType = "Array";
-            }
-
-        }
-
-        private void name_text_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            this._declareVariable = textBox.Text;
-        }
-
-        private void size_text_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            this._declareArraySize = textBox.Text;
-        }
-
-        private void data_box_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            this._declareDataType = (string)comboBox.SelectedItem;
-        }
-
-        public string DeclareVariable
-        {
-            get
-            {
-                return _declareVariable;
-            }
-        }
-
-        public string DeclareDataType
-        {
-            get
-            {
-                return _declareDataType;
-            }
-        }
-
-        public string DeclareVariableType
-        {
-            get
-            {
-                return _declareVariableType;
-            }
-        }
-
-        public string DeclareArraySize
-        {
-            get
-            {
-                return _declareArraySize;
-            }
-        }
-
 
         private Crainiate.Diagramming.Forms.Diagram diagram1;
         private System.Windows.Forms.Button ok_button;
