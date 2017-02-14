@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?> 
+ <FlowChart>
+
+    <Start Statment = "Start"  Location = "149,10" >
+    </Start> 
+
+    <Declare Variable_Name = "fact" Variable_Type = "INTEGER" Single_Variable = "True" Size = "0" Statment = "INTEGER  fact"  Location = "149,95" >
+    </Declare> 
+
+    <Declare Variable_Name = "x" Variable_Type = "INTEGER" Single_Variable = "True" Size = "0" Statment = "INTEGER  x"  Location = "149,180" >
+    </Declare> 
+
+    <Input Statment = "x"  Location = "149,265" >
+    </Input> 
+
+    <Assign Statment = "fact = 1"  Location = "149,350" >
+    </Assign> 
+
+    <For True_End_Location = "411.6,597.5"  Statment = "int i = 1 ; i&amp;lt; x+1 ; i+=1"  Location = "149,435" Variable="i" Direction="Increment" StartVal="1" EndVal="x+1" StepBy="1">
+        <True>
+
+            <Assign Statment = "fact = fact * i"  Location = "471.6,512.5" >
+            </Assign> 
+
+        </True>
+    </For> 
+
+    <Output Statment = "&amp;quot;factorial is&amp;quot;"  Location = "149,690" >
+    </Output> 
+
+    <Output Statment = "fact"  Location = "149,775" >
+    </Output> 
+
+    <End Statment = "End"  Location = "149,945" >
+    </End> 
+
+</FlowChart>

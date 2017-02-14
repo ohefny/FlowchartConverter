@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?> 
+ <FlowChart>
+
+    <Start Statment = "Start"  Location = "222,10" >
+    </Start> 
+
+    <Declare Variable_Name = "N" Variable_Type = "INTEGER" Single_Variable = "True" Size = "0" Statment = "INTEGER  N"  Location = "222,95" >
+    </Declare> 
+
+    <Declare Variable_Name = "First" Variable_Type = "INTEGER" Single_Variable = "True" Size = "0" Statment = "INTEGER  First"  Location = "222,180" >
+    </Declare> 
+
+    <Assign Statment = "First = 0"  Location = "222,265" >
+    </Assign> 
+
+    <Declare Variable_Name = "Second" Variable_Type = "INTEGER" Single_Variable = "True" Size = "0" Statment = "INTEGER  Second"  Location = "222,350" >
+    </Declare> 
+
+    <Assign Statment = "Second = 1"  Location = "222,435" >
+    </Assign> 
+
+    <Declare Variable_Name = "next" Variable_Type = "INTEGER" Single_Variable = "True" Size = "0" Statment = "INTEGER  next"  Location = "222,520" >
+    </Declare> 
+
+    <Output Statment = "&amp;quot;Enter the number of terms of Fibonacci series you want&amp;quot;"  Location = "222,605" >
+    </Output> 
+
+    <Input Statment = "N"  Location = "222,690" >
+    </Input> 
+
+    <For True_End_Location = "486.2,1447.5"  Variable = "i"  Direction = "Increment"  StartVal = "1"  EndVal = "N+1"  StepBy = "1"  Statment = "int i = 1 ; i&amp;lt; N+1 ; i+=1"  Location = "222,775" >
+        <True>
+
+            <IfElse True_End_Location = "891.5,1015"  False_End_Location = "609.7,1185"  Mid_Location = "743.1,1185"  Statment = "i &amp;lt;= 1"  Location = "709.7,852.5" >
+                <True>
+
+                    <Assign Statment = "next = i"  Location = "904.5,930" >
+                    </Assign> 
+
+                </True>
+                <False>
+
+                    <Assign Statment = "next = First + Second"  Location = "459.7,930" >
+                    </Assign> 
+
+                    <Assign Statment = "First = Second"  Location = "459.7,1015" >
+                    </Assign> 
+
+                    <Assign Statment = "Second = next"  Location = "459.7,1100" >
+                    </Assign> 
+
+                </False>
+            </IfElse> 
+
+            <Output Statment = "next"  Location = "709.7,1362.5" >
+            </Output> 
+
+        </True>
+    </For> 
+
+    <End Statment = "End"  Location = "222,1625" >
+    </End> 
+
+</FlowChart>
