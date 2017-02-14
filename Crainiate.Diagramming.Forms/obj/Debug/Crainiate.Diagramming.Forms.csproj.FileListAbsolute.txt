@@ -105,3 +105,18 @@ C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms
 C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csproj.GenerateResource.Cache
 C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.dll
 C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.pdb
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.Forms.dll
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.Forms.pdb
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.dll
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\bin\Debug\Crainiate.Diagramming.pdb
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csprojResolveAssemblyReference.cache
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Diagram.resources
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.LabelEdit.resources
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\FlowchartingResources.resources
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Printing.PrintDocument.resources
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Overview.resources
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Ruler.resources
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.Palette.resources
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.csproj.GenerateResource.Cache
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.dll
+C:\Users\Hefny\flowchartconverter\Crainiate.Diagramming.Forms\obj\Debug\Crainiate.Diagramming.Forms.pdb
