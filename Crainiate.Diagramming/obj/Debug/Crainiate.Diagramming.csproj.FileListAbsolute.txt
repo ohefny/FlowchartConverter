@@ -34,3 +34,8 @@ C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\bin\C
 C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.csprojResolveAssemblyReference.cache
 C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.dll
 C:\Users\Hefny\Desktop\workspace\hefny 2\TestingLast\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.pdb
+C:\Users\Hefny\FlowchartConverter\Crainiate.Diagramming\bin\Crainiate.Diagramming.dll
+C:\Users\Hefny\FlowchartConverter\Crainiate.Diagramming\bin\Crainiate.Diagramming.pdb
+C:\Users\Hefny\FlowchartConverter\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.csprojResolveAssemblyReference.cache
+C:\Users\Hefny\FlowchartConverter\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.dll
+C:\Users\Hefny\FlowchartConverter\Crainiate.Diagramming\obj\Debug\Crainiate.Diagramming.pdb

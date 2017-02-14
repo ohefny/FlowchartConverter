@@ -1,0 +1,2 @@
+C:\Users\Hefny\FlowchartConverter\Crainiate.Diagramming\bin\Crainiate.Diagramming.dll
+C:\Users\Hefny\FlowchartConverter\Crainiate.Diagramming\obj\Release\Crainiate.Diagramming.dll
